@@ -10,12 +10,11 @@ import java.util.function.Consumer;
 public class BookSpliterator implements Spliterator<Book>
 {
 	private static final Logger LOG = LoggerFactory.getLogger(BookSpliterator.class);
-
+	private final Spliterator<String> baseSpliterator;
 	private String name;
 	private String author;
 	private String genre;
 	private double rating;
-	private final Spliterator<String> baseSpliterator;
 
 	public BookSpliterator(Spliterator<String> baseSpliterator)
 	{

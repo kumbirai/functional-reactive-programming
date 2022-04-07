@@ -1,5 +1,6 @@
 package com.kumbirai.udemy.functional.section2;
 
+import com.github.javafaker.Faker;
 import com.kumbirai.udemy.functional.section3.MyFunInterface;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,12 +11,15 @@ public class FunctionalInterfaceDemo
 
 	public static void main(String[] args)
 	{
-		//		MyFunInterface fun = () -> LOG.info("hello");
-		//		fun.myMethod();
+		var faker = new Faker();
+		MyFunInterface fun = () -> LOG.info(faker.chuckNorris()
+				.fact());
+		fun.myMethod();
 		//
 		//		Integer x = 100;
 
-		onTheFly(() -> LOG.info("Hello"));
+		onTheFly(() -> LOG.info(faker.chuckNorris()
+				.fact()));
 	}
 
 	public static void onTheFly(MyFunInterface fun)

@@ -11,7 +11,6 @@ public class FirstLambdaExample
 	{
 		Thread t1 = new Thread(() -> LOG.info("Thread executed"));
 		t1.start();
-
 		//Runnable
 	}
 }

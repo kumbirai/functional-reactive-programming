@@ -28,8 +28,8 @@ public class Backpressure
 				.observeOn(Schedulers.io())
 				.subscribe(new Subscriber<Integer>()
 				{
-					Subscription s;
 					final AtomicInteger count = new AtomicInteger(0);
+					Subscription s;
 
 					@Override
 					public void onSubscribe(Subscription s)

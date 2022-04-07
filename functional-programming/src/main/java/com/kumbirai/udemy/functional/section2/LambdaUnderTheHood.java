@@ -10,7 +10,6 @@ public class LambdaUnderTheHood
 
 	public static void main(String[] args)
 	{
-
 		//		MyFunInterface fun1 = new MyFunInterface() {
 		//
 		//			@Override
@@ -42,6 +41,5 @@ public class LambdaUnderTheHood
 
 		MyFunInterface fun = () -> LOG.info("I am Light Weight");
 		fun.myMethod();
-
 	}
 }
