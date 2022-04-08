@@ -9,7 +9,7 @@ public class FirstLambdaExample
 
 	public static void main(String[] args)
 	{
-		Thread t1 = new Thread(() -> LOG.info("Thread executed"));
+		var t1 = new Thread(() -> LOG.info("Thread executed"));
 		t1.start();
 		//Runnable
 	}

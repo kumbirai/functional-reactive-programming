@@ -11,8 +11,4 @@
     <groupId>com.kumbirai.udemy</groupId>
     <artifactId>functional-programming</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <properties>
-    </properties>
-    <dependencies>
-    </dependencies>
 </project>

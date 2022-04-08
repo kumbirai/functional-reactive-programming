@@ -1,5 +1,6 @@
 package com.kumbirai.udemy.functional.section3;
 
+import com.github.javafaker.Faker;
 import com.kumbirai.udemy.functional.section2.LengthOfString;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,12 +14,15 @@ public class LambdaPractice3
 		LengthOfString len = str ->
 		{
 			int l = str.length();
-			LOG.info("The length of the given String is {}",
+			LOG.info("The length of the given String \"{}\" is {}",
+					str,
 					l);
 			return l;
 		};
 
-		int length = len.length("BasicsStrong");
+		var faker = new Faker();
+		int length = len.length(faker.backToTheFuture()
+				.quote());
 		LOG.info("{}",
 				length);
 	}

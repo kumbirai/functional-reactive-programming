@@ -21,15 +21,15 @@ public class PracticePredicate
 		list.add("");
 		list.add("BasicsStrong");
 
-		Predicate<String> predicate = s -> !s.isEmpty();
+		Predicate<String> emptyFilter = s -> !s.isEmpty();
 
 		List<String> newList = filterList(list,
-				predicate);
+				emptyFilter);
 
-		Predicate<String> filter = s -> s.contains("Basics");
+		Predicate<String> basicsFilter = s -> s.contains("Basics");
 
 		List<String> filteredList = filterList(list,
-				filter);
+				basicsFilter);
 
 		List<Integer> intList = List.of(1,
 				4,
@@ -54,13 +54,14 @@ public class PracticePredicate
 	{
 		List<T> newList = new ArrayList<>();
 
-		for (T string : list)
+		list.forEach(val ->
 		{
-			if (predicate.test(string))
+			if (predicate.test(val))
 			{
-				newList.add(string);
+				newList.add(val);
 			}
-		}
+		});
+
 		return newList;
 	}
 }

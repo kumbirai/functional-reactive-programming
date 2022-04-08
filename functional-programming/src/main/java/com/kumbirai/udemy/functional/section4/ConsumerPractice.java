@@ -34,9 +34,6 @@ public class ConsumerPractice
 
 	private static <T> void printElements(List<T> list, Consumer<T> consumer)
 	{
-		for (T t : list)
-		{
-			consumer.accept(t);
-		}
+		list.forEach(val -> consumer.accept(val));
 	}
 }

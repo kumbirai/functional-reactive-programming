@@ -7,9 +7,8 @@
     </appender>
 
     <logger name="com.kumbirai.udemy" level="debug"/>
-    <logger name="io.netty" level="warn"/>
-    <logger name="io.vertx" level="info"/>
-    <logger name="org.flywaydb.core" level="info"/>
+    <logger name="com.github.javafaker" level="debug"/>
+    <logger name="io.reactivex.rxjava3" level="warn"/>
 
     <root level="INFO">
         <appender-ref ref="STDOUT"/>

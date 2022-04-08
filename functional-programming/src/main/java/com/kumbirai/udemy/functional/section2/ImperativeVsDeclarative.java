@@ -18,7 +18,7 @@ public class ImperativeVsDeclarative
 		{
 			if (i % 2 == 0)
 			{
-				sumOfEvens = sumOfEvens + i;
+				sumOfEvens += i;
 			}
 		}
 		LOG.info("{}",

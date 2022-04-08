@@ -12,12 +12,13 @@
     <artifactId>reactive-programming</artifactId>
     <version>1.0-SNAPSHOT</version>
     <properties>
+        <rxjava.version>3.1.3</rxjava.version>
     </properties>
     <dependencies>
         <dependency>
             <groupId>io.reactivex.rxjava3</groupId>
             <artifactId>rxjava</artifactId>
-            <version>3.0.0</version>
+            <version>${rxjava.version}</version>
         </dependency>
     </dependencies>
 </project>

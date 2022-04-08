@@ -15,8 +15,6 @@ public class FunctionalInterfaceDemo
 		MyFunInterface fun = () -> LOG.info(faker.chuckNorris()
 				.fact());
 		fun.myMethod();
-		//
-		//		Integer x = 100;
 
 		onTheFly(() -> LOG.info(faker.chuckNorris()
 				.fact()));
