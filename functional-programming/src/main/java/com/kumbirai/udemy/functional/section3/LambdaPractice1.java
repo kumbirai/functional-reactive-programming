@@ -1,8 +1,9 @@
 package com.kumbirai.udemy.functional.section3;
 
-import com.github.javafaker.Faker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import static com.kumbirai.udemy.functional.util.ValueSupplier.STRING_SUPPLIER;
 
 public class LambdaPractice1
 {
@@ -10,12 +11,7 @@ public class LambdaPractice1
 
 	public static void main(String[] args)
 	{
-		Name name = () ->
-		{
-			var faker = new Faker();
-			LOG.info(faker.name()
-					.name());
-		};
+		Name name = () -> LOG.info(STRING_SUPPLIER.get());
 		name.myName();
 	}
 }

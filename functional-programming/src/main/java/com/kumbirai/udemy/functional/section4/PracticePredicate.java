@@ -14,7 +14,6 @@ public class PracticePredicate
 	public static void main(String[] args)
 	{
 		List<String> list = new ArrayList<>();
-
 		list.add("Basics");
 		list.add("");
 		list.add("Strong");
@@ -22,12 +21,10 @@ public class PracticePredicate
 		list.add("BasicsStrong");
 
 		Predicate<String> emptyFilter = s -> !s.isEmpty();
-
 		List<String> newList = filterList(list,
 				emptyFilter);
 
 		Predicate<String> basicsFilter = s -> s.contains("Basics");
-
 		List<String> filteredList = filterList(list,
 				basicsFilter);
 
@@ -38,7 +35,6 @@ public class PracticePredicate
 				8);
 
 		Predicate<Integer> integerFilter = e -> e % 2 == 0;
-
 		List<Integer> evens = filterList(intList,
 				integerFilter);
 

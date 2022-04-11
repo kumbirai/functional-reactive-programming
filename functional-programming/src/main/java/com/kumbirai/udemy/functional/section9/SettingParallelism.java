@@ -3,10 +3,11 @@ package com.kumbirai.udemy.functional.section9;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ForkJoinPool;
+
+import static com.kumbirai.udemy.functional.section9.ParallelStreams.EMPLOYEE_LIST_SUPPLIER;
 
 public class SettingParallelism
 {
@@ -27,26 +28,10 @@ public class SettingParallelism
 
 		ForkJoinPool pool = new ForkJoinPool(2);
 
-		List<Employee> list = new ArrayList<>();
-
-		for (int i = 0; i < 100; i++)
-		{
-			list.add(new Employee("John",
-					20000));
-			list.add(new Employee("Rohn",
-					3000));
-			list.add(new Employee("Tom",
-					15000));
-			list.add(new Employee("Bheem",
-					8000));
-			list.add(new Employee("Shiva",
-					200));
-			list.add(new Employee("Krishna",
-					50000));
-		}
+		List<Employee> list = EMPLOYEE_LIST_SUPPLIER.get();
 
 		long count = pool.submit(() -> list.parallelStream()
-						.filter(e -> e.getSalary() > 1000)
+						.filter(e -> e.getSalary() > 1_000)
 						.count())
 				.get();
 

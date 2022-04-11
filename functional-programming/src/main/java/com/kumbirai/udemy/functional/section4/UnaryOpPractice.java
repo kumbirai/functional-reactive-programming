@@ -20,10 +20,8 @@ public class UnaryOpPractice
 				50);
 
 		UnaryOperator<Integer> operator = i -> i * 100;
-
 		List<Integer> newList = mapper(list,
 				operator);
-
 		LOG.info("{}",
 				newList);
 	}
@@ -31,13 +29,7 @@ public class UnaryOpPractice
 	private static <T> List<T> mapper(List<T> list, UnaryOperator<T> operator)
 	{
 		List<T> newList = new ArrayList<>();
-
-		for (T t : list)
-		{
-			T ele = operator.apply(t);
-			newList.add(ele);
-		}
-
+		list.forEach(val -> newList.add(operator.apply(val)));
 		return newList;
 	}
 }

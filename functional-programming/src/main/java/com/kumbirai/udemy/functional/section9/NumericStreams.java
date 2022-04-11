@@ -3,7 +3,6 @@ package com.kumbirai.udemy.functional.section9;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.OptionalDouble;
 import java.util.stream.DoubleStream;
@@ -17,24 +16,7 @@ public class NumericStreams
 
 	public static void main(String[] args)
 	{
-		List<Book> list = new ArrayList<>();
-
-		list.add(new Book("The Alchemist",
-				"Paulo Coelho",
-				"Adventure",
-				4.408789797));
-		list.add(new Book("The Notebook",
-				"Nicholas Sparks",
-				"Romance",
-				4.10));
-		list.add(new Book("Horror Cocktail",
-				"Robert Bloch",
-				"Horror",
-				2.67));
-		list.add(new Book("House of Leaves",
-				"Mark Z. Danielewski",
-				"Horror",
-				4.10908908));
+		List<Book> list = BookSupplier.GET_BOOKS.get();
 
 		OptionalDouble average = list.stream()
 				.mapToDouble(book -> book.getRating())
@@ -64,4 +46,5 @@ public class NumericStreams
 
 		doubleS.mapToObj(val -> val);
 	}
+
 }

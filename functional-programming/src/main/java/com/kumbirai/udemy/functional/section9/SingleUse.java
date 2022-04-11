@@ -3,10 +3,11 @@ package com.kumbirai.udemy.functional.section9;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import static com.kumbirai.udemy.functional.section9.BookSupplier.GET_BOOKS;
 
 public class SingleUse
 {
@@ -14,24 +15,7 @@ public class SingleUse
 
 	public static void main(String[] args)
 	{
-		List<Book> books = new ArrayList<>();
-
-		books.add(new Book("The Alchemist",
-				"Paulo Coelho",
-				"Adventure",
-				4.408789797));
-		books.add(new Book("The Notebook",
-				"Nicholas Sparks",
-				"Romance",
-				4.10));
-		books.add(new Book("Horror Cocktail",
-				"Robert Bloch",
-				"Horror",
-				2.67));
-		books.add(new Book("House of Leaves",
-				"Mark Z. Danielewski",
-				"Horror",
-				4.10908908));
+		List<Book> books = GET_BOOKS.get();
 
 		Stream<Book> stream = books.stream();
 

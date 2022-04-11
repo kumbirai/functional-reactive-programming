@@ -7,34 +7,36 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 
+import static com.kumbirai.udemy.functional.util.ValueSupplier.STRING_LIST_SUPPLIER;
+
 public class FunctionPractice
 {
 	private static final Logger LOG = LoggerFactory.getLogger(FunctionPractice.class);
 
 	public static void main(String[] args)
 	{
-		List<String> list = List.of("Kit",
-				"Kat",
-				"Shake");
+		List<String> list = STRING_LIST_SUPPLIER.get();
+		LOG.info("{}",
+				list);
 
 		Function<String, Integer> function = String::length;
 
-		List<Integer> newList = map(list,
+		List<Integer> lengthList = map(list,
 				function);
-
 		LOG.info("{}",
-				newList);
+				lengthList);
+
+		List<String> reversedList = map(list,
+				val -> new StringBuilder(val).reverse()
+						.toString());
+		LOG.info("{}",
+				reversedList);
 	}
 
 	private static <T, R> List<R> map(List<T> list, Function<T, R> function)
 	{
 		List<R> newList = new ArrayList<>();
-
-		for (T e : list)
-		{
-			newList.add(function.apply(e));
-		}
-
+		list.forEach(val -> newList.add(function.apply(val)));
 		return newList;
 	}
 }

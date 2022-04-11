@@ -6,19 +6,15 @@ import org.slf4j.LoggerFactory;
 import java.util.List;
 import java.util.function.Consumer;
 
+import static com.kumbirai.udemy.functional.util.ValueSupplier.INTEGER_LIST_SUPPLIER;
+
 public class ConsumerPractice
 {
 	private static final Logger LOG = LoggerFactory.getLogger(ConsumerPractice.class);
 
 	public static void main(String[] args)
 	{
-		List<Integer> list = List.of(34,
-				67,
-				8,
-				23,
-				67,
-				89,
-				90);
+		List<Integer> list = INTEGER_LIST_SUPPLIER.get();
 
 		Consumer<Integer> consumer = i -> LOG.info("{}",
 				i);

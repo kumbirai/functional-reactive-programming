@@ -5,15 +5,24 @@ import org.slf4j.LoggerFactory;
 
 import java.util.function.BinaryOperator;
 
+import static com.kumbirai.udemy.functional.util.ValueSupplier.STRING_SUPPLIER;
+
 public class BinaryOperatorPractice
 {
 	private static final Logger LOG = LoggerFactory.getLogger(BinaryOperatorPractice.class);
 
 	public static void main(String[] args)
 	{
-		BinaryOperator<String> operator = (a, b) -> a + "." + b;
+		BinaryOperator<String> operator = (a, b) -> String.join(".",
+				a,
+				b);
 
-		LOG.info(operator.apply("BasicsStrong",
-				"com"));
+		String first = STRING_SUPPLIER.get();
+		String second = STRING_SUPPLIER.get();
+		LOG.info("[{}][{}] - {}",
+				first,
+				second,
+				operator.apply(first,
+						second));
 	}
 }

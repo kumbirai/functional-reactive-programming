@@ -11,5 +11,10 @@
         <module name="reactive-programming" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="functional-programming" target="11" />
+      <module name="functional-reactive-programming" target="11" />
+      <module name="reactive-programming" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>
