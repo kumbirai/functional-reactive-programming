@@ -4,8 +4,8 @@ public class FactoryMethodPattern
 {
 	public static void main(String[] args)
 	{
-		Flooring floor = FlooringFactory.getFlooring(13,
-				46);
+		Flooring floor = FlooringFactory.getFlooring(3,
+				47);
 		floor.installation();
 	}
 }

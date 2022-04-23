@@ -10,7 +10,10 @@ public class ReferentialTransparency
 	public static void main(String[] args)
 	{
 		int result = add(2,
-				8);
+				multiply(2,
+						multiply(2,
+								multiply(2,
+										2))));
 		LOG.info("{}",
 				result);
 	}

@@ -4,7 +4,8 @@ import java.util.function.Consumer;
 
 public class MobileBuilder
 {
-	int ram, storage;
+	int ram;
+	int storage;
 	int battery;
 	int camera;
 	String processor;

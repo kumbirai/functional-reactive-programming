@@ -4,7 +4,7 @@ import java.util.function.Consumer;
 
 public class MyArrayList
 {
-	Object[] elements = new Object[5];
+	Object[] elements;
 
 	public MyArrayList(Object[] elements)
 	{

@@ -3,7 +3,10 @@ package com.kumbirai.udemy.functional.section6;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Function;
+
+import static com.kumbirai.udemy.functional.util.ValueSupplier.STRING_SUPPLIER;
 
 public class Chaining
 {
@@ -25,17 +28,18 @@ public class Chaining
 
 		};
 
-		c3.accept("Hello");
+		c3.accept(STRING_SUPPLIER.get());
 
-		//Consumer<String> c4 = c1.thenAccept(null);
+		Consumer<String> c4 = c1.thenAccept(c2);
 
-		//c4.accept("BasicsStrong");
+		c4.accept(STRING_SUPPLIER.get());
 
 		Function<Integer, Integer> f1 = s -> s + 2;
 		Function<Integer, Integer> f2 = s -> s * 2;
 
 		Function<Integer, Integer> f3 = f1.andThen(f2);
 		LOG.info("{}",
-				f3.apply(10));
+				f3.apply(ThreadLocalRandom.current()
+						.nextInt(20)));
 	}
 }

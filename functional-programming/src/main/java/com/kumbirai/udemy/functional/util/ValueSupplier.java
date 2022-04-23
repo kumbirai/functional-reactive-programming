@@ -46,6 +46,7 @@ public class ValueSupplier
 			.boxed()
 			.parallel()
 			.map(val -> STRING_SUPPLIER.get())
+			.sorted()
 			.collect(Collectors.toList());
 	public static final Supplier<List<Integer>> INTEGER_LIST_SUPPLIER = () -> IntStream.range(0,
 					10)
@@ -53,6 +54,7 @@ public class ValueSupplier
 			.parallel()
 			.map(val -> ThreadLocalRandom.current()
 					.nextInt(100) + 1)
+			.sorted()
 			.collect(Collectors.toList());
 	public static final Supplier<List<Employee>> EMPLOYEE_LIST_SUPPLIER = () -> IntStream.range(0,
 					100_000)

@@ -10,15 +10,15 @@ public class FlooringFactory
 
 		if (minTemprature <= 5 && maxTemprature <= 20)
 		{
-			flooring = () -> new WoodenFlooring();
+			flooring = WoodenFlooring::new;
 		}
 		else if (minTemprature <= 5 && maxTemprature >= 45)
 		{
-			flooring = () -> new CorkFlooring();
+			flooring = CorkFlooring::new;
 		}
 		else
 		{
-			flooring = () -> new ConcreteFlooring();
+			flooring = ConcreteFlooring::new;
 		}
 
 		return flooring.get();

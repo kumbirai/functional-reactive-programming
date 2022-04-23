@@ -29,7 +29,7 @@ class Order
 		Order order = new Order();
 		order = function.apply(order);
 		LOG.info("Order placed!");
-		LOG.info("{} items ordered by you will be delivered at {} by tomorrow",
+		LOG.info("{} items ordered by you will be delivered at '{}' by tomorrow",
 				order.cart.size(),
 				order.address);
 	}

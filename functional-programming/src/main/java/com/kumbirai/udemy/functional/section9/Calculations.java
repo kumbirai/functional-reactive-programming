@@ -4,9 +4,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.IntSummaryStatistics;
+import java.util.List;
 import java.util.OptionalDouble;
 import java.util.OptionalInt;
-import java.util.stream.IntStream;
+
+import static com.kumbirai.udemy.functional.util.ValueSupplier.INTEGER_LIST_SUPPLIER;
 
 public class Calculations
 {
@@ -20,50 +22,50 @@ public class Calculations
 
 		//Sum
 
-		int sum = IntStream.of()
+		final var integers = INTEGER_LIST_SUPPLIER.get();
+		int sum = integers
+				.stream()
+				.mapToInt(Integer::intValue)
 				.sum();
 
-		LOG.info("{}",
+		LOG.info("Sum: {}",
 				sum);
 
 		//max() Optional : primitive
 
-		OptionalInt maxOptional = IntStream.of(1,
-						3,
-						4,
-						5)
+		OptionalInt maxOptional = integers
+				.stream()
+				.mapToInt(Integer::intValue)
 				.max();
 
-		LOG.info("{}",
+		LOG.info("Max: {}",
 				maxOptional.getAsInt());
 
 		//min() : Optional Primitive
 
-		OptionalInt minOptional = IntStream.of(1,
-						2,
-						3,
-						4)
+		OptionalInt minOptional = integers
+				.stream()
+				.mapToInt(Integer::intValue)
 				.min();
 
-		LOG.info("{}",
+		LOG.info("Min: {}",
 				minOptional.getAsInt());
 
 		//average() OptionalDouble
 
-		OptionalDouble avgOptional = IntStream.of(1,
-						2,
-						3,
-						4)
+		OptionalDouble avgOptional = integers
+				.stream()
+				.mapToInt(Integer::intValue)
 				.average();
 
-		LOG.info("{}",
+		LOG.info("Average: {}",
 				avgOptional.getAsDouble());
 
 		//summaryStatistics()
 
-		IntSummaryStatistics summaryStatistics = IntStream.of(1,
-						2,
-						34)
+		var summaryStatistics = integers
+				.stream()
+				.mapToInt(Integer::intValue)
 				.summaryStatistics();
 
 		LOG.info("{}",

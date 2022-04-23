@@ -20,7 +20,7 @@ public class StrategyPattern
 		stockList.add(new Stock("MSFT",
 				166.86,
 				45));
-		stockList.add(new Stock("Google",
+		stockList.add(new Stock("GOOGL",
 				99,
 				12.5));
 		stockList.add(new Stock("AMZ",
@@ -36,15 +36,27 @@ public class StrategyPattern
 				1866.74,
 				9));
 
-		//StockFilters.bySymbol(stockList, "AMZ").forEach(val->LOG.info("{}",val));
+		StockFilters.bySymbol(stockList,
+						"AMZ")
+				.forEach(val -> LOG.info("{}",
+						val));
+		LOG.info("--------------------");
 
-		//LOG.info("--------------------");
-
-		//StockFilters.byPriceAbove(stockList, 300).forEach(val->LOG.info("{}",val));
+		StockFilters.byPriceAbove(stockList,
+						300)
+				.forEach(val -> LOG.info("{}",
+						val));
+		LOG.info("--------------------");
 
 		StockFilters.filter(stockList,
 						stock -> stock.getSymbol()
 								.equals("AMZ"))
+				.forEach(val -> LOG.info("{}",
+						val));
+		LOG.info("--------------------");
+
+		StockFilters.filter(stockList,
+						stock -> stock.getPrice() >= 400)
 				.forEach(val -> LOG.info("{}",
 						val));
 	}

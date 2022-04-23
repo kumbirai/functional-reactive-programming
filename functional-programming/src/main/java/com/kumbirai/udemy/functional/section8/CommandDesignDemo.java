@@ -8,6 +8,10 @@ public class CommandDesignDemo
 		AC ac2 = new AC();
 
 		ACAutomationRemote remote = new ACAutomationRemote();
+		remote.setCommand(() -> ac1.incTemp());
+		remote.buttonPressed();
+
+		//		ACAutomationRemote remote = new ACAutomationRemote()
 		remote.setCommand(() -> ac2.turnOn());
 		remote.buttonPressed();
 	}

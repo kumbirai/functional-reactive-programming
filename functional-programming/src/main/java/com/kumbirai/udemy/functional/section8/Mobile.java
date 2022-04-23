@@ -2,7 +2,8 @@ package com.kumbirai.udemy.functional.section8;
 
 public class Mobile
 {
-	final int ram, storage;
+	final int ram;
+	final int storage;
 	final int battery;
 	final int camera;
 	final String processor;

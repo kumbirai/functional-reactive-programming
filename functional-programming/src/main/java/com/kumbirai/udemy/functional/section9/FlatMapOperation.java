@@ -4,11 +4,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -30,7 +33,22 @@ public class FlatMapOperation
 						b)
 				.flatMap(e -> e);
 
-		Path p = Paths.get("/Users/mohitsinghal/newWorkspace/Functional-Programming/src/com/basicsstrong/functional/section9/The Notebook");
+		URL res = FlatMapOperation.class.getResource("The Notebook");
+		LOG.info("{}",
+				res);
+
+		Path p = null;
+		try
+		{
+			p = Paths.get(res.toURI());
+		}
+		catch (URISyntaxException e)
+		{
+			LOG.error("Exception Caught: ",
+					e);
+		}
+		Objects.requireNonNull(p,
+				"Path is null");
 		try (Stream<String> notebook = Files.lines(p))
 		{
 			List<String> collect = notebook.flatMap(line -> Arrays.stream(line.split(" ")))

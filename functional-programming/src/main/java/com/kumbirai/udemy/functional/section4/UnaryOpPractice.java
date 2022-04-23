@@ -7,17 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.UnaryOperator;
 
+import static com.kumbirai.udemy.functional.util.ValueSupplier.INTEGER_LIST_SUPPLIER;
+
 public class UnaryOpPractice
 {
 	private static final Logger LOG = LoggerFactory.getLogger(UnaryOpPractice.class);
 
 	public static void main(String[] args)
 	{
-		List<Integer> list = List.of(10,
-				20,
-				30,
-				40,
-				50);
+		List<Integer> list = INTEGER_LIST_SUPPLIER.get();
 
 		UnaryOperator<Integer> operator = i -> i * 100;
 		List<Integer> newList = mapper(list,

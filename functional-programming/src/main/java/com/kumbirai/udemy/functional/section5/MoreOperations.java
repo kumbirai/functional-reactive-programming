@@ -15,7 +15,8 @@ public class MoreOperations
 		//ifPresent
 		Optional<String> optional = Optional.of("Value");
 
-		optional.ifPresent(val -> LOG.info("This is a " + val));
+		optional.ifPresent(val -> LOG.info("This is a {}",
+				val));
 
 		//ifPresentOrElse
 		Optional.empty()
