@@ -7,8 +7,8 @@ import static com.kumbirai.udemy.functional.util.ValueSupplier.STRING_SUPPLIER;
 
 public class FunctionalGenericsDemo
 {
-	private static final Logger LOG = LoggerFactory.getLogger(FunctionalGenericsDemo.class);
 	public static final int MAX_INDEX = 5;
+	private static final Logger LOG = LoggerFactory.getLogger(FunctionalGenericsDemo.class);
 
 	public static void main(String[] args)
 	{

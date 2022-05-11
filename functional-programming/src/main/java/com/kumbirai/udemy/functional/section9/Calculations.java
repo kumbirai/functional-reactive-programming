@@ -3,8 +3,6 @@ package com.kumbirai.udemy.functional.section9;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.IntSummaryStatistics;
-import java.util.List;
 import java.util.OptionalDouble;
 import java.util.OptionalInt;
 
@@ -23,8 +21,7 @@ public class Calculations
 		//Sum
 
 		final var integers = INTEGER_LIST_SUPPLIER.get();
-		int sum = integers
-				.stream()
+		int sum = integers.stream()
 				.mapToInt(Integer::intValue)
 				.sum();
 
@@ -33,8 +30,7 @@ public class Calculations
 
 		//max() Optional : primitive
 
-		OptionalInt maxOptional = integers
-				.stream()
+		OptionalInt maxOptional = integers.stream()
 				.mapToInt(Integer::intValue)
 				.max();
 
@@ -43,8 +39,7 @@ public class Calculations
 
 		//min() : Optional Primitive
 
-		OptionalInt minOptional = integers
-				.stream()
+		OptionalInt minOptional = integers.stream()
 				.mapToInt(Integer::intValue)
 				.min();
 
@@ -53,8 +48,7 @@ public class Calculations
 
 		//average() OptionalDouble
 
-		OptionalDouble avgOptional = integers
-				.stream()
+		OptionalDouble avgOptional = integers.stream()
 				.mapToInt(Integer::intValue)
 				.average();
 
@@ -63,8 +57,7 @@ public class Calculations
 
 		//summaryStatistics()
 
-		var summaryStatistics = integers
-				.stream()
+		var summaryStatistics = integers.stream()
 				.mapToInt(Integer::intValue)
 				.summaryStatistics();
 

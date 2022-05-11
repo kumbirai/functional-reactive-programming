@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Spliterator;
 import java.util.stream.Stream;
 
+import static java.util.Spliterator.ORDERED;
+
 public class Characteristics
 {
 	private static final Logger LOG = LoggerFactory.getLogger(Characteristics.class);
@@ -29,15 +31,15 @@ public class Characteristics
 		//OR
 
 		LOG.info("{}",
-				Integer.bitCount(bits | 0x00000010));
+				Integer.bitCount(bits | ORDERED));
 
 		//And 
 
 		LOG.info("{}",
-				bits & 0x00000010);
+				bits & ORDERED);
 
 		LOG.info("{}",
-				spliterator.hasCharacteristics(0x00000010));
+				spliterator.hasCharacteristics(ORDERED));
 
 		long count = list.stream()
 				.filter(x ->

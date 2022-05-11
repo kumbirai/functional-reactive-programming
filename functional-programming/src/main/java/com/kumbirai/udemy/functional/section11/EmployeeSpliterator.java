@@ -26,14 +26,16 @@ public class EmployeeSpliterator implements Spliterator<Employee>
 	{
 		if (this.wordSpliterator.tryAdvance(word -> this.id = Integer.valueOf(word)) && this.wordSpliterator.tryAdvance(word -> this.name = word) && this.wordSpliterator.tryAdvance(word -> this.gender = word.charAt(0)) && this.wordSpliterator.tryAdvance(word -> this.dob = Date.valueOf(word)) && this.wordSpliterator.tryAdvance(word -> this.city = word) && this.wordSpliterator.tryAdvance(word -> this.designation = word) && this.wordSpliterator.tryAdvance(word -> this.joiningDate = Date.valueOf(word)) && this.wordSpliterator.tryAdvance(word -> this.salary = Double.valueOf(word)))
 		{
-			action.accept(new Employee(this.id,
-					this.name,
-					this.gender,
-					this.dob,
-					this.city,
-					this.designation,
-					this.joiningDate,
-					this.salary));
+			action.accept(Employee.builder()
+					.id(this.id)
+					.name(this.name)
+					.gender(this.gender)
+					.dob(this.dob)
+					.city(this.city)
+					.designation(this.designation)
+					.joiningDate(this.joiningDate)
+					.salary(this.salary)
+					.build());
 			return true;
 		}
 

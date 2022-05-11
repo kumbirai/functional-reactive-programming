@@ -6,6 +6,10 @@ import java.util.function.Predicate;
 
 public class StockFilters
 {
+	private StockFilters()
+	{
+	}
+
 	public static List<Stock> bySymbol(List<Stock> list, String symbol)
 	{
 		List<Stock> filteredData = new ArrayList<>();
@@ -44,9 +48,5 @@ public class StockFilters
 			}
 		});
 		return filteredData;
-	}
-
-	private StockFilters()
-	{
 	}
 }

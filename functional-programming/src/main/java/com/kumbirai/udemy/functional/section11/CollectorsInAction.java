@@ -4,6 +4,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -23,7 +25,21 @@ public class CollectorsInAction
 
 	public static void main(String[] args)
 	{
-		Path path = Paths.get("/Users/mohitsinghal/newWorkspace/Functional-Programming/src/com/basicsstrong/functional/section11/EmployeeData");
+		//Path path = Paths.get("/Users/mohitsinghal/newWorkspace/Functional-Programming/src/com/basicsstrong/functional/section11/EmployeeData");
+		URL res = CollectorsInAction.class.getResource("EmployeeData");
+		LOG.info("{}",
+				res);
+
+		Path path = null;
+		try
+		{
+			path = Paths.get(res.toURI());
+		}
+		catch (URISyntaxException e)
+		{
+			LOG.error("Exception Caught: ",
+					e);
+		}
 		try (Stream<String> lines = Files.lines(path))
 		{
 

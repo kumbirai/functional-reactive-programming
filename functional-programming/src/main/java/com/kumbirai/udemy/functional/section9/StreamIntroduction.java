@@ -11,8 +11,8 @@ import static com.kumbirai.udemy.functional.section9.BookSupplier.GET_BOOKS;
 
 public class StreamIntroduction
 {
-	private static final Logger LOG = LoggerFactory.getLogger(StreamIntroduction.class);
 	public static final int FILTER_RATING = 3;
+	private static final Logger LOG = LoggerFactory.getLogger(StreamIntroduction.class);
 
 	public static void main(String[] args)
 	{

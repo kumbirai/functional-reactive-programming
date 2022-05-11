@@ -4,6 +4,7 @@ import com.github.javafaker.Faker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.OptionalDouble;
 import java.util.concurrent.ThreadLocalRandom;
@@ -44,7 +45,14 @@ public class PersonExample
 				.mapToInt(Person::getAge)
 				.average();
 
+		IntSummaryStatistics summaryStatistics = list.parallelStream()
+				.mapToInt(Person::getAge)
+				.summaryStatistics();
+
 		LOG.info("Average Age {}",
 				average.isPresent() ? average.getAsDouble() : 0);
+
+		LOG.info("Summary Statistics {}",
+				summaryStatistics);
 	}
 }
