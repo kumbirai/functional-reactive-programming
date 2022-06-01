@@ -10,6 +10,8 @@ import org.slf4j.LoggerFactory;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import static com.kumbirai.udemy.reactive.util.ValueSupplier.NAME_LIST_SUPPLIER;
+
 public class CustomScheduler
 {
 	private static final Logger LOG = LoggerFactory.getLogger(CustomScheduler.class);
@@ -20,27 +22,24 @@ public class CustomScheduler
 
 		@NonNull Scheduler scheduler = Schedulers.from(executor);
 
-		Observable<String> src = Observable.just("Pasta",
-						"Pizza",
-						"Fries",
-						"Curry",
-						"Chow mein")
+		Observable<String> src = Observable.fromIterable(NAME_LIST_SUPPLIER.get())
 				.subscribeOn(scheduler)
 				.doFinally(executor::shutdown);
 
-		src.subscribe(e -> compute());
-		src.subscribe(e -> compute());
-		src.subscribe(e -> compute());
-		src.subscribe(e -> compute());
-		src.subscribe(e -> compute());
-		src.subscribe(e -> compute());
+		src.subscribe(CustomScheduler::compute);
+		src.subscribe(CustomScheduler::compute);
+		src.subscribe(CustomScheduler::compute);
+		src.subscribe(CustomScheduler::compute);
+		src.subscribe(CustomScheduler::compute);
+		src.subscribe(CustomScheduler::compute);
 
 	}
 
-	public static void compute() throws InterruptedException
+	public static void compute(String value) throws InterruptedException
 	{
 		Thread.sleep(1000);
-		LOG.info("Computation Done By : {}",
+		LOG.info("Computation of '{}' Done By : {}",
+				value,
 				Thread.currentThread()
 						.getName());
 	}

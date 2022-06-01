@@ -18,20 +18,21 @@ public class SingleScheduler
 						"Chow mein")
 				.subscribeOn(Schedulers.single());
 
-		src.subscribe(e -> sensitiveTask());
-		src.subscribe(e -> sensitiveTask());
-		src.subscribe(e -> sensitiveTask());
-		src.subscribe(e -> sensitiveTask());
-		src.subscribe(e -> sensitiveTask());
-		src.subscribe(e -> sensitiveTask());
+		src.subscribe(SingleScheduler::sensitiveTask);
+		src.subscribe(SingleScheduler::sensitiveTask);
+		src.subscribe(SingleScheduler::sensitiveTask);
+		src.subscribe(SingleScheduler::sensitiveTask);
+		src.subscribe(SingleScheduler::sensitiveTask);
+		src.subscribe(SingleScheduler::sensitiveTask);
 
 		Thread.sleep(500000);
 	}
 
-	public static void sensitiveTask() throws InterruptedException
+	public static void sensitiveTask(String value) throws InterruptedException
 	{
 		Thread.sleep(1000);
-		LOG.info("Computation Done By : {}",
+		LOG.info("Computation of '{}' Done By : {}",
+				value,
 				Thread.currentThread()
 						.getName());
 	}

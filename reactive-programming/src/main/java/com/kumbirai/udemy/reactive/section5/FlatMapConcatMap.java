@@ -17,7 +17,7 @@ public class FlatMapConcatMap
 				"Programming");
 
 		Observable.fromIterable(list)
-				.concatMap(e -> Observable.fromArray(e.split("")))
+				.flatMap(e -> Observable.fromArray(e.split("")))
 				.subscribe(val -> LOG.info("{}",
 						val));
 	}

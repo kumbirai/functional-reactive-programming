@@ -30,11 +30,11 @@ public class Variants
 								val),
 						e -> LOG.error("Error: ",
 								e),
-						() -> LOG.info("Completed"));
+						() -> LOG.info("Maybe Completed"));
 
 		Completable completable = Completable.complete();
 
-		completable.subscribe(() -> LOG.info("Completed"));
+		completable.subscribe(() -> LOG.info("completable Completed"));
 
 		Completable.fromRunnable(() -> LOG.info("Some process executing"))
 				.subscribe(() -> LOG.info("The process executed succesfully"));

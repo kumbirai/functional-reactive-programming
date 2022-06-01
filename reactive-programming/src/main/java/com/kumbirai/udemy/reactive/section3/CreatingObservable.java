@@ -5,8 +5,11 @@ import io.reactivex.rxjava3.core.Observable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import static com.kumbirai.udemy.reactive.util.ValueSupplier.INTEGER_LIST_SUPPLIER;
+import static com.kumbirai.udemy.reactive.util.ValueSupplier.NAME_LIST_SUPPLIER;
+import static com.kumbirai.udemy.reactive.util.ValueSupplier.STRING_LIST_SUPPLIER;
 
 public class CreatingObservable
 {
@@ -17,9 +20,8 @@ public class CreatingObservable
 		//create()
 		Observable<Integer> source = Observable.create(e ->
 		{
-			e.onNext(10);
-			e.onNext(11);
-			e.onNext(12);
+			List<Integer> integers = INTEGER_LIST_SUPPLIER.get();
+			integers.forEach(e::onNext);
 			e.onComplete();
 		});
 
@@ -29,22 +31,28 @@ public class CreatingObservable
 		//just()
 		Observable<Integer> just = Observable.just(1,
 				2,
-				3);
+				3,
+				4,
+				5);
 
 		just.subscribe(val -> LOG.info("{}",
 				val));
 
 		//fromIterable
-		//List<String> list = List.of("Ram", "Shyam", "Mike");
-		List<String> list = new ArrayList<>();
-		list.add("Ram");
-		list.add("Shyam");
+		List<String> strings = NAME_LIST_SUPPLIER.get();
 
-		@NonNull Observable<String> fromIterable = Observable.fromIterable(list);
+		@NonNull Observable<String> fromIterable = Observable.fromIterable(strings);
 
-		list.add("Rahin");
+		strings.add("------");
+		strings.addAll(STRING_LIST_SUPPLIER.get());
 
 		fromIterable.subscribe(val -> LOG.info("{}",
 				val));
+
+		Observable<Integer> fromRange = Observable.range(2,
+				9);
+		fromRange.subscribe(val -> LOG.info("{}",
+				Math.pow(val,
+						val)));
 	}
 }

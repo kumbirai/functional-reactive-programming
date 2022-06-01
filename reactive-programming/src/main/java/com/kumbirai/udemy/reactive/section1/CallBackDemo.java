@@ -21,7 +21,7 @@ public class CallBackDemo
 					@Override
 					public void pushData(String data)
 					{
-						LOG.info("CallBack data :{}",
+						LOG.info("CallBack data: {}",
 								data);
 					}
 
@@ -34,7 +34,7 @@ public class CallBackDemo
 					@Override
 					public void pushError(Exception ex)
 					{
-						LOG.error("Callback Error called, Got an Exception :",
+						LOG.error("Callback Error called, exception caught:",
 								ex);
 					}
 				});
@@ -51,7 +51,7 @@ public class CallBackDemo
 
 	public void runningAsync(CallBack callback)
 	{
-		LOG.info("I am running in saperate thread");
+		LOG.info("I am running in a separate thread");
 		sleep(1000);
 		callback.pushData("Data1");
 		callback.pushData("Data2");

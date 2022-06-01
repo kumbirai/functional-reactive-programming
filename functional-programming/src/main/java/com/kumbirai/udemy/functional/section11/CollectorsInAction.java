@@ -10,11 +10,14 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.Spliterator;
 import java.util.TreeSet;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
@@ -42,7 +45,6 @@ public class CollectorsInAction
 		}
 		try (Stream<String> lines = Files.lines(path))
 		{
-
 			Stream<String> words = lines.flatMap(line -> Arrays.stream(line.split(",")));
 			Spliterator<String> wordSpliterator = words.spliterator();
 			Spliterator<Employee> employeeSpliterator = new EmployeeSpliterator(wordSpliterator);
@@ -56,29 +58,30 @@ public class CollectorsInAction
 					.map(employee -> employee.getName())
 					.collect(Collectors.toList());
 
+			LOG.info("-----X-------LIST---------X---");
 			employeeNames.forEach(val -> LOG.info("{}",
 					val));
-			LOG.info("-----X-------LIST---------X---");
 
 			Set<String> designations = employeeList.stream()
 					.map(e -> e.getDesignation())
 					.collect(Collectors.toSet());
 
+			LOG.info("-----X-------SET---------X---");
 			designations.forEach(val -> LOG.info("{}",
 					val));
-			LOG.info("-----X-------SET---------X---");
 
 			TreeSet<Employee> employeesSorted = employeeList.stream()
 					.collect(Collectors.toCollection(TreeSet::new));
 
+			LOG.info("-----X-------Collection(TreeSet)---------X---");
 			employeesSorted.forEach(val -> LOG.info("{}",
 					val));
-			LOG.info("-----X-------Collection(TreeSet)---------X---");
 
 			Map<Integer, String> getNameById = employeeList.stream()
 					.collect(Collectors.toMap(e -> e.getId(),
 							e -> e.getName()));
 
+			LOG.info("-----X-------Map---------X---");
 			LOG.info("{}",
 					getNameById);
 
@@ -88,11 +91,11 @@ public class CollectorsInAction
 			LOG.info("{}",
 					partitionedData);
 
-			//List<Employee> maleEmployees = partitionedData.get(true);
-			//List<Employee> femaleEmployees = partitionedData.get(false);
+			//List<Employee> maleEmployees = partitionedData.get(true)
+			//List<Employee> femaleEmployees = partitionedData.get(false)
 
 			Map<String, List<Employee>> getByDesignation = employeeList.stream()
-					.collect(Collectors.groupingBy(e -> e.getDesignation()));
+					.collect(Collectors.groupingBy(Employee::getDesignation));
 
 			LOG.info("{}",
 					getByDesignation);
@@ -100,19 +103,42 @@ public class CollectorsInAction
 			Long collect = employeeList.stream()
 					.map(e -> e.getSalary())
 					.collect(Collectors.counting());
+			LOG.info("-----X-------long (count)---------X---");
 			LOG.info("{}",
 					collect);
-
-			LOG.info("-----X-------Map---------X---");
 
 			String employeeNamesString = employeeList.stream()
 					.map(e -> e.getName())
 					.collect(Collectors.joining(", "));
 
+			LOG.info("-----X-------String---------X---");
 			LOG.info(employeeNamesString);
 
-			LOG.info("-----X-------String---------X---");
+			LOG.info("-----X-------Down Stream Collectors---------X---");
+			Map<String, Long> countByDesignation = employeeList.stream()
+					.collect(Collectors.groupingBy(Employee::getDesignation,
+							Collectors.counting()));
+			LOG.info("{}",
+					countByDesignation);
 
+			Map<String, Double> totalSalaryByDesignation = employeeList.stream()
+					.collect(Collectors.groupingBy(Employee::getDesignation,
+							Collectors.summingDouble(Employee::getSalary)));
+			LOG.info("{}",
+					totalSalaryByDesignation);
+
+			Map<String, Optional<Employee>> highestPaidByDesignation = employeeList.stream()
+					.collect(Collectors.groupingBy(Employee::getDesignation,
+							Collectors.maxBy(Comparator.comparing(Employee::getSalary))));
+			LOG.info("{}",
+					highestPaidByDesignation);
+
+			Map<String, Optional<Double>> highestSalaryByDesignation = employeeList.stream()
+					.collect(Collectors.groupingBy(Employee::getDesignation,
+							Collectors.mapping(Employee::getSalary,
+									Collectors.maxBy(Comparator.comparing(Function.identity())))));
+			LOG.info("{}",
+					highestSalaryByDesignation);
 		}
 		catch (IOException e)
 		{

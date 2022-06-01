@@ -5,32 +5,31 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import static com.kumbirai.udemy.reactive.util.ValueSupplier.NAME_LIST_SUPPLIER;
+
 public class ComputationScheduler
 {
 	private static final Logger LOG = LoggerFactory.getLogger(ComputationScheduler.class);
 
 	public static void main(String[] args) throws InterruptedException
 	{
-		Observable<String> src = Observable.just("Pasta",
-						"Pizza",
-						"Fries",
-						"Curry",
-						"Chow mein")
+		Observable<String> src = Observable.fromIterable(NAME_LIST_SUPPLIER.get())
 				.subscribeOn(Schedulers.computation());
 
-		src.subscribe(e -> compute());
-		src.subscribe(e -> compute());
-		src.subscribe(e -> compute());
-		src.subscribe(e -> compute());
-		src.subscribe(e -> compute());
+		src.subscribe(ComputationScheduler::compute);
+		src.subscribe(ComputationScheduler::compute);
+		src.subscribe(ComputationScheduler::compute);
+		src.subscribe(ComputationScheduler::compute);
+		src.subscribe(ComputationScheduler::compute);
 
 		Thread.sleep(50000);
 	}
 
-	public static void compute() throws InterruptedException
+	public static void compute(String value) throws InterruptedException
 	{
 		Thread.sleep(1000);
-		LOG.info("Computation Done By : {}",
+		LOG.info("Computation of '{}' Done By : {}",
+				value,
 				Thread.currentThread()
 						.getName());
 	}

@@ -10,6 +10,10 @@ import io.reactivex.rxjava3.internal.operators.observable.ObservableCreate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
+
+import static com.kumbirai.udemy.reactive.util.ValueSupplier.INTEGER_LIST_SUPPLIER;
+
 public class ObservableAndObserver
 {
 	private static final Logger LOG = LoggerFactory.getLogger(ObservableAndObserver.class);
@@ -23,8 +27,8 @@ public class ObservableAndObserver
 			{
 				try
 				{
-					emitter.onNext(10);
-					emitter.onNext(11);
+					List<Integer> integers = INTEGER_LIST_SUPPLIER.get();
+					integers.forEach(val -> emitter.onNext(val));
 					emitter.onComplete();
 				}
 				catch (Throwable t)
@@ -39,13 +43,14 @@ public class ObservableAndObserver
 			@Override
 			public void onSubscribe(@NonNull Disposable d)
 			{
-				LOG.info(" Subscribed ");
+				LOG.info("Subscribed");
 			}
 
 			@Override
 			public void onNext(@NonNull Integer t)
 			{
-				LOG.info("On Next : " + t);
+				LOG.info("On Next: {}",
+						t);
 			}
 
 			@Override
@@ -62,6 +67,7 @@ public class ObservableAndObserver
 			}
 		};
 
+		source.subscribe(observer);
 		source.subscribe(observer);
 	}
 }

@@ -7,33 +7,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+import static com.kumbirai.udemy.functional.section13.MovieSupplier.MOVIE_LIST_SUPPLIER;
+
 public class ListFunctionalOperations
 {
 	private static final Logger LOG = LoggerFactory.getLogger(ListFunctionalOperations.class);
 
 	public static void main(String[] args)
 	{
-		List<Movie> movies = Arrays.asList(new Movie("Spotlight",
-						2015,
-						"Hollywood"),
-				new Movie("Avengers: Infinity War",
-						2018,
-						"Hollywood"),
-				new Movie("Inception",
-						2010,
-						"Hollywood"),
-				new Movie("Forest Gump",
-						1994,
-						"Hollywood"),
-				new Movie("3 Idiots",
-						2009,
-						"Bollywood"),
-				new Movie("Beauty and the beast",
-						2017,
-						"Hollywood"),
-				new Movie("Slumdog Millionaire",
-						2008,
-						"Bollywood"));
+		List<Movie> movies = MOVIE_LIST_SUPPLIER.get();
 
 		//Traversal
 		movies.forEach(val -> LOG.info("{}",

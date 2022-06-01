@@ -37,7 +37,7 @@ public class Throttling
 			Thread.sleep(600);
 			emitter.onNext("Y");
 
-			Thread.sleep(1000);
+			Thread.sleep(1_000);
 			emitter.onNext("Z");
 
 			emitter.onComplete();

@@ -7,30 +7,27 @@ import org.slf4j.LoggerFactory;
 
 import java.time.LocalTime;
 
+import static com.kumbirai.udemy.reactive.util.ValueSupplier.NAME_LIST_SUPPLIER;
+
 public class TheFlatMap
 {
 	private static final Logger LOG = LoggerFactory.getLogger(TheFlatMap.class);
 
 	public static void main(String[] args) throws InterruptedException
 	{
-		Observable.just("Pasta",
-						"Pizza",
-						"Fries",
-						"Curry",
-						"Chow mein")
+		Observable.fromIterable(NAME_LIST_SUPPLIER.get())
 				.flatMap(e -> Observable.just(e)
 						.subscribeOn(Schedulers.computation())
-						.map(str -> compute(str)))
+						.map(TheFlatMap::compute))
 				.subscribe(val -> LOG.info("{}",
 						val));
 
-		Thread.sleep(7000);
+		Thread.sleep(10000);
 	}
 
 	public static String compute(String element) throws InterruptedException
 	{
-		String s = element + " : Printed By : " + Thread.currentThread()
+		return element + " : Printed By : " + Thread.currentThread()
 				.getName() + " at : " + LocalTime.now();
-		return s;
 	}
 }

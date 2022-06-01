@@ -7,17 +7,15 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 
+import static com.kumbirai.udemy.functional.util.ValueSupplier.INTEGER_LIST_SUPPLIER;
+
 public class SetFunctionalOperations
 {
 	private static final Logger LOG = LoggerFactory.getLogger(SetFunctionalOperations.class);
 
 	public static void main(String[] args)
 	{
-		Set<Integer> set = Set.of(3,
-				56,
-				7,
-				82,
-				39);
+		Set<Integer> set = Set.copyOf(INTEGER_LIST_SUPPLIER.get());
 
 		//traversal
 		set.forEach(val -> LOG.info("{}",

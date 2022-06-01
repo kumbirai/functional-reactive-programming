@@ -4,8 +4,9 @@ import io.reactivex.rxjava3.core.Observable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import static com.kumbirai.udemy.reactive.util.ValueSupplier.INTEGER_LIST_SUPPLIER;
 
 public class ColdObservables
 {
@@ -13,18 +14,17 @@ public class ColdObservables
 
 	public static void main(String[] args)
 	{
-		List<Integer> list = new ArrayList<>();
-		list.add(16);
-		list.add(17);
-		list.add(18);
+		List<Integer> list = INTEGER_LIST_SUPPLIER.get();
 
 		Observable<Integer> source = Observable.fromIterable(list);
 
+		LOG.info("-----X-------Original Subscriber---------X---");
 		source.subscribe(val -> LOG.info("{}",
 				val));
 
 		list = getData(list);
 
+		LOG.info("-----X-------New Subscriber---------X---");
 		source.subscribe(val -> LOG.info("{}",
 				val));
 	}
@@ -34,5 +34,4 @@ public class ColdObservables
 		list.add(19);
 		return list;
 	}
-	//Hot
 }

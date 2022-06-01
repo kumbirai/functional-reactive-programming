@@ -14,7 +14,7 @@ public class FlowableCreation
 	{
 		Flowable.create(emitter ->
 						{
-							for (int i = 0; i <= 5000; i++)
+							for (int i = 0; i <= 5_000; i++)
 							{
 								if (emitter.isCancelled())
 								{
@@ -30,6 +30,6 @@ public class FlowableCreation
 				.subscribe(val -> LOG.info("{}",
 						val));
 
-		Thread.sleep(2000);
+		Thread.sleep(2_000);
 	}
 }

@@ -56,8 +56,8 @@ public class MapFunctionalOperations
 		Map<String, String> filteredContacts = contacts.entrySet()
 				.stream()
 				.filter(contact -> "John".equalsIgnoreCase(contact.getValue()))
-				.collect(Collectors.toMap(c -> c.getKey(),
-						c -> c.getValue()));
+				.collect(Collectors.toMap(Entry::getKey,
+						Entry::getValue));
 
 		LOG.info("{}",
 				filteredContacts);
@@ -67,9 +67,9 @@ public class MapFunctionalOperations
 		//Map
 		String contactNames = contacts.entrySet()
 				.stream()
-				.map(c -> c.getValue())
+				.map(Entry::getValue)
 				.distinct()
-				.collect(Collectors.joining(" , "));
+				.collect(Collectors.joining(", "));
 
 		LOG.info(contactNames);
 
@@ -79,13 +79,13 @@ public class MapFunctionalOperations
 
 		LinkedHashMap<String, String> sortedMap = contacts.entrySet()
 				.stream()
-				.sorted(Entry.comparingByValue())
-				.collect(Collectors.toMap(c -> c.getKey(),
-						c -> c.getValue(),
+				.sorted(Entry.comparingByKey())
+				.collect(Collectors.toMap(Entry::getKey,
+						Entry::getValue,
 						(v1, v2) -> v1,
 						LinkedHashMap::new));
 
-		sortedMap.forEach((k, v) -> LOG.info("{} - {}",
+		sortedMap.forEach((k, v) -> LOG.info("{} -> {}",
 				k,
 				v));
 		LOG.info("---------------------------");
@@ -105,6 +105,6 @@ public class MapFunctionalOperations
 				.average();
 
 		LOG.info("{}",
-				average.getAsDouble());
+				average.isPresent() ? average.getAsDouble() : 0);
 	}
 }

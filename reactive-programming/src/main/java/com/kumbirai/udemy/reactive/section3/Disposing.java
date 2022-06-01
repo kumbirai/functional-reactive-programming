@@ -20,10 +20,10 @@ public class Disposing
 		@NonNull Observable<Long> src = Observable.interval(1,
 				TimeUnit.SECONDS);
 
-		@NonNull Disposable d1 = src.subscribe(e -> LOG.info("Observer 1 : {}",
-				e));
-		Disposable d2 = src.subscribe(e -> LOG.info("Observer 2 : {}",
-				e));
+		@NonNull Disposable d1 = src.subscribe(elem -> LOG.info("Observer 1: {}",
+				elem));
+		Disposable d2 = src.subscribe(elem -> LOG.info("Observer 2: {}",
+				elem));
 
 		Thread.sleep(5000);
 

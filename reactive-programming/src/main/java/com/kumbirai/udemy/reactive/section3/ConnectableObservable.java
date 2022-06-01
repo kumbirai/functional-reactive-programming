@@ -19,12 +19,14 @@ public class ConnectableObservable
 
 		source.connect();
 
-		source.subscribe(val -> LOG.info("{}",
+		LOG.info("-----X-------Original Subscriber---------X---");
+		source.subscribe(val -> LOG.info("one - {}",
 				val));
 
 		Thread.sleep(10000);
 
-		source.subscribe(val -> LOG.info("{}",
+		LOG.info("-----X-------New Subscriber---------X---");
+		source.subscribe(val -> LOG.info("two - {}",
 				val));
 
 		Thread.sleep(10000);

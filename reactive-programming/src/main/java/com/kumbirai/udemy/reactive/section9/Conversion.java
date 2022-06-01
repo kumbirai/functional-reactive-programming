@@ -14,7 +14,7 @@ public class Conversion
 	public static void main(String[] args) throws InterruptedException, ParseException
 	{
 		Flowable.range(1,
-						1000000)
+						1_000_000)
 				.toObservable()
 				.observeOn(Schedulers.io())
 				.subscribe(e -> LOG.info("{} {}",
@@ -22,6 +22,6 @@ public class Conversion
 						Thread.currentThread()
 								.getName()));
 
-		Thread.sleep(5000);
+		Thread.sleep(5_000);
 	}
 }

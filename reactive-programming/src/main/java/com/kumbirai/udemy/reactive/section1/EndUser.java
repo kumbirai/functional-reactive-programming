@@ -28,7 +28,7 @@ public class EndUser implements Observer
 	@Override
 	public void update(String avail)
 	{
-		LOG.info("Hello {}}! we are glad to notify you that your book is now {}",
+		LOG.info("Hello {}! we are glad to notify you that your book is now {}",
 				name,
 				avail);
 	}

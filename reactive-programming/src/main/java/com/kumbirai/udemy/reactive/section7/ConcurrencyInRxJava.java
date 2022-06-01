@@ -4,6 +4,8 @@ import io.reactivex.rxjava3.core.Observable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import static com.kumbirai.udemy.reactive.util.ValueSupplier.STRING_SUPPLIER;
+
 public class ConcurrencyInRxJava
 {
 	private static final Logger LOG = LoggerFactory.getLogger(ConcurrencyInRxJava.class);
@@ -14,8 +16,8 @@ public class ConcurrencyInRxJava
 		{
 			new Thread(() ->
 			{
-				e.onNext("Hello");
-				e.onNext("RxJava");
+				e.onNext(STRING_SUPPLIER.get());
+				e.onNext(STRING_SUPPLIER.get());
 			}).start();
 		});
 

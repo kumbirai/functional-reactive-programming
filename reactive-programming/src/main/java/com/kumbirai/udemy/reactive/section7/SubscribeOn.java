@@ -5,25 +5,25 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import static com.kumbirai.udemy.reactive.util.ValueSupplier.NAME_LIST_SUPPLIER;
+
 public class SubscribeOn
 {
 	private static final Logger LOG = LoggerFactory.getLogger(SubscribeOn.class);
 
 	public static void main(String[] args) throws InterruptedException
 	{
-		Observable.just("Pasta",
-						"Pizza",
-						"Fries",
-						"Curry",
-						"Chow mein")
+		Observable.fromIterable(NAME_LIST_SUPPLIER.get())
 				.subscribeOn(Schedulers.computation())
-				.map(e -> e.toUpperCase())
-				.doOnNext(e -> LOG.info(Thread.currentThread()
-						.getName()))
+				.map(String::toUpperCase)
+				.doOnNext(e -> LOG.info("{} : {}",
+						e,
+						Thread.currentThread()
+								.getName()))
 				.observeOn(Schedulers.newThread())
 				.filter(e -> e.startsWith("P"))
 				.observeOn(Schedulers.io())
-				.subscribe(e -> print(e));
+				.subscribe(SubscribeOn::print);
 
 		Thread.sleep(6000);
 	}

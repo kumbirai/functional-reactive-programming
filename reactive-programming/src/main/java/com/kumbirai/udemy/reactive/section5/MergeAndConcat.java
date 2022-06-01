@@ -25,7 +25,7 @@ public class MergeAndConcat
 		//		Observable.concat(src1, src2)
 		//		.subscribe(e -> LOG.info("Received : "+ e));
 
-		src1.concatWith(src2)
+		src1.mergeWith(src2)
 				.subscribe(e -> LOG.info("Received : {}",
 						e));
 

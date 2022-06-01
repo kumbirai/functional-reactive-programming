@@ -1,8 +1,11 @@
 package com.kumbirai.udemy.reactive.section3;
 
+import io.reactivex.rxjava3.annotations.NonNull;
 import io.reactivex.rxjava3.core.Observable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import static com.kumbirai.udemy.reactive.util.ValueSupplier.STRING_LIST_SUPPLIER;
 
 public class CreatingObserver
 {
@@ -10,17 +13,19 @@ public class CreatingObserver
 
 	public static void main(String[] args)
 	{
-		Observable<String> source = Observable.just("Orange",
-				"Black",
-				"Red");
+		@NonNull Iterable<String> strings = STRING_LIST_SUPPLIER.get();
+		Observable<String> source = Observable.fromIterable(strings);
 
-		source.subscribe(i -> LOG.info(i),
+		LOG.info("-----X-------With Complete---------X---");
+		source.subscribe(LOG::info,
 				Throwable::printStackTrace,
 				() -> LOG.info("Completed!"));
 
-		source.subscribe(i -> LOG.info(i),
+		LOG.info("-----X-------Without Complete---------X---");
+		source.subscribe(LOG::info,
 				Throwable::printStackTrace);
 
-		source.subscribe(i -> LOG.info(i));
+		LOG.info("-----X-------Without Error and Complete---------X---");
+		source.subscribe(LOG::info);
 	}
 }

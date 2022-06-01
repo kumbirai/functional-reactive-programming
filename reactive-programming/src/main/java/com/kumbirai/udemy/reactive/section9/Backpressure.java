@@ -16,10 +16,10 @@ public class Backpressure
 	public static void main(String[] args)
 	{
 		Flowable.range(1,
-						1000000)
+						10_000)
 				.map(e ->
 				{
-					LOG.info("Produced item is : {} : ",
+					LOG.info("Produced item is : {} : {}",
 							e,
 							Thread.currentThread()
 									.getName());
@@ -67,7 +67,7 @@ public class Backpressure
 					}
 				});
 
-		sleep(100000000);
+		sleep(300_000);
 	}
 
 	private static void sleep(long milliseconds)
@@ -80,6 +80,8 @@ public class Backpressure
 		{
 			LOG.error("Error: ",
 					e);
+			Thread.currentThread()
+					.interrupt();
 		}
 	}
 }

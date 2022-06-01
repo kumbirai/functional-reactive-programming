@@ -73,7 +73,7 @@ public class Book implements SubjectLibrary
 	public void setInStock(String inStock)
 	{
 		this.inStock = inStock;
-		LOG.info("Availability changed from Sold out to Back in stock \n");
+		LOG.info("Availability changed from Sold out to Back in stock");
 		notifyObserver();
 	}
 
@@ -102,11 +102,14 @@ public class Book implements SubjectLibrary
 	@Override
 	public void notifyObserver()
 	{
-		LOG.info("Book name : " + this.name + ",Book Type : " + this.type + ",Price : " + this.price + ",Author : " + this.author + ", is now " + this.inStock + ". So, please notify all users.\n");
+		LOG.info("Book:: [Title: {}, Genre: {}, Price: {}, Author: {}], is now {}. Please notify all users.",
+				this.name,
+				this.type,
+				this.price,
+				this.author,
+				this.inStock);
 
-		for (Observer o : obsList)
-		{
-			o.update(this.inStock);
-		}
+		obsList.parallelStream()
+				.forEach(observer -> observer.update(this.inStock));
 	}
 }

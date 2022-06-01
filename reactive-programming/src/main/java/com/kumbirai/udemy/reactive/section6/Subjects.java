@@ -8,6 +8,8 @@ import io.reactivex.rxjava3.subjects.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import static com.kumbirai.udemy.reactive.util.ValueSupplier.STRING_SUPPLIER;
+
 public class Subjects
 {
 	private static final Logger LOG = LoggerFactory.getLogger(Subjects.class);
@@ -26,17 +28,19 @@ public class Subjects
 						200)
 				.subscribeOn(Schedulers.computation());
 
-		//		src1.subscribe(e -> LOG.info(e));
-		//		src2.subscribe(e -> LOG.info(e));
+		//		src1.subscribe(e -> LOG.info("{}",
+		//				e));
+		//		src2.subscribe(e -> LOG.info("{}",
+		//				e));
 
 		@NonNull Subject<Object> subject = PublishSubject.create();
 
 		subject.subscribe(e -> LOG.info("{}",
 				e));  //Observer 1
 
-		subject.onNext("Hello");
-		subject.onComplete();
-		subject.onNext("BasicsStrong");
+		subject.onNext(STRING_SUPPLIER.get());
+		subject.onNext(STRING_SUPPLIER.get());
+		//subject.onComplete();
 
 		//subject.subscribe(e -> LOG.info("The element is "+ e)); //Observer 2
 

@@ -19,6 +19,7 @@ public class Operators
 						98)
 				.filter(e -> e > 75)
 				.sorted()
-				.subscribe(e -> LOG.info("Grade A with " + e));
+				.subscribe(e -> LOG.info("Grade A with {}",
+						e));
 	}
 }
