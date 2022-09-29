@@ -18,8 +18,7 @@ public class BurgerShop
 
 	public Burger use(Burger baseBurger)
 	{
-		LOG.info("Base Burger : {}",
-				baseBurger);
+		LOG.info("Base Burger : {}", baseBurger);
 		return decoration.apply(baseBurger);
 	}
 }

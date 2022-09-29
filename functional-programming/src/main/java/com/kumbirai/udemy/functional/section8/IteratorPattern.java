@@ -15,7 +15,6 @@ public class IteratorPattern
 				67,
 				8 });
 
-		list.forEach(val -> LOG.info("{}",
-				val));
+		list.forEach(val -> LOG.info("{}", val));
 	}
 }

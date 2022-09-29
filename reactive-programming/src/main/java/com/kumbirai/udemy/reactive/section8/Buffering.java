@@ -13,29 +13,19 @@ public class Buffering
 
 	public static void main(String[] args) throws InterruptedException
 	{
-		Observable.range(1,
-						30)
-				.buffer(4,
-						7)
-				.subscribe(val -> LOG.info("{}",
-						val));
+		Observable.range(1, 30)
+				.buffer(4, 7)
+				.subscribe(val -> LOG.info("{}", val));
 
-		Observable.interval(500,
-						TimeUnit.MILLISECONDS)
-				.buffer(1,
-						TimeUnit.SECONDS,
-						2)
-				.subscribe(val -> LOG.info("{}",
-						val));
+		Observable.interval(500, TimeUnit.MILLISECONDS)
+				.buffer(1, TimeUnit.SECONDS, 2)
+				.subscribe(val -> LOG.info("{}", val));
 
-		@NonNull Observable<Long> interval = Observable.interval(500,
-				TimeUnit.MILLISECONDS);
+		@NonNull Observable<Long> interval = Observable.interval(500, TimeUnit.MILLISECONDS);
 
-		Observable.interval(1_000,
-						TimeUnit.MILLISECONDS)
+		Observable.interval(1_000, TimeUnit.MILLISECONDS)
 				.window(interval)
-				.subscribe(val -> LOG.info("{}",
-						val));
+				.subscribe(val -> LOG.info("{}", val));
 
 		Thread.sleep(10_000);
 	}

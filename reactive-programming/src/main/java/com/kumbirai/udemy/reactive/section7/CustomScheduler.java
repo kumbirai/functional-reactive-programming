@@ -38,9 +38,7 @@ public class CustomScheduler
 	public static void compute(String value) throws InterruptedException
 	{
 		Thread.sleep(1000);
-		LOG.info("Computation of '{}' Done By : {}",
-				value,
-				Thread.currentThread()
-						.getName());
+		LOG.info("Computation of '{}' Done By : {}", value, Thread.currentThread()
+				.getName());
 	}
 }

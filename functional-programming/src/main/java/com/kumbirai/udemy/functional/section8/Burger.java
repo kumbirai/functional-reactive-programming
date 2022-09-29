@@ -33,7 +33,6 @@ public class Burger
 
 	public String toString()
 	{
-		return String.format("%s",
-				burgerType + " burger");
+		return String.format("%s", burgerType + " burger");
 	}
 }

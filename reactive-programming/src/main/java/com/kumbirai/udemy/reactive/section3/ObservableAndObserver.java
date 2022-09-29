@@ -49,15 +49,13 @@ public class ObservableAndObserver
 			@Override
 			public void onNext(@NonNull Integer t)
 			{
-				LOG.info("On Next: {}",
-						t);
+				LOG.info("On Next: {}", t);
 			}
 
 			@Override
 			public void onError(@NonNull Throwable e)
 			{
-				LOG.error("Error: ",
-						e);
+				LOG.error("Error: ", e);
 			}
 
 			@Override

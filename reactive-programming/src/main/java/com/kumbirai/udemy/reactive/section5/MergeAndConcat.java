@@ -16,18 +16,15 @@ public class MergeAndConcat
 		//		Observable<String> src1 = Observable.just("Ella","Alexa","Lily");
 		//		Observable<String> src2 = Observable.just("Priya","Chloe");
 
-		Observable<String> src1 = Observable.interval(1,
-						TimeUnit.SECONDS)
+		Observable<String> src1 = Observable.interval(1, TimeUnit.SECONDS)
 				.map(e -> "src1 : " + e);
-		Observable<String> src2 = Observable.interval(1,
-						TimeUnit.SECONDS)
+		Observable<String> src2 = Observable.interval(1, TimeUnit.SECONDS)
 				.map(e -> "src2 : " + e);
 		//		Observable.concat(src1, src2)
 		//		.subscribe(e -> LOG.info("Received : "+ e));
 
 		src1.mergeWith(src2)
-				.subscribe(e -> LOG.info("Received : {}",
-						e));
+				.subscribe(e -> LOG.info("Received : {}", e));
 
 		Thread.sleep(20000);
 	}

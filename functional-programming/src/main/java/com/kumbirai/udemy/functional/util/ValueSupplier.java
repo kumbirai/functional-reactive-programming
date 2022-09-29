@@ -12,8 +12,7 @@ import java.util.stream.IntStream;
 
 public class ValueSupplier
 {
-	public static final Supplier<List<Integer>> INTEGER_LIST_SUPPLIER = () -> IntStream.range(0,
-					10)
+	public static final Supplier<List<Integer>> INTEGER_LIST_SUPPLIER = () -> IntStream.range(0, 10)
 			.boxed()
 			.parallel()
 			.map(val -> ThreadLocalRandom.current()
@@ -49,36 +48,32 @@ public class ValueSupplier
 		}
 		return val;
 	};
-	public static final Supplier<List<String>> STRING_LIST_SUPPLIER = () -> IntStream.range(0,
-					10)
+	public static final Supplier<List<String>> STRING_LIST_SUPPLIER = () -> IntStream.range(0, 10)
 			.boxed()
 			.parallel()
 			.map(val -> STRING_SUPPLIER.get())
 			.sorted()
 			.collect(Collectors.toList());
-	public static final Supplier<List<Employee>> EMPLOYEE_LIST_SUPPLIER = () -> IntStream.range(0,
-					100_000)
+	public static final Supplier<List<Employee>> EMPLOYEE_LIST_SUPPLIER = () -> IntStream.range(0, 100_000)
 			.boxed()
 			.parallel()
 			.map(val -> Employee.builder()
 					.id(val)
 					.name(FAKER.name()
-							.fullName())
+								  .fullName())
 					.dob(new java.sql.Date(FAKER.date()
-							.birthday(18,
-									65)
-							.getTime()))
+												   .birthday(18, 65)
+												   .getTime()))
 					.city(FAKER.country()
-							.capital())
+								  .capital())
 					.designation(FAKER.job()
-							.position())
+										 .position())
 					.joiningDate(new java.sql.Date(FAKER.date()
-							.past(3_000,
-									TimeUnit.DAYS)
-							.getTime()))
+														   .past(3_000, TimeUnit.DAYS)
+														   .getTime()))
 					.salary(INTEGER_LIST_SUPPLIER.get()
-							.get(ThreadLocalRandom.current()
-									.nextInt(10)) * 25)
+									.get(ThreadLocalRandom.current()
+												 .nextInt(10)) * 25)
 					.build())
 			.collect(Collectors.toList());
 

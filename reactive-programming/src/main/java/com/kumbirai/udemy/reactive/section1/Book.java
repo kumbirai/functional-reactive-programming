@@ -102,12 +102,7 @@ public class Book implements SubjectLibrary
 	@Override
 	public void notifyObserver()
 	{
-		LOG.info("Book:: [Title: {}, Genre: {}, Price: {}, Author: {}], is now {}. Please notify all users.",
-				this.name,
-				this.type,
-				this.price,
-				this.author,
-				this.inStock);
+		LOG.info("Book:: [Title: {}, Genre: {}, Price: {}, Author: {}], is now {}. Please notify all users.", this.name, this.type, this.price, this.author, this.inStock);
 
 		obsList.parallelStream()
 				.forEach(observer -> observer.update(this.inStock));

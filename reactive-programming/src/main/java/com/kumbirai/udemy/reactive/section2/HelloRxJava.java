@@ -13,19 +13,15 @@ public class HelloRxJava
 	public static void main(String[] args)
 	{
 		Observable<String> source = Observable.create(e ->
-		{
-			e.onNext(STRING_SUPPLIER.get());
-			e.onNext(STRING_SUPPLIER.get());
-		});
+													  {
+														  e.onNext(STRING_SUPPLIER.get());
+														  e.onNext(STRING_SUPPLIER.get());
+													  });
 
-		source.subscribe(e -> LOG.info("Observer 1: {}, Thread Name: {}",
-				e,
-				Thread.currentThread()
-						.getName()));
+		source.subscribe(e -> LOG.info("Observer 1: {}, Thread Name: {}", e, Thread.currentThread()
+				.getName()));
 
-		source.subscribe(e -> LOG.info("Observer 2: {}, Thread Name: {}",
-				e,
-				Thread.currentThread()
-						.getName()));
+		source.subscribe(e -> LOG.info("Observer 2: {}, Thread Name: {}", e, Thread.currentThread()
+				.getName()));
 	}
 }

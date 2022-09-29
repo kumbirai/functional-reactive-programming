@@ -19,8 +19,7 @@ public class Unwrap
 
 		Integer integerVal = optional.get();
 
-		LOG.info("{}",
-				integerVal);
+		LOG.info("{}", integerVal);
 
 		Optional<Integer> emptyOptional = Optional.empty();
 
@@ -29,22 +28,19 @@ public class Unwrap
 		//isPresent
 
 		Integer val = emptyOptional.isPresent() ? emptyOptional.get() : 0;
-		LOG.info("{}",
-				val);
+		LOG.info("{}", val);
 
 		//orElse, orElseGet
 
 		//orElse
 
 		Integer orElse = emptyOptional.orElse(0);
-		LOG.info("{}",
-				orElse);
+		LOG.info("{}", orElse);
 
 		//orElseGet
 
 		Integer orElseGet = emptyOptional.orElseGet(() -> 0);
-		LOG.info("{}",
-				orElseGet);
+		LOG.info("{}", orElseGet);
 
 		//orElseThrow
 

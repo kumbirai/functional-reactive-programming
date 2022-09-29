@@ -13,21 +13,18 @@ public class ConnectableObservable
 
 	public static void main(String[] args) throws InterruptedException
 	{
-		io.reactivex.rxjava3.observables.@NonNull ConnectableObservable<@NonNull Long> source = Observable.interval(1,
-						TimeUnit.SECONDS)
+		io.reactivex.rxjava3.observables.@NonNull ConnectableObservable<@NonNull Long> source = Observable.interval(1, TimeUnit.SECONDS)
 				.publish();
 
 		source.connect();
 
 		LOG.info("-----X-------Original Subscriber---------X---");
-		source.subscribe(val -> LOG.info("one - {}",
-				val));
+		source.subscribe(val -> LOG.info("one - {}", val));
 
 		Thread.sleep(10000);
 
 		LOG.info("-----X-------New Subscriber---------X---");
-		source.subscribe(val -> LOG.info("two - {}",
-				val));
+		source.subscribe(val -> LOG.info("two - {}", val));
 
 		Thread.sleep(10000);
 	}

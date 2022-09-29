@@ -18,10 +18,8 @@ public class UnaryOpPractice
 		List<Integer> list = INTEGER_LIST_SUPPLIER.get();
 
 		UnaryOperator<Integer> operator = i -> i * 100;
-		List<Integer> newList = mapper(list,
-				operator);
-		LOG.info("{}",
-				newList);
+		List<Integer> newList = mapper(list, operator);
+		LOG.info("{}", newList);
 	}
 
 	private static <T> List<T> mapper(List<T> list, UnaryOperator<T> operator)

@@ -21,16 +21,13 @@ public class ImperativeVsDeclarative
 				sumOfEvens += i;
 			}
 		}
-		LOG.info("{}",
-				sumOfEvens);
+		LOG.info("{}", sumOfEvens);
 
 		//Declarative or Functional
-		sumOfEvens = IntStream.rangeClosed(0,
-						100)
+		sumOfEvens = IntStream.rangeClosed(0, 100)
 				.filter(i -> i % 2 == 0)
 				.reduce((x, y) -> x + y)
 				.getAsInt();
-		LOG.info("{}",
-				sumOfEvens);
+		LOG.info("{}", sumOfEvens);
 	}
 }

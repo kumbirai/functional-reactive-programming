@@ -19,14 +19,12 @@ public class ColdObservables
 		Observable<Integer> source = Observable.fromIterable(list);
 
 		LOG.info("-----X-------Original Subscriber---------X---");
-		source.subscribe(val -> LOG.info("{}",
-				val));
+		source.subscribe(val -> LOG.info("{}", val));
 
 		list = getData(list);
 
 		LOG.info("-----X-------New Subscriber---------X---");
-		source.subscribe(val -> LOG.info("{}",
-				val));
+		source.subscribe(val -> LOG.info("{}", val));
 	}
 
 	private static List<Integer> getData(List<Integer> list)

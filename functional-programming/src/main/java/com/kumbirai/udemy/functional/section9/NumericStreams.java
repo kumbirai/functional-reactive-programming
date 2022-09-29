@@ -22,25 +22,15 @@ public class NumericStreams
 				.mapToDouble(book -> book.getRating())
 				.average();
 
-		LOG.info("{}",
-				average.getAsDouble());
+		LOG.info("{}", average.getAsDouble());
 
 		//map : Objects
 
 		//mapToDouble : primitive double
 
-		IntStream intS = IntStream.of(1,
-				3,
-				5,
-				8);
-		DoubleStream doubleS = DoubleStream.of(1,
-				3,
-				5,
-				8);
-		LongStream longS = LongStream.of(1L,
-				3L,
-				5L,
-				8L);
+		IntStream intS = IntStream.of(1, 3, 5, 8);
+		DoubleStream doubleS = DoubleStream.of(1, 3, 5, 8);
+		LongStream longS = LongStream.of(1L, 3L, 5L, 8L);
 
 		Stream<Integer> boxedInts = intS.boxed();
 

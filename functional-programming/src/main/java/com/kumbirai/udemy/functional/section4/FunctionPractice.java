@@ -16,21 +16,16 @@ public class FunctionPractice
 	public static void main(String[] args)
 	{
 		List<String> list = STRING_LIST_SUPPLIER.get();
-		LOG.info("{}",
-				list);
+		LOG.info("{}", list);
 
 		Function<String, Integer> function = String::length;
 
-		List<Integer> lengthList = map(list,
-				function);
-		LOG.info("{}",
-				lengthList);
+		List<Integer> lengthList = map(list, function);
+		LOG.info("{}", lengthList);
 
-		List<String> reversedList = map(list,
-				val -> new StringBuilder(val).reverse()
-						.toString());
-		LOG.info("{}",
-				reversedList);
+		List<String> reversedList = map(list, val -> new StringBuilder(val).reverse()
+				.toString());
+		LOG.info("{}", reversedList);
 	}
 
 	private static <T, R> List<R> map(List<T> list, Function<T, R> function)

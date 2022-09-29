@@ -13,14 +13,11 @@ public class Conversion
 
 	public static void main(String[] args) throws InterruptedException, ParseException
 	{
-		Flowable.range(1,
-						1_000_000)
+		Flowable.range(1, 1_000_000)
 				.toObservable()
 				.observeOn(Schedulers.io())
-				.subscribe(e -> LOG.info("{} {}",
-						e,
-						Thread.currentThread()
-								.getName()));
+				.subscribe(e -> LOG.info("{} {}", e, Thread.currentThread()
+						.getName()));
 
 		Thread.sleep(5_000);
 	}

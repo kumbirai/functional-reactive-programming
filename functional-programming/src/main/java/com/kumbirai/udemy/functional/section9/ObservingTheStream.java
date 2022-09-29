@@ -24,8 +24,7 @@ public class ObservingTheStream
 				.filter((book) -> book.getRating() > 3) //Intermediate Op
 				.collect(Collectors.toList());  //Terminal Op
 
-		LOG.info("{}",
-				popularHorrorBooks);
+		LOG.info("{}", popularHorrorBooks);
 
 		//1.Source
 		Stream<Book> stream = books.stream();
@@ -40,7 +39,6 @@ public class ObservingTheStream
 		//4. Terminal operation
 		List<Book> collect = pHorrorBooks.collect(Collectors.toList());
 
-		LOG.info("{}",
-				collect);
+		LOG.info("{}", collect);
 	}
 }

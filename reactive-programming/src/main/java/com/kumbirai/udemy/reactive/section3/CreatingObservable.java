@@ -19,24 +19,18 @@ public class CreatingObservable
 	{
 		//create()
 		Observable<Integer> source = Observable.create(e ->
-		{
-			List<Integer> integers = INTEGER_LIST_SUPPLIER.get();
-			integers.forEach(e::onNext);
-			e.onComplete();
-		});
+													   {
+														   List<Integer> integers = INTEGER_LIST_SUPPLIER.get();
+														   integers.forEach(e::onNext);
+														   e.onComplete();
+													   });
 
-		source.subscribe(val -> LOG.info("{}",
-				val));
+		source.subscribe(val -> LOG.info("{}", val));
 
 		//just()
-		Observable<Integer> just = Observable.just(1,
-				2,
-				3,
-				4,
-				5);
+		Observable<Integer> just = Observable.just(1, 2, 3, 4, 5);
 
-		just.subscribe(val -> LOG.info("{}",
-				val));
+		just.subscribe(val -> LOG.info("{}", val));
 
 		//fromIterable
 		List<String> strings = NAME_LIST_SUPPLIER.get();
@@ -46,13 +40,9 @@ public class CreatingObservable
 		strings.add("------");
 		strings.addAll(STRING_LIST_SUPPLIER.get());
 
-		fromIterable.subscribe(val -> LOG.info("{}",
-				val));
+		fromIterable.subscribe(val -> LOG.info("{}", val));
 
-		Observable<Integer> fromRange = Observable.range(2,
-				9);
-		fromRange.subscribe(val -> LOG.info("{}",
-				Math.pow(val,
-						val)));
+		Observable<Integer> fromRange = Observable.range(2, 9);
+		fromRange.subscribe(val -> LOG.info("{}", Math.pow(val, val)));
 	}
 }

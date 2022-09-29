@@ -17,13 +17,10 @@ public class CreatingObserver
 		Observable<String> source = Observable.fromIterable(strings);
 
 		LOG.info("-----X-------With Complete---------X---");
-		source.subscribe(LOG::info,
-				Throwable::printStackTrace,
-				() -> LOG.info("Completed!"));
+		source.subscribe(LOG::info, Throwable::printStackTrace, () -> LOG.info("Completed!"));
 
 		LOG.info("-----X-------Without Complete---------X---");
-		source.subscribe(LOG::info,
-				Throwable::printStackTrace);
+		source.subscribe(LOG::info, Throwable::printStackTrace);
 
 		LOG.info("-----X-------Without Error and Complete---------X---");
 		source.subscribe(LOG::info);

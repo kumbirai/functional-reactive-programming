@@ -20,8 +20,7 @@ public interface TailCall<T>
 
 	default T invoke()
 	{
-		return Stream.iterate(this,
-						TailCall::apply)
+		return Stream.iterate(this, TailCall::apply)
 				.filter(TailCall::isComplete)
 				.findFirst()
 				.get()

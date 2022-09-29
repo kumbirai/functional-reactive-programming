@@ -20,7 +20,6 @@ public class Currying
 
 		Integer sum = fun3.apply(3);
 
-		LOG.info("{}",
-				sum);
+		LOG.info("{}", sum);
 	}
 }

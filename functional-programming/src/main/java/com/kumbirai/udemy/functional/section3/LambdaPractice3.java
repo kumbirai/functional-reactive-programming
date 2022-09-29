@@ -14,16 +14,13 @@ public class LambdaPractice3
 		LengthOfString len = str ->
 		{
 			int l = str.length();
-			LOG.info("The length of the given String \"{}\" is {}",
-					str,
-					l);
+			LOG.info("The length of the given String \"{}\" is {}", str, l);
 			return l;
 		};
 
 		var faker = new Faker();
 		int length = len.length(faker.backToTheFuture()
-				.quote());
-		LOG.info("{}",
-				length);
+										.quote());
+		LOG.info("{}", length);
 	}
 }

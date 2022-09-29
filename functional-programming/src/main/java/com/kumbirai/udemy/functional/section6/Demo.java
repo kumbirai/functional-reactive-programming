@@ -9,10 +9,8 @@ public class Demo
 
 	public static void main(String[] args)
 	{
-		int result = add(6,
-				12);
-		LOG.info("{}",
-				result);
+		int result = add(6, 12);
+		LOG.info("{}", result);
 
 	}
 
@@ -23,10 +21,7 @@ public class Demo
 
 	public static int multiply(int a, int b)
 	{
-		log(String.format("Returning %s as the result of %s * %s",
-				a * b,
-				a,
-				b));
+		log(String.format("Returning %s as the result of %s * %s", a * b, a, b));
 		return a * b;
 	}
 

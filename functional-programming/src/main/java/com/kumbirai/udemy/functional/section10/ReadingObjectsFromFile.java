@@ -22,8 +22,7 @@ public class ReadingObjectsFromFile
 	{
 		//Path path = Paths.get("/Users/mohitsinghal/newWorkspace/Functional-Programming/src/com/basicsstrong/functional/section10/Books");
 		URL res = ReadingObjectsFromFile.class.getResource("Books");
-		LOG.info("{}",
-				res);
+		LOG.info("{}", res);
 
 		Path path = null;
 		try
@@ -32,23 +31,19 @@ public class ReadingObjectsFromFile
 		}
 		catch (URISyntaxException e)
 		{
-			LOG.error("Exception Caught: ",
-					e);
+			LOG.error("Exception Caught: ", e);
 		}
 		try (Stream<String> lines = Files.lines(path))
 		{
 			Spliterator<String> baseSpliterator = lines.spliterator();
 			Spliterator<Book> spliterator = new BookSpliterator(baseSpliterator);
 
-			Stream<Book> stream = StreamSupport.stream(spliterator,
-					false);
-			stream.forEach(val -> LOG.info("{}",
-					val));
+			Stream<Book> stream = StreamSupport.stream(spliterator, false);
+			stream.forEach(val -> LOG.info("{}", val));
 		}
 		catch (IOException e)
 		{
-			LOG.error("Exception Caught: ",
-					e);
+			LOG.error("Exception Caught: ", e);
 		}
 	}
 }

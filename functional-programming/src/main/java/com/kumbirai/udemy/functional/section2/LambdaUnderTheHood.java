@@ -28,7 +28,7 @@ public class LambdaUnderTheHood
 			{
 				var faker = new Faker();
 				LOG.info(faker.gameOfThrones()
-						.quote());
+								 .quote());
 			}
 		};
 		fun2.myMethod();

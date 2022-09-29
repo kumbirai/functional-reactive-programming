@@ -9,13 +9,8 @@ public class ReferentialTransparency
 
 	public static void main(String[] args)
 	{
-		int result = add(2,
-				multiply(2,
-						multiply(2,
-								multiply(2,
-										2))));
-		LOG.info("{}",
-				result);
+		int result = add(2, multiply(2, multiply(2, multiply(2, 2))));
+		LOG.info("{}", result);
 	}
 
 	public static int add(int a, int b)
@@ -25,9 +20,7 @@ public class ReferentialTransparency
 
 	public static int multiply(int a, int b)
 	{
-		LOG.info("Multiplying a and b : {}, {}",
-				a,
-				b);
+		LOG.info("Multiplying a and b : {}, {}", a, b);
 		return a * b;
 	}
 }

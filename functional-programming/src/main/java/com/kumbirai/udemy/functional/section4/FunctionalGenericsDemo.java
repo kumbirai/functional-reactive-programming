@@ -12,17 +12,12 @@ public class FunctionalGenericsDemo
 
 	public static void main(String[] args)
 	{
-		FunctionalGenerics<String, String> fun = s -> s.length() > MAX_INDEX ? s.substring(1,
-				MAX_INDEX) : s.substring(1);
+		FunctionalGenerics<String, String> fun = s -> s.length() > MAX_INDEX ? s.substring(1, MAX_INDEX) : s.substring(1);
 		var first = STRING_SUPPLIER.get();
-		LOG.info("<String, String> - {}, {}",
-				first,
-				fun.execute(first));
+		LOG.info("<String, String> - {}, {}", first, fun.execute(first));
 
 		FunctionalGenerics<String, Integer> fun1 = s -> s.length();
 		var second = STRING_SUPPLIER.get();
-		LOG.info("<String, Integer> - {}, {}",
-				second,
-				fun1.execute(second));
+		LOG.info("<String, Integer> - {}, {}", second, fun1.execute(second));
 	}
 }

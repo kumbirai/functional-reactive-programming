@@ -10,16 +10,9 @@ public class Operators
 
 	public static void main(String[] args)
 	{
-		Observable.just(60,
-						57,
-						89,
-						90,
-						23,
-						100,
-						98)
+		Observable.just(60, 57, 89, 90, 23, 100, 98)
 				.filter(e -> e > 75)
 				.sorted()
-				.subscribe(e -> LOG.info("Grade A with {}",
-						e));
+				.subscribe(e -> LOG.info("Grade A with {}", e));
 	}
 }

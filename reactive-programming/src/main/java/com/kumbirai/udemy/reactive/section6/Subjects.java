@@ -16,16 +16,10 @@ public class Subjects
 
 	public static void main(String[] args) throws InterruptedException
 	{
-		@NonNull Observable<Integer> src1 = Observable.just(5,
-						10,
-						15,
-						20)
+		@NonNull Observable<Integer> src1 = Observable.just(5, 10, 15, 20)
 				.subscribeOn(Schedulers.computation());
 
-		Observable<Integer> src2 = Observable.just(50,
-						100,
-						150,
-						200)
+		Observable<Integer> src2 = Observable.just(50, 100, 150, 200)
 				.subscribeOn(Schedulers.computation());
 
 		//		src1.subscribe(e -> LOG.info("{}",
@@ -35,8 +29,7 @@ public class Subjects
 
 		@NonNull Subject<Object> subject = PublishSubject.create();
 
-		subject.subscribe(e -> LOG.info("{}",
-				e));  //Observer 1
+		subject.subscribe(e -> LOG.info("{}", e));  //Observer 1
 
 		subject.onNext(STRING_SUPPLIER.get());
 		subject.onNext(STRING_SUPPLIER.get());

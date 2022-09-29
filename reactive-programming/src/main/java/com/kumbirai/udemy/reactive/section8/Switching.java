@@ -18,14 +18,11 @@ public class Switching
 		Observable<String> source = Observable.fromIterable(NAME_LIST_SUPPLIER.get())
 				.concatMap(s -> Observable.just(s)
 						.delay(ThreadLocalRandom.current()
-										.nextInt(500),
-								TimeUnit.MILLISECONDS));
+									   .nextInt(500), TimeUnit.MILLISECONDS));
 
-		Observable.interval(2,
-						TimeUnit.SECONDS)
+		Observable.interval(2, TimeUnit.SECONDS)
 				.switchMap(s -> source.doOnDispose(() -> LOG.info("Disposing and starting again!")))
-				.subscribe(val -> LOG.info("{}",
-						val));
+				.subscribe(val -> LOG.info("{}", val));
 
 		Thread.sleep(10_000);
 	}

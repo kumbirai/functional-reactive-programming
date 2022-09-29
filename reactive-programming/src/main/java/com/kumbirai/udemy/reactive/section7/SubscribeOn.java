@@ -16,10 +16,8 @@ public class SubscribeOn
 		Observable.fromIterable(NAME_LIST_SUPPLIER.get())
 				.subscribeOn(Schedulers.computation())
 				.map(String::toUpperCase)
-				.doOnNext(e -> LOG.info("{} : {}",
-						e,
-						Thread.currentThread()
-								.getName()))
+				.doOnNext(e -> LOG.info("{} : {}", e, Thread.currentThread()
+						.getName()))
 				.observeOn(Schedulers.newThread())
 				.filter(e -> e.startsWith("P"))
 				.observeOn(Schedulers.io())
@@ -30,9 +28,7 @@ public class SubscribeOn
 
 	public static void print(String element) throws InterruptedException
 	{
-		LOG.info("{} : Printed By : {}",
-				element,
-				Thread.currentThread()
-						.getName());
+		LOG.info("{} : Printed By : {}", element, Thread.currentThread()
+				.getName());
 	}
 }

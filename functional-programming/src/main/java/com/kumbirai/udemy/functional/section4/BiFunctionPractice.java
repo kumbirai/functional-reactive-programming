@@ -16,10 +16,6 @@ public class BiFunctionPractice
 		BiFunction<String, String, Integer> biFunction = (a, b) -> (a + b).length();
 		String first = STRING_SUPPLIER.get();
 		String second = STRING_SUPPLIER.get();
-		LOG.info("[{}][{}] - {}",
-				first,
-				second,
-				biFunction.apply(first,
-						second));
+		LOG.info("[{}][{}] - {}", first, second, biFunction.apply(first, second));
 	}
 }

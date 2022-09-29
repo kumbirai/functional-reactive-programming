@@ -18,52 +18,45 @@ public class CustomCollector
 	{
 		List<Integer> numbers = INTEGER_LIST_SUPPLIER.get();
 		numbers.addAll(INTEGER_LIST_SUPPLIER.get());
-//		numbers.addAll(INTEGER_LIST_SUPPLIER.get());
+		//		numbers.addAll(INTEGER_LIST_SUPPLIER.get());
 
 		Collector<Integer, List<Integer>, List<Integer>> toList = Collector.of(ArrayList::new
-				//supplier
-				,
-				(list, e) -> list.add(e)
-				//BiConsumer
-				,
-				(list1, list2) ->
-				{
-					list1.addAll(list2);
-					return list1;
-				}
-				//BiFunction
-				,
-				Collector.Characteristics.IDENTITY_FINISH);
+																			   //supplier
+				, (list, e) -> list.add(e)
+																			   //BiConsumer
+				, (list1, list2) ->
+																			   {
+																				   list1.addAll(list2);
+																				   return list1;
+																			   }
+																			   //BiFunction
+				, Collector.Characteristics.IDENTITY_FINISH);
 
 		List<Integer> evens = numbers.stream()
 				.filter(e -> e % 2 == 0)
 				.collect(toList);
 
-		evens.forEach(val -> LOG.info("{}",
-				val));
+		evens.forEach(val -> LOG.info("{}", val));
 
 		LOG.info("----------------");
 
 		Collector<Integer, List<Integer>, List<Integer>> toSortedListCollector = Collector.of(ArrayList::new,
-				//supplier
-				(list, e) -> list.add(e),
-				//BiConsumer
-				(list1, list2) ->
-				{
-					list1.addAll(list2);
-					return list1;
-				},
-				(list) ->
-				{
-					Collections.sort(list);
-					return list;
-				},
-				Collector.Characteristics.UNORDERED);
+																							  //supplier
+																							  (list, e) -> list.add(e),
+																							  //BiConsumer
+																							  (list1, list2) ->
+																							  {
+																								  list1.addAll(list2);
+																								  return list1;
+																							  }, (list) ->
+																							  {
+																								  Collections.sort(list);
+																								  return list;
+																							  }, Collector.Characteristics.UNORDERED);
 
 		List<Integer> sortedList = numbers.stream()
 				.collect(toSortedListCollector);
 
-		sortedList.forEach(val -> LOG.info("{}",
-				val));
+		sortedList.forEach(val -> LOG.info("{}", val));
 	}
 }

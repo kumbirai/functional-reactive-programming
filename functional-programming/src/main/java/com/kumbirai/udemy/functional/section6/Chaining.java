@@ -38,8 +38,7 @@ public class Chaining
 		Function<Integer, Integer> f2 = s -> s * 2;
 
 		Function<Integer, Integer> f3 = f1.andThen(f2);
-		LOG.info("{}",
-				f3.apply(ThreadLocalRandom.current()
-						.nextInt(20)));
+		LOG.info("{}", f3.apply(ThreadLocalRandom.current()
+										.nextInt(20)));
 	}
 }

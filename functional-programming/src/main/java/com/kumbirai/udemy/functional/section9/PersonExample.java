@@ -16,18 +16,16 @@ public class PersonExample
 {
 	private static final Logger LOG = LoggerFactory.getLogger(PersonExample.class);
 	private static final Faker FAKER = new Faker();
-	public static final Supplier<List<Person>> PERSON_LIST_SUPPLIER = () -> IntStream.range(0,
-					1_000)
+	public static final Supplier<List<Person>> PERSON_LIST_SUPPLIER = () -> IntStream.range(0, 1_000)
 			.boxed()
 			.parallel()
 			.map(val -> Person.builder()
 					.firstName(FAKER.name()
-							.firstName())
+									   .firstName())
 					.lastName(FAKER.name()
-							.lastName())
+									  .lastName())
 					.age(ThreadLocalRandom.current()
-							.nextInt(18,
-									66))
+								 .nextInt(18, 66))
 					.build())
 			.collect(Collectors.toList());
 
@@ -38,8 +36,7 @@ public class PersonExample
 
 		List<Person> list = PERSON_LIST_SUPPLIER.get();
 
-		LOG.info("{}",
-				list);
+		LOG.info("{}", list);
 
 		OptionalDouble average = list.parallelStream()
 				.mapToInt(Person::getAge)
@@ -49,10 +46,8 @@ public class PersonExample
 				.mapToInt(Person::getAge)
 				.summaryStatistics();
 
-		LOG.info("Average Age {}",
-				average.isPresent() ? average.getAsDouble() : 0);
+		LOG.info("Average Age {}", average.isPresent() ? average.getAsDouble() : 0);
 
-		LOG.info("Summary Statistics {}",
-				summaryStatistics);
+		LOG.info("Summary Statistics {}", summaryStatistics);
 	}
 }

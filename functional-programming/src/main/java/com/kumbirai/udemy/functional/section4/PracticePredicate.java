@@ -21,29 +21,19 @@ public class PracticePredicate
 		list.add("BasicsStrong");
 
 		Predicate<String> emptyFilter = s -> !s.isEmpty();
-		List<String> newList = filterList(list,
-				emptyFilter);
+		List<String> newList = filterList(list, emptyFilter);
 
 		Predicate<String> basicsFilter = s -> s.contains("Basics");
-		List<String> filteredList = filterList(list,
-				basicsFilter);
+		List<String> filteredList = filterList(list, basicsFilter);
 
-		List<Integer> intList = List.of(1,
-				4,
-				6,
-				7,
-				8);
+		List<Integer> intList = List.of(1, 4, 6, 7, 8);
 
 		Predicate<Integer> integerFilter = e -> e % 2 == 0;
-		List<Integer> evens = filterList(intList,
-				integerFilter);
+		List<Integer> evens = filterList(intList, integerFilter);
 
-		LOG.info("{}",
-				newList);
-		LOG.info("{}",
-				filteredList);
-		LOG.info("{}",
-				evens);
+		LOG.info("{}", newList);
+		LOG.info("{}", filteredList);
+		LOG.info("{}", evens);
 	}
 
 	private static <T> List<T> filterList(List<T> list, Predicate<T> predicate)
@@ -51,12 +41,12 @@ public class PracticePredicate
 		List<T> newList = new ArrayList<>();
 
 		list.forEach(val ->
-		{
-			if (predicate.test(val))
-			{
-				newList.add(val);
-			}
-		});
+					 {
+						 if (predicate.test(val))
+						 {
+							 newList.add(val);
+						 }
+					 });
 
 		return newList;
 	}

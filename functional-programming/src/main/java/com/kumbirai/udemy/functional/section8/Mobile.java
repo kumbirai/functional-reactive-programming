@@ -51,12 +51,6 @@ public class Mobile
 
 	public String toString()
 	{
-		return String.format("Specifications- RAM: %d Storage: %d Battery: %d Camera: %dMP Processor: %s Display: %f''",
-				ram,
-				storage,
-				battery,
-				camera,
-				processor,
-				screenSize);
+		return String.format("Specifications- RAM: %d Storage: %d Battery: %d Camera: %dMP Processor: %s Display: %f''", ram, storage, battery, camera, processor, screenSize);
 	}
 }

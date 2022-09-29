@@ -37,21 +37,18 @@ public final class QueueFun<T>
 	// enqueue
 	public QueueFun<T> enqueue(T t)
 	{
-		return new QueueFun<T>(this,
-				t);
+		return new QueueFun<T>(this, t);
 	}
 
 	public QueueFun<T> dequeue()
 	{
-		return new QueueFun<T>(this.front.tail(),
-				rear);
+		return new QueueFun<T>(this.front.tail(), rear);
 	}
 
 	void forEach(Consumer<? super T> action)
 	{
 		T current = this.front.head();
-		ListFun<T> temp = ListFun.concat(this.front.tail(),
-				this.rear.reverseList());
+		ListFun<T> temp = ListFun.concat(this.front.tail(), this.rear.reverseList());
 		while (temp != null)
 		{
 			action.accept(current);

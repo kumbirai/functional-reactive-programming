@@ -25,32 +25,27 @@ public class Characteristics
 		Stream<Integer> stream = list.stream();
 		Spliterator<Integer> spliterator = stream.spliterator();
 		int bits = spliterator.characteristics();
-		LOG.info("{}",
-				Integer.bitCount(bits));
+		LOG.info("{}", Integer.bitCount(bits));
 
 		//OR
 
-		LOG.info("{}",
-				Integer.bitCount(bits | ORDERED));
+		LOG.info("{}", Integer.bitCount(bits | ORDERED));
 
 		//And 
 
-		LOG.info("{}",
-				bits & ORDERED);
+		LOG.info("{}", bits & ORDERED);
 
-		LOG.info("{}",
-				spliterator.hasCharacteristics(ORDERED));
+		LOG.info("{}", spliterator.hasCharacteristics(ORDERED));
 
 		long count = list.stream()
 				.filter(x ->
-				{
-					LOG.info("mapping");
-					return x == x * 2;
-				})
+						{
+							LOG.info("mapping");
+							return x == x * 2;
+						})
 				.count();
 
-		LOG.info("{}",
-				count);
+		LOG.info("{}", count);
 
 		//		//e.g
 		//		Stream.of(1,3,2,4,9)//ORDERED, SIZED

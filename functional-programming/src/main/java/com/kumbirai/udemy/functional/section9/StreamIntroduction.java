@@ -28,8 +28,7 @@ public class StreamIntroduction
 				popularHorrorBooks.add(book);
 			}
 		}
-		popularHorrorBooks.forEach(book -> LOG.info("{}",
-				book));
+		popularHorrorBooks.forEach(book -> LOG.info("{}", book));
 		LOG.info("--------------");
 
 		//after java 8
@@ -39,7 +38,6 @@ public class StreamIntroduction
 				.filter(book -> book.getRating() > FILTER_RATING)
 				.collect(Collectors.toList());
 
-		collect.forEach(book -> LOG.info("{}",
-				book));
+		collect.forEach(book -> LOG.info("{}", book));
 	}
 }

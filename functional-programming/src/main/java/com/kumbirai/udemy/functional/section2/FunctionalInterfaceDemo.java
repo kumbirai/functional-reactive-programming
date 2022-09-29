@@ -13,11 +13,11 @@ public class FunctionalInterfaceDemo
 	{
 		var faker = new Faker();
 		MyFunInterface fun = () -> LOG.info(faker.chuckNorris()
-				.fact());
+													.fact());
 		fun.myMethod();
 
 		onTheFly(() -> LOG.info(faker.chuckNorris()
-				.fact()));
+										.fact()));
 	}
 
 	public static void onTheFly(MyFunInterface fun)

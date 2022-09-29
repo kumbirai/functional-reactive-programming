@@ -75,11 +75,8 @@ public class NumericStreamMethods
 		//one go..
 
 		IntSummaryStatistics stat = intStream.summaryStatistics();
-		LOG.info("{}",
-				stat);
-		LOG.info("{}",
-				Integer.MIN_VALUE);
-		LOG.info("{}",
-				Integer.MAX_VALUE);
+		LOG.info("{}", stat);
+		LOG.info("{}", Integer.MIN_VALUE);
+		LOG.info("{}", Integer.MAX_VALUE);
 	}
 }

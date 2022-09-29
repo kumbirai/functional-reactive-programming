@@ -29,26 +29,20 @@ class Order
 		Order order = new Order();
 		order = function.apply(order);
 		LOG.info("Order placed!");
-		LOG.info("{} items ordered by you will be delivered at '{}' by tomorrow",
-				order.cart.size(),
-				order.address);
+		LOG.info("{} items ordered by you will be delivered at '{}' by tomorrow", order.cart.size(), order.address);
 	}
 
 	public Order add(String item)
 	{
 		cart.add(item);
-		LOG.info("{} added to the cart",
-				item);
-		return new Order(this.cart,
-				this.address);
+		LOG.info("{} added to the cart", item);
+		return new Order(this.cart, this.address);
 	}
 
 	public Order deliverAt(String location)
 	{
 		this.address = location;
-		LOG.info("The delivery address set by you is '{}'",
-				location);
-		return new Order(this.cart,
-				this.address);
+		LOG.info("The delivery address set by you is '{}'", location);
+		return new Order(this.cart, this.address);
 	}
 }

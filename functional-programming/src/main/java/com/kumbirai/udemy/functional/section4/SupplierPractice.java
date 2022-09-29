@@ -17,7 +17,6 @@ public class SupplierPractice
 
 		Supplier<Double> randomNumber = Math::random;
 
-		LOG.info("{}",
-				randomNumber.get());
+		LOG.info("{}", randomNumber.get());
 	}
 }

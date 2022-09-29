@@ -18,10 +18,8 @@ public class Demo
 		@NonNull PublishSubject<String> subject = PublishSubject.create();
 		@NonNull Subject<String> serialized = subject.toSerialized();  //Thread safe
 
-		serialized.subscribe(val -> LOG.info("{}",
-				val));
-		serialized.subscribe(e -> LOG.info("Observer 2 {}",
-				e));
+		serialized.subscribe(val -> LOG.info("{}", val));
+		serialized.subscribe(e -> LOG.info("Observer 2 {}", e));
 
 		NAME_LIST_SUPPLIER.get()
 				.forEach(val -> serialized.onNext(val));

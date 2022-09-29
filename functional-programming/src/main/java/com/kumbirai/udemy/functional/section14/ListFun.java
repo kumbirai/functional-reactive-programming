@@ -19,8 +19,7 @@ public abstract class ListFun<T>
 
 		for (int i = t.length - 1; i >= 0; i--)
 		{
-			temp = new Const<T>(t[i],
-					temp);
+			temp = new Const<T>(t[i], temp);
 		}
 
 		return temp;
@@ -28,9 +27,7 @@ public abstract class ListFun<T>
 
 	public static <T> ListFun<T> concat(ListFun<T> list1, ListFun<T> list2)
 	{
-		return list1.isEmpty() ? list2 : new Const<>(list1.head(),
-				concat(list1.tail(),
-						list2));
+		return list1.isEmpty() ? list2 : new Const<>(list1.head(), concat(list1.tail(), list2));
 	}
 
 	public abstract T head();
@@ -55,8 +52,7 @@ public abstract class ListFun<T>
 
 	public ListFun<T> addEle(T e)
 	{
-		return new Const<T>(e,
-				this);
+		return new Const<T>(e, this);
 	}
 
 	//method to add element at specific position
@@ -71,9 +67,7 @@ public abstract class ListFun<T>
 			return this.tail()
 					.addEle(ele);
 		}
-		return new Const<T>(head(),
-				addEle(pos - 1,
-						ele));
+		return new Const<T>(head(), addEle(pos - 1, ele));
 	}
 
 	public void forEach(Consumer<? super T> action)
@@ -102,8 +96,7 @@ public abstract class ListFun<T>
 		else
 		{
 			ListFun<T> newTail = tail().removeEle(ele);
-			return new Const<T>(head(),
-					newTail);
+			return new Const<T>(head(), newTail);
 		}
 	}
 
@@ -118,8 +111,7 @@ public abstract class ListFun<T>
 		{
 			return tail();
 		}
-		return new Const<T>(head(),
-				tail().removeEle(pos - 1));
+		return new Const<T>(head(), tail().removeEle(pos - 1));
 	}
 
 	public ListFun<T> reverseList()

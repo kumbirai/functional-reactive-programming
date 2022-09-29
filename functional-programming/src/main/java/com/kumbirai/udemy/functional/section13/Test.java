@@ -15,7 +15,6 @@ public class Test
 
 		r.setResDate(LocalDate.parse("2018-10-01"));
 
-		LOG.info("{}",
-				r.getResDate());
+		LOG.info("{}", r.getResDate());
 	}
 }

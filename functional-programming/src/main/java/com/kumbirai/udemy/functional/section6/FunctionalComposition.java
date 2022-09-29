@@ -19,7 +19,6 @@ public class FunctionalComposition
 
 		Double side = getSide.apply(s);
 
-		LOG.info("{}",
-				side);
+		LOG.info("{}", side);
 	}
 }

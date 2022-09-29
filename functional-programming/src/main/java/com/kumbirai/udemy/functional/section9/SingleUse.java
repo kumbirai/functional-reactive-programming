@@ -24,15 +24,13 @@ public class SingleUse
 				.filter((book) -> book.getRating() > 3)
 				.collect(Collectors.toList());
 
-		popularHorrorBooks.forEach(val -> LOG.info("{}",
-				val));
+		popularHorrorBooks.forEach(val -> LOG.info("{}", val));
 
 		List<Book> popularRomanticBooks = stream.filter((book) -> book.getGenre()
 						.equalsIgnoreCase("Romance"))
 				.filter((book) -> book.getRating() > 3)
 				.collect(Collectors.toList());
 
-		popularRomanticBooks.forEach(val -> LOG.info("{}",
-				val));
+		popularRomanticBooks.forEach(val -> LOG.info("{}", val));
 	}
 }

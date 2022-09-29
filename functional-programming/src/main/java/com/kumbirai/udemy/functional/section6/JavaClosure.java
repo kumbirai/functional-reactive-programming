@@ -16,8 +16,7 @@ public class JavaClosure
 		Task lambda = () ->
 		{
 			//val = 112;
-			LOG.info("{}",
-					val);
+			LOG.info("{}", val);
 			LOG.info("Task Completed");
 		};
 

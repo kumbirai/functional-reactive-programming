@@ -15,16 +15,13 @@ public class Backpressure
 
 	public static void main(String[] args)
 	{
-		Flowable.range(1,
-						10_000)
+		Flowable.range(1, 10_000)
 				.map(e ->
-				{
-					LOG.info("Produced item is : {} : {}",
-							e,
-							Thread.currentThread()
-									.getName());
-					return e;
-				})
+					 {
+						 LOG.info("Produced item is : {} : {}", e, Thread.currentThread()
+								 .getName());
+						 return e;
+					 })
 				.observeOn(Schedulers.io())
 				.subscribe(new Subscriber<Integer>()
 				{
@@ -48,16 +45,14 @@ public class Backpressure
 							s.request(20);
 						}
 
-						LOG.info("The subscriber consumed : {}",
-								t);
+						LOG.info("The subscriber consumed : {}", t);
 						sleep(100);
 					}
 
 					@Override
 					public void onError(Throwable t)
 					{
-						LOG.error("Error: ",
-								t);
+						LOG.error("Error: ", t);
 					}
 
 					@Override
@@ -78,8 +73,7 @@ public class Backpressure
 		}
 		catch (InterruptedException e)
 		{
-			LOG.error("Error: ",
-					e);
+			LOG.error("Error: ", e);
 			Thread.currentThread()
 					.interrupt();
 		}

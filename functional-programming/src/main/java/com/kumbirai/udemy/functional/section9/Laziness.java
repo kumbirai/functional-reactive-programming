@@ -20,8 +20,7 @@ public class Laziness
 		Stream<Book> stream = books.stream()
 				.filter((book) -> book.getGenre()
 						.equalsIgnoreCase("Horror"))
-				.peek(book -> LOG.info("Filtered Book {}",
-						book))
+				.peek(book -> LOG.info("Filtered Book {}", book))
 				.filter((book) -> book.getRating() > 3);
 		//.collect(Collectors.toList());
 
@@ -34,7 +33,6 @@ public class Laziness
 	{
 		List<Book> popularHorrorBooks = stream.collect(Collectors.toList());
 		LOG.info("Collection done!");
-		popularHorrorBooks.forEach(val -> LOG.info("{}",
-				val));
+		popularHorrorBooks.forEach(val -> LOG.info("{}", val));
 	}
 }

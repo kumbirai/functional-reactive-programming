@@ -41,13 +41,11 @@ public class MapFun<K, V>
 		{
 			existingEntry.value = value;
 		}
-		Entry newEntry = new Entry(key,
-				value);
+		Entry newEntry = new Entry(key, value);
 		entries[hash] = newEntry;
 		newEntry.next = existingEntry;
 
-		return new MapFun<K, V>(entries,
-				size);
+		return new MapFun<K, V>(entries, size);
 	}
 
 	private boolean isDuplicate(K key)
@@ -89,8 +87,7 @@ public class MapFun<K, V>
 	{
 		for (int i = 0; i < this.entries.length; i++)
 		{
-			LOG.info("{}",
-					this.entries[i]);
+			LOG.info("{}", this.entries[i]);
 		}
 	}
 }

@@ -14,13 +14,13 @@ public class StockFilters
 	{
 		List<Stock> filteredData = new ArrayList<>();
 		list.forEach(stock ->
-		{
-			if (stock.getSymbol()
-					.equals(symbol))
-			{
-				filteredData.add(stock);
-			}
-		});
+					 {
+						 if (stock.getSymbol()
+								 .equals(symbol))
+						 {
+							 filteredData.add(stock);
+						 }
+					 });
 		return filteredData;
 	}
 
@@ -28,12 +28,12 @@ public class StockFilters
 	{
 		List<Stock> filteredData = new ArrayList<>();
 		list.forEach(stock ->
-		{
-			if (stock.getPrice() > price)
-			{
-				filteredData.add(stock);
-			}
-		});
+					 {
+						 if (stock.getPrice() > price)
+						 {
+							 filteredData.add(stock);
+						 }
+					 });
 		return filteredData;
 	}
 
@@ -41,12 +41,12 @@ public class StockFilters
 	{
 		List<Stock> filteredData = new ArrayList<>();
 		list.forEach(stock ->
-		{
-			if (p.test(stock))
-			{
-				filteredData.add(stock);
-			}
-		});
+					 {
+						 if (p.test(stock))
+						 {
+							 filteredData.add(stock);
+						 }
+					 });
 		return filteredData;
 	}
 }

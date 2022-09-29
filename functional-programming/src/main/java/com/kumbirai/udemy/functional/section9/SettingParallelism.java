@@ -16,15 +16,12 @@ public class SettingParallelism
 	public static void main(String[] args) throws InterruptedException, ExecutionException
 	{
 
-		LOG.info("{}",
-				Runtime.getRuntime()
-						.availableProcessors());
+		LOG.info("{}", Runtime.getRuntime()
+				.availableProcessors());
 
-		System.setProperty("java.util.concurrent.ForkJoinPool.common.parallelism",
-				"2");
+		System.setProperty("java.util.concurrent.ForkJoinPool.common.parallelism", "2");
 
-		LOG.info("{}",
-				ForkJoinPool.getCommonPoolParallelism());
+		LOG.info("{}", ForkJoinPool.getCommonPoolParallelism());
 
 		ForkJoinPool pool = new ForkJoinPool(2);
 
@@ -35,8 +32,7 @@ public class SettingParallelism
 						.count())
 				.get();
 
-		LOG.info("{}",
-				count);
+		LOG.info("{}", count);
 
 		//Computational Intensive
 

@@ -16,14 +16,12 @@ public class SubjectTypes
 	{
 		Subject<Long> subject = UnicastSubject.create();
 
-		Observable.interval(500,
-						TimeUnit.MILLISECONDS)
+		Observable.interval(500, TimeUnit.MILLISECONDS)
 				.subscribe(subject);
 
 		Thread.sleep(2000);
 
-		subject.subscribe(e -> LOG.info("Subscriber 1: {}",
-				e));
+		subject.subscribe(e -> LOG.info("Subscriber 1: {}", e));
 
 		Thread.sleep(2000);
 

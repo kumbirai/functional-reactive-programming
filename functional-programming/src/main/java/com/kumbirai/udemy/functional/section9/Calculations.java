@@ -25,8 +25,7 @@ public class Calculations
 				.mapToInt(Integer::intValue)
 				.sum();
 
-		LOG.info("Sum: {}",
-				sum);
+		LOG.info("Sum: {}", sum);
 
 		//max() Optional : primitive
 
@@ -34,8 +33,7 @@ public class Calculations
 				.mapToInt(Integer::intValue)
 				.max();
 
-		LOG.info("Max: {}",
-				maxOptional.getAsInt());
+		LOG.info("Max: {}", maxOptional.getAsInt());
 
 		//min() : Optional Primitive
 
@@ -43,8 +41,7 @@ public class Calculations
 				.mapToInt(Integer::intValue)
 				.min();
 
-		LOG.info("Min: {}",
-				minOptional.getAsInt());
+		LOG.info("Min: {}", minOptional.getAsInt());
 
 		//average() OptionalDouble
 
@@ -52,8 +49,7 @@ public class Calculations
 				.mapToInt(Integer::intValue)
 				.average();
 
-		LOG.info("Average: {}",
-				avgOptional.getAsDouble());
+		LOG.info("Average: {}", avgOptional.getAsDouble());
 
 		//summaryStatistics()
 
@@ -61,7 +57,6 @@ public class Calculations
 				.mapToInt(Integer::intValue)
 				.summaryStatistics();
 
-		LOG.info("{}",
-				summaryStatistics);
+		LOG.info("{}", summaryStatistics);
 	}
 }

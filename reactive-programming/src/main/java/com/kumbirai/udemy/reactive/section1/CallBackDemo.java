@@ -21,8 +21,7 @@ public class CallBackDemo
 					@Override
 					public void pushData(String data)
 					{
-						LOG.info("CallBack data: {}",
-								data);
+						LOG.info("CallBack data: {}", data);
 					}
 
 					@Override
@@ -34,8 +33,7 @@ public class CallBackDemo
 					@Override
 					public void pushError(Exception ex)
 					{
-						LOG.error("Callback Error called, exception caught:",
-								ex);
+						LOG.error("Callback Error called, exception caught:", ex);
 					}
 				});
 			}
@@ -69,8 +67,7 @@ public class CallBackDemo
 		}
 		catch (InterruptedException e)
 		{
-			LOG.error("Exception Caught: ",
-					e);
+			LOG.error("Exception Caught: ", e);
 			Thread.currentThread()
 					.interrupt();
 		}

@@ -16,16 +16,13 @@ public class ConsumerPractice
 	{
 		List<Integer> list = INTEGER_LIST_SUPPLIER.get();
 
-		Consumer<Integer> consumer = i -> LOG.info("{}",
-				i);
+		Consumer<Integer> consumer = i -> LOG.info("{}", i);
 
 		consumer.accept(56);
 
-		printElements(list,
-				consumer);
+		printElements(list, consumer);
 
-		LOG.info("{}",
-				Employee.class.getName());
+		LOG.info("{}", Employee.class.getName());
 	}
 
 	private static <T> void printElements(List<T> list, Consumer<T> consumer)

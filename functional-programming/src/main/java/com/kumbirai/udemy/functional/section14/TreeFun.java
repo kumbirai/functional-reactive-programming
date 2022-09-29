@@ -26,8 +26,7 @@ public class TreeFun<E extends Comparable<E>>
 		this.value = value;
 		this.right = right;
 		this.size = 1 + this.left.size + this.right.size;
-		this.height = 1 + Math.max(this.left.height,
-				this.right.height);
+		this.height = 1 + Math.max(this.left.height, this.right.height);
 	}
 
 	@SafeVarargs
@@ -44,15 +43,8 @@ public class TreeFun<E extends Comparable<E>>
 
 	private TreeFun<E> insert(E newValue)
 	{
-		return isEmpty() ? new TreeFun<E>(NIL,
-				newValue,
-				NIL) : newValue.compareTo(this.value) < 0 ? new TreeFun<E>(left.insert(newValue),
-				this.value,
-				this.right) : newValue.compareTo(this.value) > 0 ? new TreeFun<E>(this.left,
-				this.value,
-				right.insert(newValue)) : new TreeFun<E>(this.left,
-				newValue,
-				this.right);
+		return isEmpty() ? new TreeFun<E>(NIL, newValue, NIL) : newValue.compareTo(this.value) < 0 ? new TreeFun<E>(left.insert(newValue), this.value, this.right) : newValue.compareTo(
+				this.value) > 0 ? new TreeFun<E>(this.left, this.value, right.insert(newValue)) : new TreeFun<E>(this.left, newValue, this.right);
 	}
 
 	private boolean isEmpty()
@@ -62,25 +54,18 @@ public class TreeFun<E extends Comparable<E>>
 
 	public String toString()
 	{
-		return this.value != null ? String.format(" %s %s %s ",
-				left,
-				value,
-				right) : "";
+		return this.value != null ? String.format(" %s %s %s ", left, value, right) : "";
 	}
 
 	public TreeFun<E> remove(E element)
 	{
 		if (element.compareTo(this.value) < 0)
 		{
-			return new TreeFun<E>(this.left.remove(element),
-					this.value,
-					this.right);
+			return new TreeFun<E>(this.left.remove(element), this.value, this.right);
 		}
 		else if (element.compareTo(this.value) > 0)
 		{
-			return new TreeFun<E>(this.left,
-					this.value,
-					this.right.remove(element));
+			return new TreeFun<E>(this.left, this.value, this.right.remove(element));
 		}
 		else
 		{
@@ -100,9 +85,7 @@ public class TreeFun<E extends Comparable<E>>
 		}
 		else
 		{
-			return new TreeFun<E>(this.left.merge(this.right),
-					this.value,
-					right);
+			return new TreeFun<E>(this.left.merge(this.right), this.value, right);
 		}
 	}
 

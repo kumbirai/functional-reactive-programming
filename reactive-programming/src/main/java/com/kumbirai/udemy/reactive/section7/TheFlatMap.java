@@ -19,8 +19,7 @@ public class TheFlatMap
 				.flatMap(e -> Observable.just(e)
 						.subscribeOn(Schedulers.computation())
 						.map(TheFlatMap::compute))
-				.subscribe(val -> LOG.info("{}",
-						val));
+				.subscribe(val -> LOG.info("{}", val));
 
 		Thread.sleep(10000);
 	}

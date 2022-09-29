@@ -19,7 +19,6 @@ public class Grouping
 				//		employee -> employee))
 				//.flatMapSingle(Observable::toList)
 				.flatMapSingle(Observable::toList)
-				.subscribe(val -> LOG.info("{}",
-						val));
+				.subscribe(val -> LOG.info("{}", val));
 	}
 }

@@ -26,8 +26,7 @@ public class TailCallOptimization
 		}
 		else
 		{
-			return tailReFact(n - 1,
-					n * a);
+			return tailReFact(n - 1, n * a);
 		}
 	}
 }

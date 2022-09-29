@@ -11,11 +11,7 @@ public class SingleScheduler
 
 	public static void main(String[] args) throws InterruptedException
 	{
-		Observable<String> src = Observable.just("Pasta",
-						"Pizza",
-						"Fries",
-						"Curry",
-						"Chow mein")
+		Observable<String> src = Observable.just("Pasta", "Pizza", "Fries", "Curry", "Chow mein")
 				.subscribeOn(Schedulers.single());
 
 		src.subscribe(SingleScheduler::sensitiveTask);
@@ -31,9 +27,7 @@ public class SingleScheduler
 	public static void sensitiveTask(String value) throws InterruptedException
 	{
 		Thread.sleep(1000);
-		LOG.info("Computation of '{}' Done By : {}",
-				value,
-				Thread.currentThread()
-						.getName());
+		LOG.info("Computation of '{}' Done By : {}", value, Thread.currentThread()
+				.getName());
 	}
 }

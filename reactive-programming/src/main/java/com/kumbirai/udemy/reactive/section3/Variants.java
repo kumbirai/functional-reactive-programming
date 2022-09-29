@@ -12,25 +12,17 @@ public class Variants
 
 	public static void main(String[] args)
 	{
-		Observable<String> source = Observable.just("Alex",
-				"Justin",
-				"Jack");
+		Observable<String> source = Observable.just("Alex", "Justin", "Jack");
 		Observable<String> source1 = Observable.empty();
 
 		source1.first("Name")
-				.subscribe(val -> LOG.info("{}",
-						val));
+				.subscribe(val -> LOG.info("{}", val));
 
 		Single.just("Alex")
-				.subscribe(val -> LOG.info("{}",
-						val));
+				.subscribe(val -> LOG.info("{}", val));
 
 		source1.firstElement()
-				.subscribe(val -> LOG.info("{}",
-								val),
-						e -> LOG.error("Error: ",
-								e),
-						() -> LOG.info("Maybe Completed"));
+				.subscribe(val -> LOG.info("{}", val), e -> LOG.error("Error: ", e), () -> LOG.info("Maybe Completed"));
 
 		Completable completable = Completable.complete();
 

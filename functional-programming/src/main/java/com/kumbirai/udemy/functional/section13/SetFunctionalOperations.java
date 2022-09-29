@@ -18,32 +18,28 @@ public class SetFunctionalOperations
 		Set<Integer> set = Set.copyOf(INTEGER_LIST_SUPPLIER.get());
 
 		//traversal
-		set.forEach(val -> LOG.info("{}",
-				val));
+		set.forEach(val -> LOG.info("{}", val));
 
 		LOG.info("--------------------");
 
 		//Filter
 		set.stream()
 				.filter(e -> e % 2 == 0)
-				.forEach(val -> LOG.info("{}",
-						val));
+				.forEach(val -> LOG.info("{}", val));
 
 		LOG.info("--------------------");
 
 		//Sorting
 		set.stream()
 				.sorted()
-				.forEach(val -> LOG.info("{}",
-						val));
+				.forEach(val -> LOG.info("{}", val));
 
 		LOG.info("--------------------");
 
 		TreeSet<Integer> sortedSet = set.stream()
 				.collect(Collectors.toCollection(TreeSet::new));
 
-		sortedSet.forEach(val -> LOG.info("{}",
-				val));
+		sortedSet.forEach(val -> LOG.info("{}", val));
 
 		LOG.info("--------------------");
 
@@ -52,8 +48,7 @@ public class SetFunctionalOperations
 				.map(e -> Double.valueOf(e))
 				.collect(Collectors.toSet());
 
-		hashSet.forEach(val -> LOG.info("{}",
-				val));
+		hashSet.forEach(val -> LOG.info("{}", val));
 
 		LOG.info("--------------------");
 
@@ -62,7 +57,6 @@ public class SetFunctionalOperations
 				.mapToInt(e -> e)
 				.sum();
 
-		LOG.info("{}",
-				sum);
+		LOG.info("{}", sum);
 	}
 }

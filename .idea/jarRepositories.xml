@@ -7,6 +7,11 @@
       <option name="url" value="https://repo.maven.apache.org/maven2" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="SRS_MAVEN" />
+      <option name="name" value="SRS_MAVEN" />
+      <option name="url" value="https://pkgs.dev.azure.com/LibertyRetail/Retail/_packaging/SRS_MAVEN/maven/v1" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="central" />
       <option name="name" value="Central Repository" />
       <option name="url" value="https://nexus.bmwgroup.net/repository/bmw_repositories/" />

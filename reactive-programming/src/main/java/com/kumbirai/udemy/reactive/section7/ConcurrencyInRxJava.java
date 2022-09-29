@@ -13,22 +13,18 @@ public class ConcurrencyInRxJava
 	public static void main(String[] args)
 	{
 		Observable<String> source = Observable.create(e ->
-		{
-			new Thread(() ->
-			{
-				e.onNext(STRING_SUPPLIER.get());
-				e.onNext(STRING_SUPPLIER.get());
-			}).start();
-		});
+													  {
+														  new Thread(() ->
+																	 {
+																		 e.onNext(STRING_SUPPLIER.get());
+																		 e.onNext(STRING_SUPPLIER.get());
+																	 }).start();
+													  });
 
-		source.subscribe(e -> LOG.info("Observer 1 :{} Thread is :{}",
-				e,
-				Thread.currentThread()
-						.getName()));
+		source.subscribe(e -> LOG.info("Observer 1 :{} Thread is :{}", e, Thread.currentThread()
+				.getName()));
 
-		source.subscribe(e -> LOG.info("Observer 2 :{} Thread is :{}",
-				e,
-				Thread.currentThread()
-						.getName()));
+		source.subscribe(e -> LOG.info("Observer 2 :{} Thread is :{}", e, Thread.currentThread()
+				.getName()));
 	}
 }

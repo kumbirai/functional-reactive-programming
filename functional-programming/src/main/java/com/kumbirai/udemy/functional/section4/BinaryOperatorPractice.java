@@ -13,16 +13,10 @@ public class BinaryOperatorPractice
 
 	public static void main(String[] args)
 	{
-		BinaryOperator<String> operator = (a, b) -> String.join(".",
-				a,
-				b);
+		BinaryOperator<String> operator = (a, b) -> String.join(".", a, b);
 
 		String first = STRING_SUPPLIER.get();
 		String second = STRING_SUPPLIER.get();
-		LOG.info("[{}][{}] - {}",
-				first,
-				second,
-				operator.apply(first,
-						second));
+		LOG.info("[{}][{}] - {}", first, second, operator.apply(first, second));
 	}
 }

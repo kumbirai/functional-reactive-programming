@@ -12,15 +12,13 @@ public class InfiniteStreams
 
 	public static void main(String[] args)
 	{
-		Stream.iterate(0,
-				i -> i + 1);
+		Stream.iterate(0, i -> i + 1);
 
 		//		IntStream.iterate(5, i -> i -1 )
 		//		.limit(15)
 		//		.forEach(val->LOG.info("{}",val));
 
 		Stream.generate(new Random()::nextInt)
-				.forEach(val -> LOG.info("{}",
-						val));
+				.forEach(val -> LOG.info("{}", val));
 	}
 }

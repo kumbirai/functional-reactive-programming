@@ -20,45 +20,28 @@ public class BoundedStreams
 	public static void main(String[] args)
 	{
 		//1. stream() on a Collection
-		List<Integer> list = List.of(1,
-				4,
-				7,
-				9,
-				4);
+		List<Integer> list = List.of(1, 4, 7, 9, 4);
 		Stream<Integer> streamIntegers = list.stream();
 
 		//How we can stream a Map.
-		Map<Integer, String> map = Map.of(1,
-				"one",
-				2,
-				"two",
-				3,
-				"three",
-				4,
-				"four");
+		Map<Integer, String> map = Map.of(1, "one", 2, "two", 3, "three", 4, "four");
 		Stream<Entry<Integer, String>> entries = map.entrySet()
 				.stream();
-		entries.forEach(e -> LOG.info("{}",
-				e));
+		entries.forEach(e -> LOG.info("{}", e));
 		LOG.info("-----");
 		Stream<String> values = map.values()
 				.stream();
-		values.forEach(e -> LOG.info("{}",
-				e));
+		values.forEach(e -> LOG.info("{}", e));
 		LOG.info("-----");
 		Stream<Integer> keys = map.keySet()
 				.stream();
-		keys.forEach(e -> LOG.info("{}",
-				e));
+		keys.forEach(e -> LOG.info("{}", e));
 		LOG.info("-----");
 
 		//2. of() Stream class
 
-		Stream<String> streamStrings = Stream.of("Hey! ",
-				"Happy",
-				"Thanksgiving");
-		streamStrings.forEach(e -> LOG.info("{}",
-				e));
+		Stream<String> streamStrings = Stream.of("Hey! ", "Happy", "Thanksgiving");
+		streamStrings.forEach(e -> LOG.info("{}", e));
 		LOG.info("-----");
 
 		//3. stream() of Arrays Class
@@ -66,8 +49,7 @@ public class BoundedStreams
 		Integer[] integerArr = INTEGER_LIST_SUPPLIER.get()
 				.toArray(new Integer[0]);
 		Stream<Integer> stream = Arrays.stream(integerArr);
-		stream.forEach(e -> LOG.info("{}",
-				e));
+		stream.forEach(e -> LOG.info("{}", e));
 		LOG.info("-----");
 
 		int[] intArr = { 3,
@@ -76,8 +58,7 @@ public class BoundedStreams
 				89,
 				9 };
 		IntStream stream2 = Arrays.stream(intArr);
-		stream2.forEach(e -> LOG.info("{}",
-				e));
+		stream2.forEach(e -> LOG.info("{}", e));
 		LOG.info("-----");
 
 		//4. builder() of Stream class.
@@ -93,7 +74,6 @@ public class BoundedStreams
 		builder.add(4);
 
 		builder.build()
-				.forEach(e -> LOG.info("{}",
-						e));
+				.forEach(e -> LOG.info("{}", e));
 	}
 }

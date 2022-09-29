@@ -24,11 +24,9 @@ public class FlowableCreation
 							}
 
 							emitter.onComplete();
-						},
-						BackpressureStrategy.BUFFER)
+						}, BackpressureStrategy.BUFFER)
 				.observeOn(Schedulers.io())
-				.subscribe(val -> LOG.info("{}",
-						val));
+				.subscribe(val -> LOG.info("{}", val));
 
 		Thread.sleep(2_000);
 	}

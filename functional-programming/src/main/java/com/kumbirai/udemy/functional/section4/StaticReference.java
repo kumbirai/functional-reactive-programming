@@ -17,11 +17,7 @@ public class StaticReference
 
 		String first = STRING_SUPPLIER.get();
 		String second = STRING_SUPPLIER.get();
-		LOG.info("[{}][{}] - {}",
-				first,
-				second,
-				operator.apply(first,
-						second));
+		LOG.info("[{}][{}] - {}", first, second, operator.apply(first, second));
 	}
 }
 
@@ -29,8 +25,6 @@ class A_Class
 {
 	static String staticMethod(String a, String b)
 	{
-		return String.join("",
-				a,
-				b);
+		return String.join("", a, b);
 	}
 }

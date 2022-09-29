@@ -16,31 +16,17 @@ public class OperatorsInAction
 		Observable<Employee> obs = ValueSupplier.employeeObservable();
 
 		obs.filter(e -> e.getRating() > 4.0)
-				.sorted((e1, e2) -> Double.compare(e2.getRating(),
-						e1.getRating()))
+				.sorted((e1, e2) -> Double.compare(e2.getRating(), e1.getRating()))
 				.map(Employee::getName)
 				.take(4)
 				//.toList()
-				.subscribe(val -> LOG.info("{}",
-						val));
+				.subscribe(val -> LOG.info("{}", val));
 
-		List<Integer> expenses = List.of(200,
-				500,
-				300,
-				340,
-				129,
-				234,
-				999,
-				1030,
-				3400,
-				890,
-				996,
-				789);
+		List<Integer> expenses = List.of(200, 500, 300, 340, 129, 234, 999, 1030, 3400, 890, 996, 789);
 
 		Observable.fromIterable(expenses)
 				.reduce(Integer::sum)
-				.subscribe(val -> LOG.info("{}",
-						val));
+				.subscribe(val -> LOG.info("{}", val));
 	}
 
 }

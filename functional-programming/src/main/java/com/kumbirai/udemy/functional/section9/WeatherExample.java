@@ -12,26 +12,11 @@ public class WeatherExample
 		//<Open City>
 
 		List<City> CelciusWeather = new ArrayList<>();
-		CelciusWeather.add(new City("Delhi",
-				16,
-				87,
-				8));   // In Celsius // In percentage // In km/hr
-		CelciusWeather.add(new City("Chicago",
-				4,
-				83,
-				19));
-		CelciusWeather.add(new City("Beijing",
-				2,
-				74,
-				3));
-		CelciusWeather.add(new City("Mexico City",
-				18,
-				63,
-				10));
-		CelciusWeather.add(new City("Sydney",
-				20,
-				72,
-				21));
+		CelciusWeather.add(new City("Delhi", 16, 87, 8));   // In Celsius // In percentage // In km/hr
+		CelciusWeather.add(new City("Chicago", 4, 83, 19));
+		CelciusWeather.add(new City("Beijing", 2, 74, 3));
+		CelciusWeather.add(new City("Mexico City", 18, 63, 10));
+		CelciusWeather.add(new City("Sydney", 20, 72, 21));
 
 		//This data is having the temprature in Celcius, 
 		//Humidity is in Percentage

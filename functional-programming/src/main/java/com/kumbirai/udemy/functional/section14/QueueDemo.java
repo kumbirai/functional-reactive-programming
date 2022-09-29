@@ -15,20 +15,16 @@ public class QueueDemo
 				.enqueue(" How are you?")
 				.enqueue(" Fine?");
 
-		enqueue.forEach(val -> LOG.info("{}",
-				val));
+		enqueue.forEach(val -> LOG.info("{}", val));
 
 		QueueFun<String> dequeue = enqueue.dequeue();
 
-		dequeue.forEach(val -> LOG.info("{}",
-				val));
+		dequeue.forEach(val -> LOG.info("{}", val));
 
 		LOG.info(dequeue.peek());
 
-		LOG.info("{}",
-				dequeue.isEmpty());
+		LOG.info("{}", dequeue.isEmpty());
 
-		LOG.info("{}",
-				dequeue.size());
+		LOG.info("{}", dequeue.size());
 	}
 }
