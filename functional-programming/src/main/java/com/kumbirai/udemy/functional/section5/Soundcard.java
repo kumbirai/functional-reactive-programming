@@ -4,10 +4,10 @@ import java.util.Optional;
 
 public class Soundcard
 {
-	private Optional<USB> usb;
+    private Optional<USB> usb;
 
-	public Optional<USB> getUSB()
-	{
-		return this.usb;
-	}
+    public Optional<USB> getUSB()
+    {
+        return this.usb;
+    }
 }

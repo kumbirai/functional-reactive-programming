@@ -5,25 +5,25 @@ import org.slf4j.LoggerFactory;
 
 public class AC
 {
-	private static final Logger LOG = LoggerFactory.getLogger(AC.class);
+    private static final Logger LOG = LoggerFactory.getLogger(AC.class);
 
-	public void turnOn()
-	{
-		LOG.info("turning on AC");
-	}
+    public void turnOn()
+    {
+        LOG.info("turning on AC");
+    }
 
-	public void turnOff()
-	{
-		LOG.info("turning off AC");
-	}
+    public void turnOff()
+    {
+        LOG.info("turning off AC");
+    }
 
-	public void incTemp()
-	{
-		LOG.info("Increasing temperature");
-	}
+    public void incTemp()
+    {
+        LOG.info("Increasing temperature");
+    }
 
-	public void decTemp()
-	{
-		LOG.info("Decreasing temperature");
-	}
+    public void decTemp()
+    {
+        LOG.info("Decreasing temperature");
+    }
 }

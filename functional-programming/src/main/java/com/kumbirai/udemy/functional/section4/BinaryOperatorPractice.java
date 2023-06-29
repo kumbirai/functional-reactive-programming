@@ -9,14 +9,20 @@ import static com.kumbirai.udemy.functional.util.ValueSupplier.STRING_SUPPLIER;
 
 public class BinaryOperatorPractice
 {
-	private static final Logger LOG = LoggerFactory.getLogger(BinaryOperatorPractice.class);
+    private static final Logger LOG = LoggerFactory.getLogger(BinaryOperatorPractice.class);
 
-	public static void main(String[] args)
-	{
-		BinaryOperator<String> operator = (a, b) -> String.join(".", a, b);
+    public static void main(String[] args)
+    {
+        BinaryOperator<String> operator = (a, b) -> String.join(".",
+                                                                a,
+                                                                b);
 
-		String first = STRING_SUPPLIER.get();
-		String second = STRING_SUPPLIER.get();
-		LOG.info("[{}][{}] - {}", first, second, operator.apply(first, second));
-	}
+        String first = STRING_SUPPLIER.get();
+        String second = STRING_SUPPLIER.get();
+        LOG.info("[{}][{}] - {}",
+                 first,
+                 second,
+                 operator.apply(first,
+                                second));
+    }
 }

@@ -11,5 +11,5 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Square
 {
-	private int area;
+    private int area;
 }

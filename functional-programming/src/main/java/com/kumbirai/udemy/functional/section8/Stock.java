@@ -9,7 +9,7 @@ import lombok.Data;
 @Builder
 class Stock
 {
-	private String symbol;
-	private double price;
-	private double units;
+    private String symbol;
+    private double price;
+    private double units;
 }

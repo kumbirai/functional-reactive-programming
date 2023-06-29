@@ -8,17 +8,19 @@ import java.util.stream.Stream;
 
 public class InfiniteStreams
 {
-	private static final Logger LOG = LoggerFactory.getLogger(InfiniteStreams.class);
+    private static final Logger LOG = LoggerFactory.getLogger(InfiniteStreams.class);
 
-	public static void main(String[] args)
-	{
-		Stream.iterate(0, i -> i + 1);
+    public static void main(String[] args)
+    {
+        Stream.iterate(0,
+                       i -> i + 1);
 
-		//		IntStream.iterate(5, i -> i -1 )
-		//		.limit(15)
-		//		.forEach(val->LOG.info("{}",val));
+        //		IntStream.iterate(5, i -> i -1 )
+        //		.limit(15)
+        //		.forEach(val->LOG.info("{}",val));
 
-		Stream.generate(new Random()::nextInt)
-				.forEach(val -> LOG.info("{}", val));
-	}
+        Stream.generate(new Random()::nextInt)
+              .forEach(val -> LOG.info("{}",
+                                       val));
+    }
 }

@@ -9,14 +9,15 @@ import static com.kumbirai.udemy.functional.util.ValueSupplier.STRING_SUPPLIER;
 
 public class SupplierPractice
 {
-	private static final Logger LOG = LoggerFactory.getLogger(SupplierPractice.class);
+    private static final Logger LOG = LoggerFactory.getLogger(SupplierPractice.class);
 
-	public static void main(String[] args)
-	{
-		LOG.info(STRING_SUPPLIER.get());
+    public static void main(String[] args)
+    {
+        LOG.info(STRING_SUPPLIER.get());
 
-		Supplier<Double> randomNumber = Math::random;
+        Supplier<Double> randomNumber = Math::random;
 
-		LOG.info("{}", randomNumber.get());
-	}
+        LOG.info("{}",
+                 randomNumber.get());
+    }
 }

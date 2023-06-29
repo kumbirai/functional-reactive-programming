@@ -7,18 +7,18 @@ import java.util.function.Function;
 
 public class BurgerShop
 {
-	private static final Logger LOG = LoggerFactory.getLogger(BurgerShop.class);
+    private static final Logger LOG = LoggerFactory.getLogger(BurgerShop.class);
+    Function<Burger, Burger> decoration;
 
-	Function<Burger, Burger> decoration;
+    public BurgerShop(Function<Burger, Burger> decoration)
+    {
+        this.decoration = decoration;
+    }
 
-	public BurgerShop(Function<Burger, Burger> decoration)
-	{
-		this.decoration = decoration;
-	}
-
-	public Burger use(Burger baseBurger)
-	{
-		LOG.info("Base Burger : {}", baseBurger);
-		return decoration.apply(baseBurger);
-	}
+    public Burger use(Burger baseBurger)
+    {
+        LOG.info("Base Burger : {}",
+                 baseBurger);
+        return decoration.apply(baseBurger);
+    }
 }

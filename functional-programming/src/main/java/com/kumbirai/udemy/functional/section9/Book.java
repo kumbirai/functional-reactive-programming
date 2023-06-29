@@ -9,8 +9,8 @@ import lombok.Data;
 @Builder
 public class Book
 {
-	private String name;
-	private String author;
-	private String genre;
-	private double rating;
+    private String name;
+    private String author;
+    private String genre;
+    private double rating;
 }

@@ -9,13 +9,17 @@ import static com.kumbirai.udemy.functional.util.ValueSupplier.STRING_SUPPLIER;
 
 public class BiFunctionPractice
 {
-	private static final Logger LOG = LoggerFactory.getLogger(BiFunctionPractice.class);
+    private static final Logger LOG = LoggerFactory.getLogger(BiFunctionPractice.class);
 
-	public static void main(String[] args)
-	{
-		BiFunction<String, String, Integer> biFunction = (a, b) -> (a + b).length();
-		String first = STRING_SUPPLIER.get();
-		String second = STRING_SUPPLIER.get();
-		LOG.info("[{}][{}] - {}", first, second, biFunction.apply(first, second));
-	}
+    public static void main(String[] args)
+    {
+        BiFunction<String, String, Integer> biFunction = (a, b) -> (a + b).length();
+        String first = STRING_SUPPLIER.get();
+        String second = STRING_SUPPLIER.get();
+        LOG.info("[{}][{}] - {}",
+                 first,
+                 second,
+                 biFunction.apply(first,
+                                  second));
+    }
 }

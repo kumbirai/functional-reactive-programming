@@ -7,27 +7,30 @@ import java.util.stream.IntStream;
 
 public class ImperativeVsDeclarative
 {
-	private static final Logger LOG = LoggerFactory.getLogger(ImperativeVsDeclarative.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ImperativeVsDeclarative.class);
 
-	public static void main(String[] args)
-	{
-		//Imperative
-		int sumOfEvens = 0;
+    public static void main(String[] args)
+    {
+        //Imperative
+        int sumOfEvens = 0;
 
-		for (int i = 0; i <= 100; i++)
-		{
-			if (i % 2 == 0)
-			{
-				sumOfEvens += i;
-			}
-		}
-		LOG.info("{}", sumOfEvens);
+        for (int i = 0; i <= 100; i++)
+        {
+            if (i % 2 == 0)
+            {
+                sumOfEvens += i;
+            }
+        }
+        LOG.info("{}",
+                 sumOfEvens);
 
-		//Declarative or Functional
-		sumOfEvens = IntStream.rangeClosed(0, 100)
-				.filter(i -> i % 2 == 0)
-				.reduce((x, y) -> x + y)
-				.getAsInt();
-		LOG.info("{}", sumOfEvens);
-	}
+        //Declarative or Functional
+        sumOfEvens = IntStream.rangeClosed(0,
+                                           100)
+                              .filter(i -> i % 2 == 0)
+                              .reduce((x, y) -> x + y)
+                              .getAsInt();
+        LOG.info("{}",
+                 sumOfEvens);
+    }
 }

@@ -11,35 +11,39 @@ import static com.kumbirai.udemy.functional.section9.ParallelStreams.EMPLOYEE_LI
 
 public class SettingParallelism
 {
-	private static final Logger LOG = LoggerFactory.getLogger(SettingParallelism.class);
+    private static final Logger LOG = LoggerFactory.getLogger(SettingParallelism.class);
 
-	public static void main(String[] args) throws InterruptedException, ExecutionException
-	{
+    public static void main(String[] args) throws InterruptedException, ExecutionException
+    {
 
-		LOG.info("{}", Runtime.getRuntime()
-				.availableProcessors());
+        LOG.info("{}",
+                 Runtime.getRuntime()
+                        .availableProcessors());
 
-		System.setProperty("java.util.concurrent.ForkJoinPool.common.parallelism", "2");
+        System.setProperty("java.util.concurrent.ForkJoinPool.common.parallelism",
+                           "2");
 
-		LOG.info("{}", ForkJoinPool.getCommonPoolParallelism());
+        LOG.info("{}",
+                 ForkJoinPool.getCommonPoolParallelism());
 
-		ForkJoinPool pool = new ForkJoinPool(2);
+        ForkJoinPool pool = new ForkJoinPool(2);
 
-		List<Employee> list = EMPLOYEE_LIST_SUPPLIER.get();
+        List<Employee> list = EMPLOYEE_LIST_SUPPLIER.get();
 
-		long count = pool.submit(() -> list.parallelStream()
-						.filter(e -> e.getSalary() > 1_000)
-						.count())
-				.get();
+        long count = pool.submit(() -> list.parallelStream()
+                                           .filter(e -> e.getSalary() > 1_000)
+                                           .count())
+                         .get();
 
-		LOG.info("{}", count);
+        LOG.info("{}",
+                 count);
 
-		//Computational Intensive
+        //Computational Intensive
 
-		//		Number of threads <= number of cores
+        //		Number of threads <= number of cores
 
-		//IO intensive
+        //IO intensive
 
-		//		Number of threads > Number of cores
-	}
+        //		Number of threads > Number of cores
+    }
 }

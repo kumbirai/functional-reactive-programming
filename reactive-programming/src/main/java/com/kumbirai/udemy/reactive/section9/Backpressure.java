@@ -11,71 +11,77 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Backpressure
 {
-	private static final Logger LOG = LoggerFactory.getLogger(Backpressure.class);
+    private static final Logger LOG = LoggerFactory.getLogger(Backpressure.class);
 
-	public static void main(String[] args)
-	{
-		Flowable.range(1, 10_000)
-				.map(e ->
-					 {
-						 LOG.info("Produced item is : {} : {}", e, Thread.currentThread()
-								 .getName());
-						 return e;
-					 })
-				.observeOn(Schedulers.io())
-				.subscribe(new Subscriber<Integer>()
-				{
-					final AtomicInteger count = new AtomicInteger(0);
-					Subscription s;
+    public static void main(String[] args)
+    {
+        Flowable.range(1,
+                       10_000)
+                .map(e ->
+                     {
+                         LOG.info("Produced item is : {} : {}",
+                                  e,
+                                  Thread.currentThread()
+                                        .getName());
+                         return e;
+                     })
+                .observeOn(Schedulers.io())
+                .subscribe(new Subscriber<Integer>()
+                {
+                    final AtomicInteger count = new AtomicInteger(0);
+                    Subscription s;
 
-					@Override
-					public void onSubscribe(Subscription s)
-					{
-						this.s = s;
-						LOG.info("Asking for 20 items");
-						s.request(20);
-					}
+                    @Override
+                    public void onSubscribe(Subscription s)
+                    {
+                        this.s = s;
+                        LOG.info("Asking for 20 items");
+                        s.request(20);
+                    }
 
-					@Override
-					public void onNext(Integer t)
-					{
-						if (count.getAndIncrement() % 20 == 0)
-						{
-							LOG.info("Asking for next 20 items ");
-							s.request(20);
-						}
+                    @Override
+                    public void onNext(Integer t)
+                    {
+                        if (count.getAndIncrement() % 20 == 0)
+                        {
+                            LOG.info("Asking for next 20 items ");
+                            s.request(20);
+                        }
 
-						LOG.info("The subscriber consumed : {}", t);
-						sleep(100);
-					}
+                        LOG.info("The subscriber consumed : {}",
+                                 t);
+                        sleep(100);
+                    }
 
-					@Override
-					public void onError(Throwable t)
-					{
-						LOG.error("Error: ", t);
-					}
+                    @Override
+                    public void onError(Throwable t)
+                    {
+                        LOG.error("Error: ",
+                                  t);
+                    }
 
-					@Override
-					public void onComplete()
-					{
-						LOG.info("Completed");
-					}
-				});
+                    @Override
+                    public void onComplete()
+                    {
+                        LOG.info("Completed");
+                    }
+                });
 
-		sleep(300_000);
-	}
+        sleep(300_000);
+    }
 
-	private static void sleep(long milliseconds)
-	{
-		try
-		{
-			Thread.sleep(milliseconds);
-		}
-		catch (InterruptedException e)
-		{
-			LOG.error("Error: ", e);
-			Thread.currentThread()
-					.interrupt();
-		}
-	}
+    private static void sleep(long milliseconds)
+    {
+        try
+        {
+            Thread.sleep(milliseconds);
+        }
+        catch (InterruptedException e)
+        {
+            LOG.error("Error: ",
+                      e);
+            Thread.currentThread()
+                  .interrupt();
+        }
+    }
 }

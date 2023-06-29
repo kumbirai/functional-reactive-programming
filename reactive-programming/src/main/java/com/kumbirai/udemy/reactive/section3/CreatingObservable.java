@@ -13,36 +13,46 @@ import static com.kumbirai.udemy.reactive.util.ValueSupplier.STRING_LIST_SUPPLIE
 
 public class CreatingObservable
 {
-	private static final Logger LOG = LoggerFactory.getLogger(CreatingObservable.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CreatingObservable.class);
 
-	public static void main(String[] args)
-	{
-		//create()
-		Observable<Integer> source = Observable.create(e ->
-													   {
-														   List<Integer> integers = INTEGER_LIST_SUPPLIER.get();
-														   integers.forEach(e::onNext);
-														   e.onComplete();
-													   });
+    public static void main(String[] args)
+    {
+        //create()
+        Observable<Integer> source = Observable.create(e ->
+                                                       {
+                                                           List<Integer> integers = INTEGER_LIST_SUPPLIER.get();
+                                                           integers.forEach(e::onNext);
+                                                           e.onComplete();
+                                                       });
 
-		source.subscribe(val -> LOG.info("{}", val));
+        source.subscribe(val -> LOG.info("{}",
+                                         val));
 
-		//just()
-		Observable<Integer> just = Observable.just(1, 2, 3, 4, 5);
+        //just()
+        Observable<Integer> just = Observable.just(1,
+                                                   2,
+                                                   3,
+                                                   4,
+                                                   5);
 
-		just.subscribe(val -> LOG.info("{}", val));
+        just.subscribe(val -> LOG.info("{}",
+                                       val));
 
-		//fromIterable
-		List<String> strings = NAME_LIST_SUPPLIER.get();
+        //fromIterable
+        List<String> strings = NAME_LIST_SUPPLIER.get();
 
-		@NonNull Observable<String> fromIterable = Observable.fromIterable(strings);
+        @NonNull Observable<String> fromIterable = Observable.fromIterable(strings);
 
-		strings.add("------");
-		strings.addAll(STRING_LIST_SUPPLIER.get());
+        strings.add("------");
+        strings.addAll(STRING_LIST_SUPPLIER.get());
 
-		fromIterable.subscribe(val -> LOG.info("{}", val));
+        fromIterable.subscribe(val -> LOG.info("{}",
+                                               val));
 
-		Observable<Integer> fromRange = Observable.range(2, 9);
-		fromRange.subscribe(val -> LOG.info("{}", Math.pow(val, val)));
-	}
+        Observable<Integer> fromRange = Observable.range(2,
+                                                         9);
+        fromRange.subscribe(val -> LOG.info("{}",
+                                            Math.pow(val,
+                                                     val)));
+    }
 }

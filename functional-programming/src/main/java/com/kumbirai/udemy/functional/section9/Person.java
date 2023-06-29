@@ -11,7 +11,7 @@ import lombok.ToString;
 @Builder
 public class Person
 {
-	private String lastName;
-	private String firstName;
-	private int age;
+    private String lastName;
+    private String firstName;
+    private int age;
 }

@@ -12,51 +12,58 @@ import static com.kumbirai.udemy.functional.util.ValueSupplier.INTEGER_LIST_SUPP
 
 public class CustomCollector
 {
-	private static final Logger LOG = LoggerFactory.getLogger(CustomCollector.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CustomCollector.class);
 
-	public static void main(String[] args)
-	{
-		List<Integer> numbers = INTEGER_LIST_SUPPLIER.get();
-		numbers.addAll(INTEGER_LIST_SUPPLIER.get());
-		//		numbers.addAll(INTEGER_LIST_SUPPLIER.get());
+    public static void main(String[] args)
+    {
+        List<Integer> numbers = INTEGER_LIST_SUPPLIER.get();
+        numbers.addAll(INTEGER_LIST_SUPPLIER.get());
+        //		numbers.addAll(INTEGER_LIST_SUPPLIER.get());
 
-		Collector<Integer, List<Integer>, List<Integer>> toList = Collector.of(ArrayList::new
-																			   //supplier
-				, (list, e) -> list.add(e)
-																			   //BiConsumer
-				, (list1, list2) ->
-																			   {
-																				   list1.addAll(list2);
-																				   return list1;
-																			   }
-																			   //BiFunction
-				, Collector.Characteristics.IDENTITY_FINISH);
+        Collector<Integer, List<Integer>, List<Integer>> toList = Collector.of(ArrayList::new
+                                                                               //supplier
+                ,
+                                                                               (list, e) -> list.add(e)
+                                                                               //BiConsumer
+                ,
+                                                                               (list1, list2) ->
+                                                                               {
+                                                                                   list1.addAll(list2);
+                                                                                   return list1;
+                                                                               }
+                                                                               //BiFunction
+                ,
+                                                                               Collector.Characteristics.IDENTITY_FINISH);
 
-		List<Integer> evens = numbers.stream()
-				.filter(e -> e % 2 == 0)
-				.collect(toList);
+        List<Integer> evens = numbers.stream()
+                                     .filter(e -> e % 2 == 0)
+                                     .collect(toList);
 
-		evens.forEach(val -> LOG.info("{}", val));
+        evens.forEach(val -> LOG.info("{}",
+                                      val));
 
-		LOG.info("----------------");
+        LOG.info("----------------");
 
-		Collector<Integer, List<Integer>, List<Integer>> toSortedListCollector = Collector.of(ArrayList::new,
-																							  //supplier
-																							  (list, e) -> list.add(e),
-																							  //BiConsumer
-																							  (list1, list2) ->
-																							  {
-																								  list1.addAll(list2);
-																								  return list1;
-																							  }, (list) ->
-																							  {
-																								  Collections.sort(list);
-																								  return list;
-																							  }, Collector.Characteristics.UNORDERED);
+        Collector<Integer, List<Integer>, List<Integer>> toSortedListCollector = Collector.of(ArrayList::new,
+                                                                                              //supplier
+                                                                                              (list, e) -> list.add(e),
+                                                                                              //BiConsumer
+                                                                                              (list1, list2) ->
+                                                                                              {
+                                                                                                  list1.addAll(list2);
+                                                                                                  return list1;
+                                                                                              },
+                                                                                              (list) ->
+                                                                                              {
+                                                                                                  Collections.sort(list);
+                                                                                                  return list;
+                                                                                              },
+                                                                                              Collector.Characteristics.UNORDERED);
 
-		List<Integer> sortedList = numbers.stream()
-				.collect(toSortedListCollector);
+        List<Integer> sortedList = numbers.stream()
+                                          .collect(toSortedListCollector);
 
-		sortedList.forEach(val -> LOG.info("{}", val));
-	}
+        sortedList.forEach(val -> LOG.info("{}",
+                                           val));
+    }
 }

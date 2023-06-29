@@ -9,7 +9,7 @@ import lombok.Data;
 @Builder
 public class Movie
 {
-	private String name;
-	private int releaseYear;
-	private String industry;
+    private String name;
+    private int releaseYear;
+    private String industry;
 }

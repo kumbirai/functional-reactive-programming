@@ -12,29 +12,38 @@ import java.util.stream.Stream;
 
 public class NumericStreams
 {
-	private static final Logger LOG = LoggerFactory.getLogger(NumericStreams.class);
+    private static final Logger LOG = LoggerFactory.getLogger(NumericStreams.class);
 
-	public static void main(String[] args)
-	{
-		List<Book> list = BookSupplier.GET_BOOKS.get();
+    public static void main(String[] args)
+    {
+        List<Book> list = BookSupplier.GET_BOOKS.get();
 
-		OptionalDouble average = list.stream()
-				.mapToDouble(book -> book.getRating())
-				.average();
+        OptionalDouble average = list.stream()
+                                     .mapToDouble(book -> book.getRating())
+                                     .average();
 
-		LOG.info("{}", average.getAsDouble());
+        LOG.info("{}",
+                 average.getAsDouble());
 
-		//map : Objects
+        //map : Objects
 
-		//mapToDouble : primitive double
+        //mapToDouble : primitive double
 
-		IntStream intS = IntStream.of(1, 3, 5, 8);
-		DoubleStream doubleS = DoubleStream.of(1, 3, 5, 8);
-		LongStream longS = LongStream.of(1L, 3L, 5L, 8L);
+        IntStream intS = IntStream.of(1,
+                                      3,
+                                      5,
+                                      8);
+        DoubleStream doubleS = DoubleStream.of(1,
+                                               3,
+                                               5,
+                                               8);
+        LongStream longS = LongStream.of(1L,
+                                         3L,
+                                         5L,
+                                         8L);
 
-		Stream<Integer> boxedInts = intS.boxed();
+        Stream<Integer> boxedInts = intS.boxed();
 
-		doubleS.mapToObj(val -> val);
-	}
-
+        doubleS.mapToObj(val -> val);
+    }
 }

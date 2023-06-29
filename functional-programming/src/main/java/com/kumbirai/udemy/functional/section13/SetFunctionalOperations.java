@@ -11,52 +11,58 @@ import static com.kumbirai.udemy.functional.util.ValueSupplier.INTEGER_LIST_SUPP
 
 public class SetFunctionalOperations
 {
-	private static final Logger LOG = LoggerFactory.getLogger(SetFunctionalOperations.class);
+    private static final Logger LOG = LoggerFactory.getLogger(SetFunctionalOperations.class);
 
-	public static void main(String[] args)
-	{
-		Set<Integer> set = Set.copyOf(INTEGER_LIST_SUPPLIER.get());
+    public static void main(String[] args)
+    {
+        Set<Integer> set = Set.copyOf(INTEGER_LIST_SUPPLIER.get());
 
-		//traversal
-		set.forEach(val -> LOG.info("{}", val));
+        //traversal
+        set.forEach(val -> LOG.info("{}",
+                                    val));
 
-		LOG.info("--------------------");
+        LOG.info("--------------------");
 
-		//Filter
-		set.stream()
-				.filter(e -> e % 2 == 0)
-				.forEach(val -> LOG.info("{}", val));
+        //Filter
+        set.stream()
+           .filter(e -> e % 2 == 0)
+           .forEach(val -> LOG.info("{}",
+                                    val));
 
-		LOG.info("--------------------");
+        LOG.info("--------------------");
 
-		//Sorting
-		set.stream()
-				.sorted()
-				.forEach(val -> LOG.info("{}", val));
+        //Sorting
+        set.stream()
+           .sorted()
+           .forEach(val -> LOG.info("{}",
+                                    val));
 
-		LOG.info("--------------------");
+        LOG.info("--------------------");
 
-		TreeSet<Integer> sortedSet = set.stream()
-				.collect(Collectors.toCollection(TreeSet::new));
+        TreeSet<Integer> sortedSet = set.stream()
+                                        .collect(Collectors.toCollection(TreeSet::new));
 
-		sortedSet.forEach(val -> LOG.info("{}", val));
+        sortedSet.forEach(val -> LOG.info("{}",
+                                          val));
 
-		LOG.info("--------------------");
+        LOG.info("--------------------");
 
-		//Map
-		Set<Double> hashSet = set.stream()
-				.map(e -> Double.valueOf(e))
-				.collect(Collectors.toSet());
+        //Map
+        Set<Double> hashSet = set.stream()
+                                 .map(e -> Double.valueOf(e))
+                                 .collect(Collectors.toSet());
 
-		hashSet.forEach(val -> LOG.info("{}", val));
+        hashSet.forEach(val -> LOG.info("{}",
+                                        val));
 
-		LOG.info("--------------------");
+        LOG.info("--------------------");
 
-		//reduce
-		int sum = set.stream()
-				.mapToInt(e -> e)
-				.sum();
+        //reduce
+        int sum = set.stream()
+                     .mapToInt(e -> e)
+                     .sum();
 
-		LOG.info("{}", sum);
-	}
+        LOG.info("{}",
+                 sum);
+    }
 }

@@ -7,26 +7,26 @@ import java.util.Optional;
 
 public class Operations
 {
-	private static final Logger LOG = LoggerFactory.getLogger(Operations.class);
+    private static final Logger LOG = LoggerFactory.getLogger(Operations.class);
 
-	public static void main(String[] args)
-	{
-		Optional<String> optional = Optional.of("Value");
+    public static void main(String[] args)
+    {
+        Optional<String> optional = Optional.of("Value");
 
-		//map()
+        //map()
 
-		String orElse = optional.map(val -> "Replaced")
-				.orElse("Empty");
-		LOG.info(orElse);
+        String orElse = optional.map(val -> "Replaced")
+                                .orElse("Empty");
+        LOG.info(orElse);
 
-		//filter()
+        //filter()
 
-		Optional<String> filter = optional.filter(val -> val.equalsIgnoreCase("Value"));
-		LOG.info(filter.get());
+        Optional<String> filter = optional.filter(val -> val.equalsIgnoreCase("Value"));
+        LOG.info(filter.get());
 
-		//flatMap()
+        //flatMap()
 
-		Optional<String> flatMap = optional.flatMap(val -> Optional.of("Replaced By FlatMap"));
-		LOG.info(flatMap.get());
-	}
+        Optional<String> flatMap = optional.flatMap(val -> Optional.of("Replaced By FlatMap"));
+        LOG.info(flatMap.get());
+    }
 }

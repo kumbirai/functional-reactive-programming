@@ -7,8 +7,8 @@ import lombok.Data;
 @AllArgsConstructor
 public class Employee
 {
-	private Integer id;
-	private String name;
-	private double salary;
-	private double rating;
+    private Integer id;
+    private String name;
+    private double salary;
+    private double rating;
 }

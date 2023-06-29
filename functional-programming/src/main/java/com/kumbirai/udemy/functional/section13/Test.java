@@ -7,14 +7,15 @@ import java.time.LocalDate;
 
 public class Test
 {
-	private static final Logger LOG = LoggerFactory.getLogger(Test.class);
+    private static final Logger LOG = LoggerFactory.getLogger(Test.class);
 
-	public static void main(String[] args)
-	{
-		Reserve r = new Reserve(LocalDate.parse("2018-11-01"));
+    public static void main(String[] args)
+    {
+        Reserve r = new Reserve(LocalDate.parse("2018-11-01"));
 
-		r.setResDate(LocalDate.parse("2018-10-01"));
+        r.setResDate(LocalDate.parse("2018-10-01"));
 
-		LOG.info("{}", r.getResDate());
-	}
+        LOG.info("{}",
+                 r.getResDate());
+    }
 }

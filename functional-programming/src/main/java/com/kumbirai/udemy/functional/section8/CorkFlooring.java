@@ -5,11 +5,11 @@ import org.slf4j.LoggerFactory;
 
 public class CorkFlooring implements Flooring
 {
-	private static final Logger LOG = LoggerFactory.getLogger(CorkFlooring.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CorkFlooring.class);
 
-	@Override
-	public void installation()
-	{
-		LOG.info("The Cork flooring is installed! ");
-	}
+    @Override
+    public void installation()
+    {
+        LOG.info("The Cork flooring is installed! ");
+    }
 }

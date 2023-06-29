@@ -11,21 +11,23 @@ import static com.kumbirai.udemy.reactive.util.ValueSupplier.STRING_SUPPLIER;
 
 public class Demo
 {
-	private static final Logger LOG = LoggerFactory.getLogger(Demo.class);
+    private static final Logger LOG = LoggerFactory.getLogger(Demo.class);
 
-	public static void main(String[] args)
-	{
-		@NonNull PublishSubject<String> subject = PublishSubject.create();
-		@NonNull Subject<String> serialized = subject.toSerialized();  //Thread safe
+    public static void main(String[] args)
+    {
+        @NonNull PublishSubject<String> subject = PublishSubject.create();
+        @NonNull Subject<String> serialized = subject.toSerialized();  //Thread safe
 
-		serialized.subscribe(val -> LOG.info("{}", val));
-		serialized.subscribe(e -> LOG.info("Observer 2 {}", e));
+        serialized.subscribe(val -> LOG.info("{}",
+                                             val));
+        serialized.subscribe(e -> LOG.info("Observer 2 {}",
+                                           e));
 
-		NAME_LIST_SUPPLIER.get()
-				.forEach(val -> serialized.onNext(val));
-		serialized.onNext(STRING_SUPPLIER.get());
-		serialized.onNext(STRING_SUPPLIER.get());
-		serialized.onComplete();
-		serialized.onNext(STRING_SUPPLIER.get());
-	}
+        NAME_LIST_SUPPLIER.get()
+                          .forEach(val -> serialized.onNext(val));
+        serialized.onNext(STRING_SUPPLIER.get());
+        serialized.onNext(STRING_SUPPLIER.get());
+        serialized.onComplete();
+        serialized.onNext(STRING_SUPPLIER.get());
+    }
 }

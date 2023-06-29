@@ -7,45 +7,49 @@ import java.util.Optional;
 
 public class Unwrap
 {
-	private static final Logger LOG = LoggerFactory.getLogger(Unwrap.class);
+    private static final Logger LOG = LoggerFactory.getLogger(Unwrap.class);
 
-	public static void main(String[] args)
-	{
-		Integer a = 10;
+    public static void main(String[] args)
+    {
+        Integer a = 10;
 
-		Optional<Integer> optional = Optional.of(a);
+        Optional<Integer> optional = Optional.of(a);
 
-		//get
+        //get
 
-		Integer integerVal = optional.get();
+        Integer integerVal = optional.get();
 
-		LOG.info("{}", integerVal);
+        LOG.info("{}",
+                 integerVal);
 
-		Optional<Integer> emptyOptional = Optional.empty();
+        Optional<Integer> emptyOptional = Optional.empty();
 
-		//emptyOptional.get();
+        //emptyOptional.get();
 
-		//isPresent
+        //isPresent
 
-		Integer val = emptyOptional.isPresent() ? emptyOptional.get() : 0;
-		LOG.info("{}", val);
+        Integer val = emptyOptional.isPresent() ? emptyOptional.get() : 0;
+        LOG.info("{}",
+                 val);
 
-		//orElse, orElseGet
+        //orElse, orElseGet
 
-		//orElse
+        //orElse
 
-		Integer orElse = emptyOptional.orElse(0);
-		LOG.info("{}", orElse);
+        Integer orElse = emptyOptional.orElse(0);
+        LOG.info("{}",
+                 orElse);
 
-		//orElseGet
+        //orElseGet
 
-		Integer orElseGet = emptyOptional.orElseGet(() -> 0);
-		LOG.info("{}", orElseGet);
+        Integer orElseGet = emptyOptional.orElseGet(() -> 0);
+        LOG.info("{}",
+                 orElseGet);
 
-		//orElseThrow
+        //orElseThrow
 
-		Integer orElseThrow = emptyOptional.orElseThrow(() -> new IllegalArgumentException());
+        Integer orElseThrow = emptyOptional.orElseThrow(() -> new IllegalArgumentException());
 
-		//orElseThrow() = get()
-	}
+        //orElseThrow() = get()
+    }
 }

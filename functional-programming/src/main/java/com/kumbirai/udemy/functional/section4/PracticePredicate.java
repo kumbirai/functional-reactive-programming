@@ -9,45 +9,56 @@ import java.util.function.Predicate;
 
 public class PracticePredicate
 {
-	private static final Logger LOG = LoggerFactory.getLogger(PracticePredicate.class);
+    private static final Logger LOG = LoggerFactory.getLogger(PracticePredicate.class);
 
-	public static void main(String[] args)
-	{
-		List<String> list = new ArrayList<>();
-		list.add("Basics");
-		list.add("");
-		list.add("Strong");
-		list.add("");
-		list.add("BasicsStrong");
+    public static void main(String[] args)
+    {
+        List<String> list = new ArrayList<>();
+        list.add("Basics");
+        list.add("");
+        list.add("Strong");
+        list.add("");
+        list.add("BasicsStrong");
 
-		Predicate<String> emptyFilter = s -> !s.isEmpty();
-		List<String> newList = filterList(list, emptyFilter);
+        Predicate<String> emptyFilter = s -> !s.isEmpty();
+        List<String> newList = filterList(list,
+                                          emptyFilter);
 
-		Predicate<String> basicsFilter = s -> s.contains("Basics");
-		List<String> filteredList = filterList(list, basicsFilter);
+        Predicate<String> basicsFilter = s -> s.contains("Basics");
+        List<String> filteredList = filterList(list,
+                                               basicsFilter);
 
-		List<Integer> intList = List.of(1, 4, 6, 7, 8);
+        List<Integer> intList = List.of(1,
+                                        4,
+                                        6,
+                                        7,
+                                        8);
 
-		Predicate<Integer> integerFilter = e -> e % 2 == 0;
-		List<Integer> evens = filterList(intList, integerFilter);
+        Predicate<Integer> integerFilter = e -> e % 2 == 0;
+        List<Integer> evens = filterList(intList,
+                                         integerFilter);
 
-		LOG.info("{}", newList);
-		LOG.info("{}", filteredList);
-		LOG.info("{}", evens);
-	}
+        LOG.info("{}",
+                 newList);
+        LOG.info("{}",
+                 filteredList);
+        LOG.info("{}",
+                 evens);
+    }
 
-	private static <T> List<T> filterList(List<T> list, Predicate<T> predicate)
-	{
-		List<T> newList = new ArrayList<>();
+    private static <T> List<T> filterList(List<T> list,
+                                          Predicate<T> predicate)
+    {
+        List<T> newList = new ArrayList<>();
 
-		list.forEach(val ->
-					 {
-						 if (predicate.test(val))
-						 {
-							 newList.add(val);
-						 }
-					 });
+        list.forEach(val ->
+                     {
+                         if (predicate.test(val))
+                         {
+                             newList.add(val);
+                         }
+                     });
 
-		return newList;
-	}
+        return newList;
+    }
 }

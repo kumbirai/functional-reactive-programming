@@ -9,20 +9,23 @@ import static com.kumbirai.udemy.reactive.util.ValueSupplier.STRING_LIST_SUPPLIE
 
 public class CreatingObserver
 {
-	private static final Logger LOG = LoggerFactory.getLogger(CreatingObserver.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CreatingObserver.class);
 
-	public static void main(String[] args)
-	{
-		@NonNull Iterable<String> strings = STRING_LIST_SUPPLIER.get();
-		Observable<String> source = Observable.fromIterable(strings);
+    public static void main(String[] args)
+    {
+        @NonNull Iterable<String> strings = STRING_LIST_SUPPLIER.get();
+        Observable<String> source = Observable.fromIterable(strings);
 
-		LOG.info("-----X-------With Complete---------X---");
-		source.subscribe(LOG::info, Throwable::printStackTrace, () -> LOG.info("Completed!"));
+        LOG.info("-----X-------With Complete---------X---");
+        source.subscribe(LOG::info,
+                         Throwable::printStackTrace,
+                         () -> LOG.info("Completed!"));
 
-		LOG.info("-----X-------Without Complete---------X---");
-		source.subscribe(LOG::info, Throwable::printStackTrace);
+        LOG.info("-----X-------Without Complete---------X---");
+        source.subscribe(LOG::info,
+                         Throwable::printStackTrace);
 
-		LOG.info("-----X-------Without Error and Complete---------X---");
-		source.subscribe(LOG::info);
-	}
+        LOG.info("-----X-------Without Error and Complete---------X---");
+        source.subscribe(LOG::info);
+    }
 }

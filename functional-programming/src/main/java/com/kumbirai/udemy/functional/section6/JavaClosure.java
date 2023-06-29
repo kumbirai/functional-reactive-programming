@@ -7,30 +7,31 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class JavaClosure
 {
-	private static final Logger LOG = LoggerFactory.getLogger(JavaClosure.class);
+    private static final Logger LOG = LoggerFactory.getLogger(JavaClosure.class);
 
-	public static void main(String[] args)
-	{
-		int val = getAnInt();
+    public static void main(String[] args)
+    {
+        int val = getAnInt();
 
-		Task lambda = () ->
-		{
-			//val = 112;
-			LOG.info("{}", val);
-			LOG.info("Task Completed");
-		};
+        Task lambda = () ->
+        {
+            //val = 112;
+            LOG.info("{}",
+                     val);
+            LOG.info("Task Completed");
+        };
 
-		printValue(lambda);
-	}
+        printValue(lambda);
+    }
 
-	private static int getAnInt()
-	{
-		return ThreadLocalRandom.current()
-				.nextInt(1_000) + 1;
-	}
+    private static int getAnInt()
+    {
+        return ThreadLocalRandom.current()
+                                .nextInt(1_000) + 1;
+    }
 
-	private static void printValue(Task lambda)
-	{
-		lambda.doTask();
-	}
+    private static void printValue(Task lambda)
+    {
+        lambda.doTask();
+    }
 }

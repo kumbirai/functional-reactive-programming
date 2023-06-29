@@ -11,25 +11,34 @@ import static com.kumbirai.udemy.functional.section9.BookSupplier.GET_BOOKS;
 
 public class MapOperation
 {
-	private static final Logger LOG = LoggerFactory.getLogger(MapOperation.class);
+    private static final Logger LOG = LoggerFactory.getLogger(MapOperation.class);
 
-	public static void main(String[] args)
-	{
-		List<Integer> collect = Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-				.map(e -> e * 25)
-				.collect(Collectors.toList());
+    public static void main(String[] args)
+    {
+        List<Integer> collect = Stream.of(1,
+                                          2,
+                                          3,
+                                          4,
+                                          5,
+                                          6,
+                                          7,
+                                          8,
+                                          9,
+                                          10)
+                                      .map(e -> e * 25)
+                                      .collect(Collectors.toList());
 
-		collect.forEach(e -> LOG.info("{}", e));
+        collect.forEach(e -> LOG.info("{}",
+                                      e));
 
-		List<Book> books = GET_BOOKS.get();
+        List<Book> books = GET_BOOKS.get();
 
-		books.stream()
-				.filter((book) -> book.getGenre()
-						.equalsIgnoreCase("Horror"))
-				.filter((book) -> book.getRating() > 3)
-				.map(book -> book.getName())
-				.forEach(val -> LOG.info("{}", val));
-
-	}
-
+        books.stream()
+             .filter((book) -> book.getGenre()
+                                   .equalsIgnoreCase("Horror"))
+             .filter((book) -> book.getRating() > 3)
+             .map(book -> book.getName())
+             .forEach(val -> LOG.info("{}",
+                                      val));
+    }
 }

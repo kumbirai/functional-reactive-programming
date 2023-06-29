@@ -9,26 +9,28 @@ import static com.kumbirai.udemy.reactive.util.ValueSupplier.NAME_LIST_SUPPLIER;
 
 public class ComputationScheduler
 {
-	private static final Logger LOG = LoggerFactory.getLogger(ComputationScheduler.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ComputationScheduler.class);
 
-	public static void main(String[] args) throws InterruptedException
-	{
-		Observable<String> src = Observable.fromIterable(NAME_LIST_SUPPLIER.get())
-				.subscribeOn(Schedulers.computation());
+    public static void main(String[] args) throws InterruptedException
+    {
+        Observable<String> src = Observable.fromIterable(NAME_LIST_SUPPLIER.get())
+                                           .subscribeOn(Schedulers.computation());
 
-		src.subscribe(ComputationScheduler::compute);
-		src.subscribe(ComputationScheduler::compute);
-		src.subscribe(ComputationScheduler::compute);
-		src.subscribe(ComputationScheduler::compute);
-		src.subscribe(ComputationScheduler::compute);
+        src.subscribe(ComputationScheduler::compute);
+        src.subscribe(ComputationScheduler::compute);
+        src.subscribe(ComputationScheduler::compute);
+        src.subscribe(ComputationScheduler::compute);
+        src.subscribe(ComputationScheduler::compute);
 
-		Thread.sleep(50000);
-	}
+        Thread.sleep(50000);
+    }
 
-	public static void compute(String value) throws InterruptedException
-	{
-		Thread.sleep(1000);
-		LOG.info("Computation of '{}' Done By : {}", value, Thread.currentThread()
-				.getName());
-	}
+    public static void compute(String value) throws InterruptedException
+    {
+        Thread.sleep(1000);
+        LOG.info("Computation of '{}' Done By : {}",
+                 value,
+                 Thread.currentThread()
+                       .getName());
+    }
 }

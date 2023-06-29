@@ -14,31 +14,32 @@ import static com.kumbirai.udemy.reactive.util.ValueSupplier.NAME_LIST_SUPPLIER;
 
 public class CustomScheduler
 {
-	private static final Logger LOG = LoggerFactory.getLogger(CustomScheduler.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CustomScheduler.class);
 
-	public static void main(String[] args) throws InterruptedException
-	{
-		ExecutorService executor = Executors.newFixedThreadPool(20);
+    public static void main(String[] args) throws InterruptedException
+    {
+        ExecutorService executor = Executors.newFixedThreadPool(20);
 
-		@NonNull Scheduler scheduler = Schedulers.from(executor);
+        @NonNull Scheduler scheduler = Schedulers.from(executor);
 
-		Observable<String> src = Observable.fromIterable(NAME_LIST_SUPPLIER.get())
-				.subscribeOn(scheduler)
-				.doFinally(executor::shutdown);
+        Observable<String> src = Observable.fromIterable(NAME_LIST_SUPPLIER.get())
+                                           .subscribeOn(scheduler)
+                                           .doFinally(executor::shutdown);
 
-		src.subscribe(CustomScheduler::compute);
-		src.subscribe(CustomScheduler::compute);
-		src.subscribe(CustomScheduler::compute);
-		src.subscribe(CustomScheduler::compute);
-		src.subscribe(CustomScheduler::compute);
-		src.subscribe(CustomScheduler::compute);
+        src.subscribe(CustomScheduler::compute);
+        src.subscribe(CustomScheduler::compute);
+        src.subscribe(CustomScheduler::compute);
+        src.subscribe(CustomScheduler::compute);
+        src.subscribe(CustomScheduler::compute);
+        src.subscribe(CustomScheduler::compute);
+    }
 
-	}
-
-	public static void compute(String value) throws InterruptedException
-	{
-		Thread.sleep(1000);
-		LOG.info("Computation of '{}' Done By : {}", value, Thread.currentThread()
-				.getName());
-	}
+    public static void compute(String value) throws InterruptedException
+    {
+        Thread.sleep(1000);
+        LOG.info("Computation of '{}' Done By : {}",
+                 value,
+                 Thread.currentThread()
+                       .getName());
+    }
 }

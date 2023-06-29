@@ -9,16 +9,19 @@ import java.text.ParseException;
 
 public class Conversion
 {
-	private static final Logger LOG = LoggerFactory.getLogger(Conversion.class);
+    private static final Logger LOG = LoggerFactory.getLogger(Conversion.class);
 
-	public static void main(String[] args) throws InterruptedException, ParseException
-	{
-		Flowable.range(1, 1_000_000)
-				.toObservable()
-				.observeOn(Schedulers.io())
-				.subscribe(e -> LOG.info("{} {}", e, Thread.currentThread()
-						.getName()));
+    public static void main(String[] args) throws InterruptedException, ParseException
+    {
+        Flowable.range(1,
+                       1_000_000)
+                .toObservable()
+                .observeOn(Schedulers.io())
+                .subscribe(e -> LOG.info("{} {}",
+                                         e,
+                                         Thread.currentThread()
+                                               .getName()));
 
-		Thread.sleep(5_000);
-	}
+        Thread.sleep(5_000);
+    }
 }

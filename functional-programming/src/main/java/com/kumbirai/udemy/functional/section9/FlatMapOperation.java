@@ -17,41 +17,50 @@ import java.util.stream.Stream;
 
 public class FlatMapOperation
 {
-	private static final Logger LOG = LoggerFactory.getLogger(FlatMapOperation.class);
+    private static final Logger LOG = LoggerFactory.getLogger(FlatMapOperation.class);
 
-	public static void main(String[] args)
-	{
-		Stream<String> a = Stream.of("Hello ", "there! ");
-		Stream<String> b = Stream.of("Learning", "Java? ");
+    public static void main(String[] args)
+    {
+        Stream<String> a = Stream.of("Hello ",
+                                     "there! ");
+        Stream<String> b = Stream.of("Learning",
+                                     "Java? ");
 
-		Stream<Stream<String>> of = Stream.of(a, b);
+        Stream<Stream<String>> of = Stream.of(a,
+                                              b);
 
-		Stream<String> flatMap = Stream.of(a, b)
-				.flatMap(e -> e);
+        Stream<String> flatMap = Stream.of(a,
+                                           b)
+                                       .flatMap(e -> e);
 
-		URL res = FlatMapOperation.class.getResource("The Notebook");
-		LOG.info("{}", res);
+        URL res = FlatMapOperation.class.getResource("The Notebook");
+        LOG.info("{}",
+                 res);
 
-		Path p = null;
-		try
-		{
-			p = Paths.get(res.toURI());
-		}
-		catch (URISyntaxException e)
-		{
-			LOG.error("Exception Caught: ", e);
-		}
-		Objects.requireNonNull(p, "Path is null");
-		try (Stream<String> notebook = Files.lines(p))
-		{
-			List<String> collect = notebook.flatMap(line -> Arrays.stream(line.split(" ")))
-					.collect(Collectors.toList());
+        Path p = null;
+        try
+        {
+            p = Paths.get(res.toURI());
+        }
+        catch (URISyntaxException e)
+        {
+            LOG.error("Exception Caught: ",
+                      e);
+        }
+        Objects.requireNonNull(p,
+                               "Path is null");
+        try (Stream<String> notebook = Files.lines(p))
+        {
+            List<String> collect = notebook.flatMap(line -> Arrays.stream(line.split(" ")))
+                                           .collect(Collectors.toList());
 
-			collect.forEach(val -> LOG.info("{}", val));
-		}
-		catch (IOException e1)
-		{
-			LOG.error("Exception Caught: ", e1);
-		}
-	}
+            collect.forEach(val -> LOG.info("{}",
+                                            val));
+        }
+        catch (IOException e1)
+        {
+            LOG.error("Exception Caught: ",
+                      e1);
+        }
+    }
 }

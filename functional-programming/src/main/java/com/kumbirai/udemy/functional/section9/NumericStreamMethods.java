@@ -8,30 +8,30 @@ import java.util.stream.IntStream;
 
 public class NumericStreamMethods
 {
-	private static final Logger LOG = LoggerFactory.getLogger(NumericStreamMethods.class);
+    private static final Logger LOG = LoggerFactory.getLogger(NumericStreamMethods.class);
 
-	public static void main(String[] args)
-	{
+    public static void main(String[] args)
+    {
 
-		//Now lets see the important methods for these primitive streams
+        //Now lets see the important methods for these primitive streams
 
-		//Since these primitive streams are surely numeric in nature
-		//,there are some very useful methods available on these numeric streams.
+        //Since these primitive streams are surely numeric in nature
+        //,there are some very useful methods available on these numeric streams.
 
-		//for example if we creating an int stream..then possibly we are going to 
-		//perform some numerical operations on the stream..right?
-		//same is true for longStream and doubleStream..
+        //for example if we creating an int stream..then possibly we are going to
+        //perform some numerical operations on the stream..right?
+        //same is true for longStream and doubleStream..
 
-		//that's why we have a bunch of methods that we dont have for regular streams 
-		// or say for object streams.
-		//these methods can help us in performing calculations on the primitive 
-		//present in the stream
+        //that's why we have a bunch of methods that we dont have for regular streams
+        // or say for object streams.
+        //these methods can help us in performing calculations on the primitive
+        //present in the stream
 
-		//so lets first talk about the methods we have for intStream:
+        //so lets first talk about the methods we have for intStream:
 
-		//sum() : returns int sum
+        //sum() : returns int sum
 
-		IntStream intStream = IntStream.of();
+        IntStream intStream = IntStream.of();
 	/*	int sum = intStream.sum();
 		LOG.info(sum);
 		
@@ -69,14 +69,17 @@ public class NumericStreamMethods
 		OptionalDouble opAvg = intStream.average(); 
 		LOG.info(opAvg);
 		*/
-		//next method: summaryStatistics()
+        //next method: summaryStatistics()
 
-		//This is a very useful method for calculating max, min, avg, and sum all in
-		//one go..
+        //This is a very useful method for calculating max, min, avg, and sum all in
+        //one go..
 
-		IntSummaryStatistics stat = intStream.summaryStatistics();
-		LOG.info("{}", stat);
-		LOG.info("{}", Integer.MIN_VALUE);
-		LOG.info("{}", Integer.MAX_VALUE);
-	}
+        IntSummaryStatistics stat = intStream.summaryStatistics();
+        LOG.info("{}",
+                 stat);
+        LOG.info("{}",
+                 Integer.MIN_VALUE);
+        LOG.info("{}",
+                 Integer.MAX_VALUE);
+    }
 }

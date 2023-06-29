@@ -12,18 +12,20 @@ import java.util.stream.IntStream;
 
 public class MovieSupplier
 {
-	private static final Faker FAKER = new Faker();
-	public static final Supplier<List<Movie>> MOVIE_LIST_SUPPLIER = () -> IntStream.range(0, 100)
-			.boxed()
-			.parallel()
-			.map(val -> Movie.builder()
-					.name(FAKER.book()
-								  .title())
-					.releaseYear(GregorianCalendar.getInstance()
-										 .get(Calendar.YEAR) - ThreadLocalRandom.current()
-							.nextInt(20))
-					.industry(FAKER.options()
-									  .option("Hollywood", "Bollywood"))
-					.build())
-			.collect(Collectors.toList());
+    private static final Faker FAKER = new Faker();
+    public static final Supplier<List<Movie>> MOVIE_LIST_SUPPLIER = () -> IntStream.range(0,
+                                                                                          100)
+                                                                                   .boxed()
+                                                                                   .parallel()
+                                                                                   .map(val -> Movie.builder()
+                                                                                                    .name(FAKER.book()
+                                                                                                               .title())
+                                                                                                    .releaseYear(GregorianCalendar.getInstance()
+                                                                                                                                  .get(Calendar.YEAR) - ThreadLocalRandom.current()
+                                                                                                                                                                         .nextInt(20))
+                                                                                                    .industry(FAKER.options()
+                                                                                                                   .option("Hollywood",
+                                                                                                                           "Bollywood"))
+                                                                                                    .build())
+                                                                                   .collect(Collectors.toList());
 }

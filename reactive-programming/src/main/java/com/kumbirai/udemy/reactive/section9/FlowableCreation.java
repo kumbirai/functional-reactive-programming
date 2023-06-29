@@ -8,26 +8,28 @@ import org.slf4j.LoggerFactory;
 
 public class FlowableCreation
 {
-	private static final Logger LOG = LoggerFactory.getLogger(FlowableCreation.class);
+    private static final Logger LOG = LoggerFactory.getLogger(FlowableCreation.class);
 
-	public static void main(String[] args) throws InterruptedException
-	{
-		Flowable.create(emitter ->
-						{
-							for (int i = 0; i <= 5_000; i++)
-							{
-								if (emitter.isCancelled())
-								{
-									return;
-								}
-								emitter.onNext(i);
-							}
+    public static void main(String[] args) throws InterruptedException
+    {
+        Flowable.create(emitter ->
+                        {
+                            for (int i = 0; i <= 5_000; i++)
+                            {
+                                if (emitter.isCancelled())
+                                {
+                                    return;
+                                }
+                                emitter.onNext(i);
+                            }
 
-							emitter.onComplete();
-						}, BackpressureStrategy.BUFFER)
-				.observeOn(Schedulers.io())
-				.subscribe(val -> LOG.info("{}", val));
+                            emitter.onComplete();
+                        },
+                        BackpressureStrategy.BUFFER)
+                .observeOn(Schedulers.io())
+                .subscribe(val -> LOG.info("{}",
+                                           val));
 
-		Thread.sleep(2_000);
-	}
+        Thread.sleep(2_000);
+    }
 }

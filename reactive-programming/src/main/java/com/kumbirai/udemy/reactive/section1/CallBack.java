@@ -2,9 +2,9 @@ package com.kumbirai.udemy.reactive.section1;
 
 public interface CallBack
 {
-	void pushData(String data);
+    void pushData(String data);
 
-	void pushComplete();
+    void pushComplete();
 
-	void pushError(Exception ex);
+    void pushError(Exception ex);
 }

@@ -9,6 +9,6 @@ import lombok.Data;
 @Builder
 class Employee
 {
-	private String name;
-	private int salary;
+    private String name;
+    private int salary;
 }

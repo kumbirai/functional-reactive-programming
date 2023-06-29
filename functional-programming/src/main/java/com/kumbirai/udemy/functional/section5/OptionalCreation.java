@@ -4,18 +4,18 @@ import java.util.Optional;
 
 public class OptionalCreation
 {
-	public static void main(String[] args)
-	{
-		String val = null;
-		Optional<String> optional = Optional.of(val);
+    public static void main(String[] args)
+    {
+        String val = null;
+        Optional<String> optional = Optional.of(val);
 
-		//empty
+        //empty
 
-		Optional<Integer> empty = Optional.empty();
+        Optional<Integer> empty = Optional.empty();
 
-		//nullable
+        //nullable
 
-		Optional<String> nullable = Optional.ofNullable(val);
-		Optional<String> emptyOptional = Optional.ofNullable(null);
-	}
+        Optional<String> nullable = Optional.ofNullable(val);
+        Optional<String> emptyOptional = Optional.ofNullable(null);
+    }
 }

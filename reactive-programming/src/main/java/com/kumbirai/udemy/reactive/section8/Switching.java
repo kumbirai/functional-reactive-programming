@@ -11,19 +11,22 @@ import static com.kumbirai.udemy.reactive.util.ValueSupplier.NAME_LIST_SUPPLIER;
 
 public class Switching
 {
-	private static final Logger LOG = LoggerFactory.getLogger(Switching.class);
+    private static final Logger LOG = LoggerFactory.getLogger(Switching.class);
 
-	public static void main(String[] args) throws InterruptedException
-	{
-		Observable<String> source = Observable.fromIterable(NAME_LIST_SUPPLIER.get())
-				.concatMap(s -> Observable.just(s)
-						.delay(ThreadLocalRandom.current()
-									   .nextInt(500), TimeUnit.MILLISECONDS));
+    public static void main(String[] args) throws InterruptedException
+    {
+        Observable<String> source = Observable.fromIterable(NAME_LIST_SUPPLIER.get())
+                                              .concatMap(s -> Observable.just(s)
+                                                                        .delay(ThreadLocalRandom.current()
+                                                                                                .nextInt(500),
+                                                                               TimeUnit.MILLISECONDS));
 
-		Observable.interval(2, TimeUnit.SECONDS)
-				.switchMap(s -> source.doOnDispose(() -> LOG.info("Disposing and starting again!")))
-				.subscribe(val -> LOG.info("{}", val));
+        Observable.interval(2,
+                            TimeUnit.SECONDS)
+                  .switchMap(s -> source.doOnDispose(() -> LOG.info("Disposing and starting again!")))
+                  .subscribe(val -> LOG.info("{}",
+                                             val));
 
-		Thread.sleep(10_000);
-	}
+        Thread.sleep(10_000);
+    }
 }

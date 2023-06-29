@@ -10,29 +10,31 @@ import java.util.concurrent.TimeUnit;
 
 public class SubjectTypes
 {
-	private static final Logger LOG = LoggerFactory.getLogger(SubjectTypes.class);
+    private static final Logger LOG = LoggerFactory.getLogger(SubjectTypes.class);
 
-	public static void main(String[] args) throws InterruptedException
-	{
-		Subject<Long> subject = UnicastSubject.create();
+    public static void main(String[] args) throws InterruptedException
+    {
+        Subject<Long> subject = UnicastSubject.create();
 
-		Observable.interval(500, TimeUnit.MILLISECONDS)
-				.subscribe(subject);
+        Observable.interval(500,
+                            TimeUnit.MILLISECONDS)
+                  .subscribe(subject);
 
-		Thread.sleep(2000);
+        Thread.sleep(2000);
 
-		subject.subscribe(e -> LOG.info("Subscriber 1: {}", e));
+        subject.subscribe(e -> LOG.info("Subscriber 1: {}",
+                                        e));
 
-		Thread.sleep(2000);
+        Thread.sleep(2000);
 
-		//		subject.onNext("a");
-		//		subject.onNext("b");
-		//		subject.onNext("c");
-		//
-		//		//subject.subscribe(e -> LOG.info("Subscriber 2: "+ e));
-		//
-		//		subject.onNext("d");
-		//		subject.onNext("e");
-		//		subject.onComplete();
-	}
+        //		subject.onNext("a");
+        //		subject.onNext("b");
+        //		subject.onNext("c");
+        //
+        //		//subject.subscribe(e -> LOG.info("Subscriber 2: "+ e));
+        //
+        //		subject.onNext("d");
+        //		subject.onNext("e");
+        //		subject.onComplete();
+    }
 }

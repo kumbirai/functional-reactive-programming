@@ -7,12 +7,20 @@ import java.util.stream.Stream;
 
 public class FilterOperation
 {
-	private static final Logger LOG = LoggerFactory.getLogger(FilterOperation.class);
+    private static final Logger LOG = LoggerFactory.getLogger(FilterOperation.class);
 
-	public static void main(String[] args)
-	{
-		Stream.of(34, 678, 89, 4, 52, 31, 325, 6)
-				.filter(e -> e % 2 == 0)
-				.forEach(e -> LOG.info("{}", e));
-	}
+    public static void main(String[] args)
+    {
+        Stream.of(34,
+                  678,
+                  89,
+                  4,
+                  52,
+                  31,
+                  325,
+                  6)
+              .filter(e -> e % 2 == 0)
+              .forEach(e -> LOG.info("{}",
+                                     e));
+    }
 }

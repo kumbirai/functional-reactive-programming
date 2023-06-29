@@ -12,77 +12,99 @@ import java.util.stream.Collectors;
 
 public class MapFunctionalOperations
 {
-	private static final Logger LOG = LoggerFactory.getLogger(MapFunctionalOperations.class);
+    private static final Logger LOG = LoggerFactory.getLogger(MapFunctionalOperations.class);
 
-	public static void main(String[] args)
-	{
-		Map<String, String> contacts = new HashMap<>();
-		contacts.put("1237589020", "John");
-		contacts.put("1237009020", "John");
-		contacts.put("7890291111", "Neal");
-		contacts.put("2647210290", "Raju");
-		contacts.put("9999999999", "Peter");
-		contacts.put("9081234567", "Neha");
+    public static void main(String[] args)
+    {
+        Map<String, String> contacts = new HashMap<>();
+        contacts.put("1237589020",
+                     "John");
+        contacts.put("1237009020",
+                     "John");
+        contacts.put("7890291111",
+                     "Neal");
+        contacts.put("2647210290",
+                     "Raju");
+        contacts.put("9999999999",
+                     "Peter");
+        contacts.put("9081234567",
+                     "Neha");
 
-		//traversal
-		for (Map.Entry<String, String> entry : contacts.entrySet())
-		{
-			LOG.info("{} -{}", entry.getKey(), entry.getValue());
-		}
+        //traversal
+        for (Map.Entry<String, String> entry : contacts.entrySet())
+        {
+            LOG.info("{} -{}",
+                     entry.getKey(),
+                     entry.getValue());
+        }
 
-		LOG.info("---------------------------");
+        LOG.info("---------------------------");
 
-		contacts.forEach((k, v) -> LOG.info("{} - {}", k, v));
+        contacts.forEach((k, v) -> LOG.info("{} - {}",
+                                            k,
+                                            v));
 
-		LOG.info("---------------------------");
+        LOG.info("---------------------------");
 
-		//Filter
-		contacts.entrySet()
-				.stream()
-				.filter(contact -> "John".equalsIgnoreCase(contact.getValue()))
-				.forEach(val -> LOG.info("{}", val));
+        //Filter
+        contacts.entrySet()
+                .stream()
+                .filter(contact -> "John".equalsIgnoreCase(contact.getValue()))
+                .forEach(val -> LOG.info("{}",
+                                         val));
 
-		Map<String, String> filteredContacts = contacts.entrySet()
-				.stream()
-				.filter(contact -> "John".equalsIgnoreCase(contact.getValue()))
-				.collect(Collectors.toMap(Entry::getKey, Entry::getValue));
+        Map<String, String> filteredContacts = contacts.entrySet()
+                                                       .stream()
+                                                       .filter(contact -> "John".equalsIgnoreCase(contact.getValue()))
+                                                       .collect(Collectors.toMap(Entry::getKey,
+                                                                                 Entry::getValue));
 
-		LOG.info("{}", filteredContacts);
+        LOG.info("{}",
+                 filteredContacts);
 
-		LOG.info("---------------------------");
+        LOG.info("---------------------------");
 
-		//Map
-		String contactNames = contacts.entrySet()
-				.stream()
-				.map(Entry::getValue)
-				.distinct()
-				.collect(Collectors.joining(", "));
+        //Map
+        String contactNames = contacts.entrySet()
+                                      .stream()
+                                      .map(Entry::getValue)
+                                      .distinct()
+                                      .collect(Collectors.joining(", "));
 
-		LOG.info(contactNames);
+        LOG.info(contactNames);
 
-		LOG.info("---------------------------");
+        LOG.info("---------------------------");
 
-		//sorting
+        //sorting
 
-		LinkedHashMap<String, String> sortedMap = contacts.entrySet()
-				.stream()
-				.sorted(Entry.comparingByKey())
-				.collect(Collectors.toMap(Entry::getKey, Entry::getValue, (v1, v2) -> v1, LinkedHashMap::new));
+        LinkedHashMap<String, String> sortedMap = contacts.entrySet()
+                                                          .stream()
+                                                          .sorted(Entry.comparingByKey())
+                                                          .collect(Collectors.toMap(Entry::getKey,
+                                                                                    Entry::getValue,
+                                                                                    (v1, v2) -> v1,
+                                                                                    LinkedHashMap::new));
 
-		sortedMap.forEach((k, v) -> LOG.info("{} -> {}", k, v));
-		LOG.info("---------------------------");
+        sortedMap.forEach((k, v) -> LOG.info("{} -> {}",
+                                             k,
+                                             v));
+        LOG.info("---------------------------");
 
-		//reduce 
-		Map<String, Double> marks = new HashMap<>();
-		marks.put("Science", 66.00);
-		marks.put("Maths", 78.00);
-		marks.put("English", 90.00);
+        //reduce
+        Map<String, Double> marks = new HashMap<>();
+        marks.put("Science",
+                  66.00);
+        marks.put("Maths",
+                  78.00);
+        marks.put("English",
+                  90.00);
 
-		OptionalDouble average = marks.values()
-				.stream()
-				.mapToDouble(m -> m)
-				.average();
+        OptionalDouble average = marks.values()
+                                      .stream()
+                                      .mapToDouble(m -> m)
+                                      .average();
 
-		LOG.info("{}", average.isPresent() ? average.getAsDouble() : 0);
-	}
+        LOG.info("{}",
+                 average.isPresent() ? average.getAsDouble() : 0);
+    }
 }

@@ -10,41 +10,46 @@ import static com.kumbirai.udemy.functional.section13.MovieSupplier.MOVIE_LIST_S
 
 public class ListFunctionalOperations
 {
-	private static final Logger LOG = LoggerFactory.getLogger(ListFunctionalOperations.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ListFunctionalOperations.class);
 
-	public static void main(String[] args)
-	{
-		List<Movie> movies = MOVIE_LIST_SUPPLIER.get();
+    public static void main(String[] args)
+    {
+        List<Movie> movies = MOVIE_LIST_SUPPLIER.get();
 
-		//Traversal
-		movies.forEach(val -> LOG.info("{}", val));
-		LOG.info("------------------");
+        //Traversal
+        movies.forEach(val -> LOG.info("{}",
+                                       val));
+        LOG.info("------------------");
 
-		//Sorting
-		movies.sort((o1, o2) -> o2.getReleaseYear() - o1.getReleaseYear());
-		movies.forEach(val -> LOG.info("{}", val));
-		LOG.info("------------------");
+        //Sorting
+        movies.sort((o1, o2) -> o2.getReleaseYear() - o1.getReleaseYear());
+        movies.forEach(val -> LOG.info("{}",
+                                       val));
+        LOG.info("------------------");
 
-		movies.stream()
-				.filter(movie -> movie.getIndustry()
-						.equalsIgnoreCase("Bollywood"))
-				.forEach(val -> LOG.info("{}", val));
+        movies.stream()
+              .filter(movie -> movie.getIndustry()
+                                    .equalsIgnoreCase("Bollywood"))
+              .forEach(val -> LOG.info("{}",
+                                       val));
 
-		LOG.info("------------------");
+        LOG.info("------------------");
 
-		//Mapping
-		movies.stream()
-				.map(movie -> movie.getName())
-				.forEach(val -> LOG.info("{}", val));
-		LOG.info("------------------");
+        //Mapping
+        movies.stream()
+              .map(movie -> movie.getName())
+              .forEach(val -> LOG.info("{}",
+                                       val));
+        LOG.info("------------------");
 
-		//Reduce
-		Optional<String> moviesString = movies.stream()
-				.map(m -> m.getName())
-				.reduce((m1, m2) -> m1 + " | " + m2);
+        //Reduce
+        Optional<String> moviesString = movies.stream()
+                                              .map(m -> m.getName())
+                                              .reduce((m1, m2) -> m1 + " | " + m2);
 
-		LOG.info("{}", moviesString);
+        LOG.info("{}",
+                 moviesString);
 
-		LOG.info("------------------");
-	}
+        LOG.info("------------------");
+    }
 }

@@ -11,47 +11,52 @@ import static java.util.Spliterator.ORDERED;
 
 public class Characteristics
 {
-	private static final Logger LOG = LoggerFactory.getLogger(Characteristics.class);
+    private static final Logger LOG = LoggerFactory.getLogger(Characteristics.class);
 
-	public static void main(String[] args)
-	{
-		ArrayList<Integer> list = new ArrayList<>();
-		list.add(4);
-		list.add(7);
-		list.add(9);
-		list.add(0);
-		list.add(1);
+    public static void main(String[] args)
+    {
+        ArrayList<Integer> list = new ArrayList<>();
+        list.add(4);
+        list.add(7);
+        list.add(9);
+        list.add(0);
+        list.add(1);
 
-		Stream<Integer> stream = list.stream();
-		Spliterator<Integer> spliterator = stream.spliterator();
-		int bits = spliterator.characteristics();
-		LOG.info("{}", Integer.bitCount(bits));
+        Stream<Integer> stream = list.stream();
+        Spliterator<Integer> spliterator = stream.spliterator();
+        int bits = spliterator.characteristics();
+        LOG.info("{}",
+                 Integer.bitCount(bits));
 
-		//OR
+        //OR
 
-		LOG.info("{}", Integer.bitCount(bits | ORDERED));
+        LOG.info("{}",
+                 Integer.bitCount(bits | ORDERED));
 
-		//And 
+        //And
 
-		LOG.info("{}", bits & ORDERED);
+        LOG.info("{}",
+                 bits & ORDERED);
 
-		LOG.info("{}", spliterator.hasCharacteristics(ORDERED));
+        LOG.info("{}",
+                 spliterator.hasCharacteristics(ORDERED));
 
-		long count = list.stream()
-				.filter(x ->
-						{
-							LOG.info("mapping");
-							return x == x * 2;
-						})
-				.count();
+        long count = list.stream()
+                         .filter(x ->
+                                 {
+                                     LOG.info("mapping");
+                                     return x == x * 2;
+                                 })
+                         .count();
 
-		LOG.info("{}", count);
+        LOG.info("{}",
+                 count);
 
-		//		//e.g
-		//		Stream.of(1,3,2,4,9)//ORDERED, SIZED
-		//		.filter(i->i%2==0) // ORDERED
-		//		.sorted() // ORDERED, SORTED
-		//		.map(i->i+1) // ORDERED
-		//		.unordered(); //
-	}
+        //		//e.g
+        //		Stream.of(1,3,2,4,9)//ORDERED, SIZED
+        //		.filter(i->i%2==0) // ORDERED
+        //		.sorted() // ORDERED, SORTED
+        //		.map(i->i+1) // ORDERED
+        //		.unordered(); //
+    }
 }

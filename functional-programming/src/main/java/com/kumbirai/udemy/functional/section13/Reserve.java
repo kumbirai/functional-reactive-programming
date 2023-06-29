@@ -7,31 +7,29 @@ import java.time.LocalDate;
 
 public class Reserve
 {
-	private static final Logger LOG = LoggerFactory.getLogger(Reserve.class);
+    private static final Logger LOG = LoggerFactory.getLogger(Reserve.class);
+    private final LocalDate prevResdate;
+    private LocalDate resDate;
 
-	private final LocalDate prevResdate;
-	private LocalDate resDate;
+    public Reserve(LocalDate ResDate)
+    {
+        this.prevResdate = ResDate;
+        this.resDate = ResDate;
+    }
 
-	public Reserve(LocalDate ResDate)
-	{
-		this.prevResdate = ResDate;
-		this.resDate = ResDate;
-	}
+    public LocalDate getResDate()
+    {
+        return resDate;
+    }
 
-	public LocalDate getResDate()
-	{
-		return resDate;
-	}
-
-	public void setResDate(LocalDate resDate)
-	{
-		if (prevResdate.compareTo(resDate) == 0)
-		{
-			LOG.info("Date already reserved!");
-		}
-		else
-		{
-			this.resDate = resDate;
-		}
-	}
+    public void setResDate(LocalDate resDate)
+    {
+        if (prevResdate.compareTo(resDate) == 0)
+        {
+            LOG.info("Date already reserved!");
+        } else
+        {
+            this.resDate = resDate;
+        }
+    }
 }

@@ -11,22 +11,23 @@ import static com.kumbirai.udemy.reactive.util.ValueSupplier.NAME_LIST_SUPPLIER;
 
 public class TheFlatMap
 {
-	private static final Logger LOG = LoggerFactory.getLogger(TheFlatMap.class);
+    private static final Logger LOG = LoggerFactory.getLogger(TheFlatMap.class);
 
-	public static void main(String[] args) throws InterruptedException
-	{
-		Observable.fromIterable(NAME_LIST_SUPPLIER.get())
-				.flatMap(e -> Observable.just(e)
-						.subscribeOn(Schedulers.computation())
-						.map(TheFlatMap::compute))
-				.subscribe(val -> LOG.info("{}", val));
+    public static void main(String[] args) throws InterruptedException
+    {
+        Observable.fromIterable(NAME_LIST_SUPPLIER.get())
+                  .flatMap(e -> Observable.just(e)
+                                          .subscribeOn(Schedulers.computation())
+                                          .map(TheFlatMap::compute))
+                  .subscribe(val -> LOG.info("{}",
+                                             val));
 
-		Thread.sleep(10000);
-	}
+        Thread.sleep(10000);
+    }
 
-	public static String compute(String element) throws InterruptedException
-	{
-		return element + " : Printed By : " + Thread.currentThread()
-				.getName() + " at : " + LocalTime.now();
-	}
+    public static String compute(String element) throws InterruptedException
+    {
+        return element + " : Printed By : " + Thread.currentThread()
+                                                    .getName() + " at : " + LocalTime.now();
+    }
 }

@@ -8,17 +8,18 @@ import org.slf4j.LoggerFactory;
 
 public class Grouping
 {
-	private static final Logger LOG = LoggerFactory.getLogger(Grouping.class);
+    private static final Logger LOG = LoggerFactory.getLogger(Grouping.class);
 
-	public static void main(String[] args)
-	{
-		Observable<Employee> obs = ValueSupplier.employeeObservable();
+    public static void main(String[] args)
+    {
+        Observable<Employee> obs = ValueSupplier.employeeObservable();
 
-		obs.groupBy(Employee::getRating)
-				//.flatMapSingle(e -> e.toMultimap(key -> e.getKey(),
-				//		employee -> employee))
-				//.flatMapSingle(Observable::toList)
-				.flatMapSingle(Observable::toList)
-				.subscribe(val -> LOG.info("{}", val));
-	}
+        obs.groupBy(Employee::getRating)
+           //.flatMapSingle(e -> e.toMultimap(key -> e.getKey(),
+           //		employee -> employee))
+           //.flatMapSingle(Observable::toList)
+           .flatMapSingle(Observable::toList)
+           .subscribe(val -> LOG.info("{}",
+                                      val));
+    }
 }

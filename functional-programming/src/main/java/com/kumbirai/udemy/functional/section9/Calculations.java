@@ -10,53 +10,58 @@ import static com.kumbirai.udemy.functional.util.ValueSupplier.INTEGER_LIST_SUPP
 
 public class Calculations
 {
-	private static final Logger LOG = LoggerFactory.getLogger(Calculations.class);
+    private static final Logger LOG = LoggerFactory.getLogger(Calculations.class);
 
-	public static void main(String[] args)
-	{
-		//IntStream
-		//DoubleStream
-		//LongStream
+    public static void main(String[] args)
+    {
+        //IntStream
+        //DoubleStream
+        //LongStream
 
-		//Sum
+        //Sum
 
-		final var integers = INTEGER_LIST_SUPPLIER.get();
-		int sum = integers.stream()
-				.mapToInt(Integer::intValue)
-				.sum();
+        final var integers = INTEGER_LIST_SUPPLIER.get();
+        int sum = integers.stream()
+                          .mapToInt(Integer::intValue)
+                          .sum();
 
-		LOG.info("Sum: {}", sum);
+        LOG.info("Sum: {}",
+                 sum);
 
-		//max() Optional : primitive
+        //max() Optional : primitive
 
-		OptionalInt maxOptional = integers.stream()
-				.mapToInt(Integer::intValue)
-				.max();
+        OptionalInt maxOptional = integers.stream()
+                                          .mapToInt(Integer::intValue)
+                                          .max();
 
-		LOG.info("Max: {}", maxOptional.getAsInt());
+        LOG.info("Max: {}",
+                 maxOptional.getAsInt());
 
-		//min() : Optional Primitive
+        //min() : Optional Primitive
 
-		OptionalInt minOptional = integers.stream()
-				.mapToInt(Integer::intValue)
-				.min();
+        OptionalInt minOptional = integers.stream()
+                                          .mapToInt(Integer::intValue)
+                                          .min();
 
-		LOG.info("Min: {}", minOptional.getAsInt());
+        LOG.info("Min: {}",
+                 minOptional.getAsInt());
 
-		//average() OptionalDouble
+        //average() OptionalDouble
 
-		OptionalDouble avgOptional = integers.stream()
-				.mapToInt(Integer::intValue)
-				.average();
+        OptionalDouble avgOptional = integers.stream()
+                                             .mapToInt(Integer::intValue)
+                                             .average();
 
-		LOG.info("Average: {}", avgOptional.getAsDouble());
+        LOG.info("Average: {}",
+                 avgOptional.getAsDouble());
 
-		//summaryStatistics()
+        //summaryStatistics()
 
-		var summaryStatistics = integers.stream()
-				.mapToInt(Integer::intValue)
-				.summaryStatistics();
+        var summaryStatistics = integers.stream()
+                                        .mapToInt(Integer::intValue)
+                                        .summaryStatistics();
 
-		LOG.info("{}", summaryStatistics);
-	}
+        LOG.info("{}",
+                 summaryStatistics);
+    }
 }

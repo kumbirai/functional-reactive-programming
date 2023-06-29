@@ -7,22 +7,22 @@ import java.util.function.Function;
 
 public class ConstructorReference
 {
-	private static final Logger LOG = LoggerFactory.getLogger(ConstructorReference.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ConstructorReference.class);
 
-	public static void main(String[] args)
-	{
-		Function<Runnable, Thread> threadGenerator = Thread::new;
+    public static void main(String[] args)
+    {
+        Function<Runnable, Thread> threadGenerator = Thread::new;
 
-		Runnable task1 = () -> LOG.info("Task 1 executed");
-		Runnable task2 = () -> LOG.info("Task 2 executed");
+        Runnable task1 = () -> LOG.info("Task 1 executed");
+        Runnable task2 = () -> LOG.info("Task 2 executed");
 
-		Thread thread1 = threadGenerator.apply(task1);
-		Thread thread2 = threadGenerator.apply(task2);
+        Thread thread1 = threadGenerator.apply(task1);
+        Thread thread2 = threadGenerator.apply(task2);
 
-		thread1.start();
-		thread2.start();
+        thread1.start();
+        thread2.start();
 
-		threadGenerator.apply(() -> LOG.info("Task 3 executed"))
-				.start();
-	}
+        threadGenerator.apply(() -> LOG.info("Task 3 executed"))
+                       .start();
+    }
 }

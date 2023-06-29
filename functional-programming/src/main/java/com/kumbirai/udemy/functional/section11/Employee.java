@@ -11,29 +11,27 @@ import java.sql.Date;
 @AllArgsConstructor
 public class Employee implements Comparable<Employee>
 {
-	private int id;
-	private String name;
-	private char gender;
-	private Date dob;
-	private String city;
-	private String designation;
-	private Date joiningDate;
-	private double salary;
+    private int id;
+    private String name;
+    private char gender;
+    private Date dob;
+    private String city;
+    private String designation;
+    private Date joiningDate;
+    private double salary;
 
-	@Override
-	public int compareTo(Employee o)
-	{
-		if (this.id < o.id)
-		{
-			return -1;
-		}
-		else if (this.id > o.id)
-		{
-			return 1;
-		}
-		else
-		{
-			return 0;
-		}
-	}
+    @Override
+    public int compareTo(Employee o)
+    {
+        if (this.id < o.id)
+        {
+            return -1;
+        } else if (this.id > o.id)
+        {
+            return 1;
+        } else
+        {
+            return 0;
+        }
+    }
 }

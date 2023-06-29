@@ -2,10 +2,10 @@ package com.kumbirai.udemy.functional.section6;
 
 public interface Function<T, R>
 {
-	R apply(T t);
+    R apply(T t);
 
-	default <V> Function<V, R> compose(Function<V, T> before)
-	{
-		return (V v) -> apply(before.apply(v));
-	}
+    default <V> Function<V, R> compose(Function<V, T> before)
+    {
+        return (V v) -> apply(before.apply(v));
+    }
 }

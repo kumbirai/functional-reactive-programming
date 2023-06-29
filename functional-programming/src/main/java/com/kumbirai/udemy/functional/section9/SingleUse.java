@@ -11,26 +11,28 @@ import static com.kumbirai.udemy.functional.section9.BookSupplier.GET_BOOKS;
 
 public class SingleUse
 {
-	private static final Logger LOG = LoggerFactory.getLogger(SingleUse.class);
+    private static final Logger LOG = LoggerFactory.getLogger(SingleUse.class);
 
-	public static void main(String[] args)
-	{
-		List<Book> books = GET_BOOKS.get();
+    public static void main(String[] args)
+    {
+        List<Book> books = GET_BOOKS.get();
 
-		Stream<Book> stream = books.stream();
+        Stream<Book> stream = books.stream();
 
-		List<Book> popularHorrorBooks = stream.filter((book) -> book.getGenre()
-						.equalsIgnoreCase("Horror"))
-				.filter((book) -> book.getRating() > 3)
-				.collect(Collectors.toList());
+        List<Book> popularHorrorBooks = stream.filter((book) -> book.getGenre()
+                                                                    .equalsIgnoreCase("Horror"))
+                                              .filter((book) -> book.getRating() > 3)
+                                              .collect(Collectors.toList());
 
-		popularHorrorBooks.forEach(val -> LOG.info("{}", val));
+        popularHorrorBooks.forEach(val -> LOG.info("{}",
+                                                   val));
 
-		List<Book> popularRomanticBooks = stream.filter((book) -> book.getGenre()
-						.equalsIgnoreCase("Romance"))
-				.filter((book) -> book.getRating() > 3)
-				.collect(Collectors.toList());
+        List<Book> popularRomanticBooks = stream.filter((book) -> book.getGenre()
+                                                                      .equalsIgnoreCase("Romance"))
+                                                .filter((book) -> book.getRating() > 3)
+                                                .collect(Collectors.toList());
 
-		popularRomanticBooks.forEach(val -> LOG.info("{}", val));
-	}
+        popularRomanticBooks.forEach(val -> LOG.info("{}",
+                                                     val));
+    }
 }
